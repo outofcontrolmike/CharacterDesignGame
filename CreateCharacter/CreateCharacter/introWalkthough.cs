@@ -524,6 +524,11 @@ namespace CreateCharacterMain
 
         }//end of get stats
 
+        // things to do
+            // Set up an Equiped Weapon
+            // Set up an Equiped Armor
+            // Set up 
+
     }//end of class
 
 

@@ -12,16 +12,6 @@ namespace CreateCharacterMain
     /// </summary>
     /// 
 
-    // Ideas
-    // Name
-    // Race
-    // Class
-    // Age
-    // Stats
-    // Gold
-    // Starting Weapon
-    // Starting Armor
-    // Other
 
 
         // Test making changes - Checkin to see if Github works
