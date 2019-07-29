@@ -26,8 +26,7 @@ namespace CreateCharacterMain
         private static int constitution = 0;
         private static int wisdom = 0;
         private static int charisma = 0;
-        private string equipedWeapon = "";
-        private string equipedArmor = "";
+      
 
 
 
@@ -303,6 +302,7 @@ namespace CreateCharacterMain
                 }
 
                 Console.WriteLine("\nYou decided to choose the class of " + pClass);
+                counter++;
 
             }// end of while
 
@@ -318,6 +318,26 @@ namespace CreateCharacterMain
             Console.WriteLine("Your stats are listed below: \n");
             if (pClass == "Warrior")
             {
+               
+
+                //Instantiate Weapon and Armor for start
+                Weapon wStWeapon = new Weapon();
+                wStWeapon.Wname = "Broad Sword";
+                wStWeapon.AttackPower = 20;
+                wStWeapon.WDescription = "A nice broadsword to slay with";
+                wStWeapon.Gvalue = 20;
+
+                Armor wStArmor = new Armor();
+                wStArmor.ArmorName = "Chain Mail";
+                wStArmor.ArmorDefense = 10;
+                wStArmor.ArmorDesc = "A specially crafteed suit of chain mail, passed on down by the warriors father";
+                wStArmor.GoldValue = 100;
+
+                Item startingItem = new Item();
+                startingItem.ItemName = "Potion";
+                startingItem.Healchar = 50;
+                startingItem.Idamage = 0;       
+                  
 
                 strength = 18;
                 dexterity = 14;
@@ -332,11 +352,10 @@ namespace CreateCharacterMain
                 health = Convert.ToInt32(Math.Ceiling(8.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(3.5 *  wisdom));
                 magicAttack = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
-                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength));
-                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
+                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
+                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
 
                 //Todo.. figure out how to bring in a starting weapon for warrior and armor
-
 
 
 
@@ -354,9 +373,12 @@ namespace CreateCharacterMain
                                   "\n\tMagic Attack: " + magicAttack +
                                   "\n\tAttack Power: " + attckPower +
                                   "\n\tDefense: " + defense);
-                                  
 
-                                  
+
+                wStWeapon.ToString();
+                wStArmor.ToString();
+                WriteLine("Starting item " + startingItem.ItemName);
+
             }
 
             if (pClass == "Mage")

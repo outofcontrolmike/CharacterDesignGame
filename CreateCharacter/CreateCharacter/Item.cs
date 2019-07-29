@@ -71,11 +71,21 @@ namespace CreateCharacterMain
 
         //
 
-        public static void healCharacter(string itemName)
+        public static void healCharacter(string itemName, int healChar)
         {
-            WriteLine("You used " + itemName + "")
-        }
+            WriteLine("You used " + itemName + " to heal yourself by " + healChar + " points");
+        }// heal character
 
+        public static void damageEnemy(string itemName, int iDamage)
+        {
+            WriteLine("You used " + itemName + " to damage the enemy by " + iDamage + " points");
+        }// end damage enemy
+
+        public static void itemWorth(string itemName, int itemValue)
+        {
+            WriteLine(itemName + " is worth " + itemValue + " gold");
+
+        }//end item worth
     }
 
 
