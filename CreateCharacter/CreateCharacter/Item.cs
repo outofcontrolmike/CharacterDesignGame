@@ -41,7 +41,7 @@ namespace CreateCharacterMain
             }
             set
             {
-                value = itemName;
+                itemName = value;
             }
         }// end ItemName
         
@@ -53,7 +53,7 @@ namespace CreateCharacterMain
             }
             set
             {
-                value = healChar;
+                healChar = value;
             }
         }// get heal
 
@@ -65,18 +65,38 @@ namespace CreateCharacterMain
             }
             set
             {
-                value = iDamage;
+                iDamage = value;
             }
         }// end iDamage
 
+        public int GoldValue
+        {
+            get
+            {
+                return goldValue;
+            }
+            set
+            {
+                goldValue = value;
+            }
+        }
         public override string ToString()
         {
-            WriteLine("\n\tItem Name:         " + itemName);
-            WriteLine("\n\tItem Restores: " + healChar + " Health Points");
-            WriteLine("\n\tItem Deals: " + iDamage + " points of damage");
-            WriteLine("\n\tArmor Gold Value:   " + goldValue);
-            return null;
+            if (healChar > 0)
+            {
+                WriteLine("\nItem Name: " + itemName);
+                WriteLine("\nItem Restores: " + healChar + " Health Points");
+                WriteLine("\nItem Gold Value: " + goldValue);
+               
 
+            }
+            if(iDamage > 0)
+            {
+                WriteLine("\nItem Name: " + itemName);
+                WriteLine("\nItem Deals: " + iDamage + " points of damage");
+                WriteLine("\nItem Gold Value: " + goldValue);
+            }
+            return null;
         }
 
         //

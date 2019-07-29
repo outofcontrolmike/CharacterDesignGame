@@ -18,10 +18,7 @@ namespace CreateCharacterMain
 
     class Program
     {
-        public static string charName = "";
-        private static string pRace = "";
-        private static int age = 0;
-        private static string pClass = "";
+       
        
 
         static void Main(string[] args)

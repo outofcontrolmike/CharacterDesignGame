@@ -246,7 +246,7 @@ namespace CreateCharacterMain
             //Mage
             //Theif
             //Cleric
-            //Druid
+
 
 
             Console.WriteLine("Here comes the tricky part.\n"
@@ -256,8 +256,8 @@ namespace CreateCharacterMain
                 "\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
                 "\nThe Mage has high Intelligence and Wisdom.  Can be very powerful later on. \n" +
                 "\nThe Theif has high Dexterity and Charaisma. Accumlates gold very easily and can sneak around. \n" +
-                "\nThe Cleric has high Constitution and Wisdom. Can bear high amounts of damage and cast white magic.\n " +
-                "\nThe Druid has High Intelligence and Wisdom.  They are bound to nature and can manipuate elements around them.  \n");
+                "\nThe Cleric has high Constitution and Wisdom. Can bear high amounts of damage and cast white magic.\n ");
+               
 
             WriteLine("Press Enter to bring up character select");
             ReadKey();
@@ -265,8 +265,8 @@ namespace CreateCharacterMain
                     "\ntype in 1 for Warrior \n" +
                       "\ntype in 2 for Mage \n" +
                       "\ntype in 3 for Theif\n" +
-                      "\ntype in 4 for Cleric \n" +
-                      "\ntype in 5 for Druid \n");
+                      "\ntype in 4 for Cleric \n");
+                 
 
             pClass = Console.ReadLine();
 
@@ -294,11 +294,6 @@ namespace CreateCharacterMain
                         pClass = "Cleric";
                         counter++;
                         break;
-                    case "5":
-                        pClass = "Druid";
-                        counter++;
-                        break;
-
                 }
 
                 Console.WriteLine("\nYou decided to choose the class of " + pClass);
@@ -336,7 +331,8 @@ namespace CreateCharacterMain
                 Item startingItem = new Item();
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
-                startingItem.Idamage = 0;       
+                startingItem.Idamage = 0;
+                startingItem.GoldValue = 10;
                   
 
                 strength = 18;
@@ -374,16 +370,38 @@ namespace CreateCharacterMain
                                   "\n\tAttack Power: " + attckPower +
                                   "\n\tDefense: " + defense);
 
+                WriteLine();
+
 
                 wStWeapon.ToString();
                 wStArmor.ToString();
                 startingItem.ToString();
-                
+
+            
 
             }
 
             if (pClass == "Mage")
             {
+                
+
+                Weapon StWeapon = new Weapon();
+                StWeapon.Wname = "Wooden Stalve";
+                StWeapon.AttackPower = 4;
+                StWeapon.WDescription = "A makeshift wooden stick.";
+                StWeapon.Gvalue = 4;
+
+                Armor StArmor = new Armor();
+                StArmor.ArmorName = "Leather Robe";
+                StArmor.ArmorDefense = 5;
+                StArmor.ArmorDesc = "An lightweight armor.";
+                StArmor.GoldValue = 40;
+
+                Item startingItem = new Item();
+                startingItem.ItemName = "Potion";
+                startingItem.Healchar = 50;
+                startingItem.Idamage = 0;
+                startingItem.GoldValue = 10;
 
                 strength = 10;
                 dexterity = 13;
@@ -398,8 +416,8 @@ namespace CreateCharacterMain
                 health = Convert.ToInt32(Math.Ceiling(6.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(8.5 * wisdom));
                 magicAttack = Convert.ToInt32(Math.Ceiling(4.5 * intelligence));
-                attckPower = Convert.ToInt32(Math.Ceiling(2.2 * strength));
-                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
+                attckPower = Convert.ToInt32(Math.Ceiling(2.2 * strength) + StWeapon.AttackPower);
+                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + StArmor.ArmorDefense);
 
                 //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
@@ -420,11 +438,37 @@ namespace CreateCharacterMain
                                   "\n\tMagic Attack: " + magicAttack +
                                   "\n\tAttack Power: " + attckPower +
                                   "\n\tDefense: " + defense);
+
+
+                StWeapon.ToString();
+                StArmor.ToString();
+                startingItem.ToString();
+
+                WriteLine();
             }
 
             if (pClass == "Theif")
             {
                 WriteLine("Theif");
+
+                //Instantiate Weapon and Armor for start
+                Weapon wStWeapon = new Weapon();
+                wStWeapon.Wname = "Dirk";
+                wStWeapon.AttackPower = 15;
+                wStWeapon.WDescription = "A stealhty light weight knife";
+                wStWeapon.Gvalue = 40;
+
+                Armor wStArmor = new Armor();
+                wStArmor.ArmorName = "Cloak";
+                wStArmor.ArmorDefense = 8;
+                wStArmor.ArmorDesc = "A mysterious cloak, looks like it was stolen.";
+                wStArmor.GoldValue = 300;
+
+                Item startingItem = new Item();
+                startingItem.ItemName = "Potion";
+                startingItem.Healchar = 50;
+                startingItem.Idamage = 0;
+                startingItem.GoldValue = 10;
 
                 strength = 13;
                 dexterity = 18;
@@ -439,8 +483,8 @@ namespace CreateCharacterMain
                 health = Convert.ToInt32(Math.Ceiling(6.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
                 magicAttack = Convert.ToInt32(Math.Ceiling(2.5 * intelligence));
-                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength));
-                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
+                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
+                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
 
                 //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
@@ -461,11 +505,37 @@ namespace CreateCharacterMain
                                   "\n\tMagic Attack: " + magicAttack +
                                   "\n\tAttack Power: " + attckPower +
                                   "\n\tDefense: " + defense);
+
+                WriteLine();
+
+
+                wStWeapon.ToString();
+                wStArmor.ToString();
+                startingItem.ToString();
             }
 
             if (pClass == "Cleric")
             {
                 WriteLine("Cleric");
+
+                //Instantiate Weapon and Armor for start
+                Weapon wStWeapon = new Weapon();
+                wStWeapon.Wname = "Mace";
+                wStWeapon.AttackPower = 18;
+                wStWeapon.WDescription = "Spiked Mace used to detone with";
+                wStWeapon.Gvalue = 40;
+
+                Armor wStArmor = new Armor();
+                wStArmor.ArmorName = "Plated Armor";
+                wStArmor.ArmorDefense = 30;
+                wStArmor.ArmorDesc = "Armor made to withstand the strongest blows.";
+                wStArmor.GoldValue = 300;
+
+                Item startingItem = new Item();
+                startingItem.ItemName = "Potion";
+                startingItem.Healchar = 50;
+                startingItem.Idamage = 0;
+                startingItem.GoldValue = 10;
 
                 strength = 16;
                 dexterity = 10;
@@ -502,55 +572,22 @@ namespace CreateCharacterMain
                                   "\n\tMagic Attack: " + magicAttack +
                                   "\n\tAttack Power: " + attckPower +
                                   "\n\tDefense: " + defense);
+
+                WriteLine();
+
+
+                wStWeapon.ToString();
+                wStArmor.ToString();
+                startingItem.ToString();
+
             }
 
-            if (pClass == "Druid")
-            {
-             
-
-                strength = 12;
-                dexterity = 13;
-                intelligence = 18;
-                constitution = 13;
-                wisdom = 18;
-                charisma = 10;
-
-                level = 1;
-                experience = 0;
-                gold += 100 * charisma;
-                health = Convert.ToInt32(Math.Ceiling(8.5 * constitution));
-                magicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
-                magicAttack = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
-                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength));
-                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
-
-                //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
 
-
-
-                Console.WriteLine("\n\tStrength: " + strength +
-                                  "\n\tDexterity: " + dexterity +
-                                  "\n\tIntelleigence: " + intelligence +
-                                  "\n\tConstitution: " + constitution +
-                                  "\n\tWisdom: " + wisdom +
-                                  "\n\tCharisma: " + charisma +
-                                  "\n\n\tCharacter Level: " + level +
-                                  "\n\tExperience Points: " + experience +
-                                  "\n\tGold: " + gold +
-                                  "\n\n\tHealth: " + health +
-                                  "\n\tMana: " + magicPoints +
-                                  "\n\tMagic Attack: " + magicAttack +
-                                  "\n\tAttack Power: " + attckPower +
-                                  "\n\tDefense: " + defense);
-            }//end druid
+ 
 
         }//end of get stats
 
-        // things to do
-            // Set up an Equiped Weapon
-            // Set up an Equiped Armor
-            // Set up 
 
     }//end of class
 

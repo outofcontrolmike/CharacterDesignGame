@@ -61,7 +61,7 @@ namespace CreateCharacterMain
             }
             set
             {
-                value = armorDefense;
+                armorDefense = value;
             }
         }// end Armor Defense
 
@@ -76,7 +76,7 @@ namespace CreateCharacterMain
 
             set
             {
-                value = armorDesc;
+                 armorDesc = value;
             }
         }// end Armor Description
 
@@ -88,15 +88,15 @@ namespace CreateCharacterMain
             }
             set
             {
-                value = goldValue;
+                 goldValue = value;
             }
         }
         public override string ToString()
         {
-            WriteLine("\n\tArmor Name:         " + armorName);
-            WriteLine("\n\tArmor Defense : " + armorDefense);
-            WriteLine("\n\tArmor Gold Value:   " + goldValue);
-            WriteLine("\n\tDescription : \n" + armorDesc);
+            WriteLine("\nArmor Name: " + armorName);
+            WriteLine("\nArmor Defense: " + armorDefense);
+            WriteLine("\nArmor Gold Value: " + goldValue);
+            WriteLine("\nDescription : " + armorDesc);
             return null;
 
         }

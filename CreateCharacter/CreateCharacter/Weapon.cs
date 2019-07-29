@@ -78,10 +78,10 @@ namespace CreateCharacterMain
 
         public override string ToString()
         {
-            WriteLine("Weapon Name:         " + wName);
+            WriteLine("Weapon Name: " + wName);
             WriteLine("Weapon Attack Power: " + attackPower);
-            WriteLine("Weapon Gold Value:   " + goldValue);
-            WriteLine("Description : \n" + wDescription);
+            WriteLine("Weapon Gold Value: " + goldValue);
+            WriteLine("Description : " + wDescription);
             return null;
              
         }
