@@ -10,7 +10,7 @@ namespace CreateCharacterMain
         private string wName;
         private int attackPower;
         private string wDescription;
-        private int wValue;
+        private int goldValue;
 
 
         // no arg constructor

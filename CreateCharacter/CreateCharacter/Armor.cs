@@ -9,6 +9,86 @@ namespace CreateCharacterMain
     /// </summary>
     class Armor
     {
+        // What will Armor have?
+        private string armorName = "";
+        private int armorDefense = "";
+        private string armorDesc = "";
+        private int goldValue = "";
 
-    }
-}
+        // Constructor for Armor Objec
+
+        // no arg constructor - so we can instantiate
+        public armor()
+        {
+
+        }
+
+        //Constructor Expecting all fields
+        public armor(string armorname, int armordefense, string armordesc, int goldvalue)
+        {
+            this.armorName = armorname;
+            this.armorDefense = armordefense;
+            this.armorDesc = armordesc;
+            this.goldValue = goldvalue;
+            
+        }
+
+        // Getters and Setter methods
+
+        // Work like a constructor
+
+            // Get returns a value - Gets it
+            // Set sets a value - sets a value
+
+        public string ArmorName
+        {
+           get
+            {
+                return armorName;
+            }
+            set
+            {
+                armorName = value;
+            }
+        }// end ArmorName
+
+        public int ArmorDefense
+        {
+            get
+            {
+                return armorDefense;
+            }
+            set
+            {
+                value = armorDefense;
+            }
+        }// end Armor Defense
+
+        // build getter and setter for armor desc
+
+        public string ArmorDesc
+        {
+            get
+            {
+                return armorDesc;
+            }
+
+            set
+            {
+                value = armorDesc;
+            }
+        }// end Armor Description
+
+        public int GoldValue
+        {
+            get
+            {
+                return goldValue;
+            }
+            set
+            {
+                value = goldValue;
+            }
+        }
+    }// end class
+}// end namepsace
