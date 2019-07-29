@@ -19,12 +19,12 @@ namespace CreateCharacterMain
 
         }
         //Constructor - must meet three variables
-        public Weapon(string wname, int attackpower, string wdescription, int wvalue)
+        public Weapon(string wname, int attackpower, string wdescription, int goldvalue)
         {
             this.wName = wname;
             this.attackPower = attackpower;
             this.wDescription = wdescription;
-            this.wValue = wvalue;
+            this.goldValue = goldvalue;
         }
 
         //Getters & Setters
@@ -53,15 +53,15 @@ namespace CreateCharacterMain
             }
         }
 
-        public int WValue
+        public int Gvalue
         {
             get
             {
-                return wValue;
+                return goldValue;
             }
             set
             {
-                wValue = value;
+                goldValue = value;
             }
         }
         public string WDescription
@@ -80,7 +80,7 @@ namespace CreateCharacterMain
         {
             WriteLine("Weapon Name:         " + wName);
             WriteLine("Weapon Attack Power: " + attackPower);
-            WriteLine("Weapon Gold Value:   " + wValue);
+            WriteLine("Weapon Gold Value:   " + goldValue);
             WriteLine("Description : \n" + wDescription);
             return null;
              

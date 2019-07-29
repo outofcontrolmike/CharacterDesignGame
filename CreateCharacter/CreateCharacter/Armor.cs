@@ -11,20 +11,20 @@ namespace CreateCharacterMain
     {
         // What will Armor have?
         private string armorName = "";
-        private int armorDefense = "";
+        private int armorDefense = 0;
         private string armorDesc = "";
-        private int goldValue = "";
+        private int goldValue = 0;
 
         // Constructor for Armor Objec
 
         // no arg constructor - so we can instantiate
-        public armor()
+        public Armor()
         {
 
         }
 
         //Constructor Expecting all fields
-        public armor(string armorname, int armordefense, string armordesc, int goldvalue)
+        public Armor(string armorname, int armordefense, string armordesc, int goldvalue)
         {
             this.armorName = armorname;
             this.armorDefense = armordefense;
