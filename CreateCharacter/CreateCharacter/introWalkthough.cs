@@ -377,7 +377,8 @@ namespace CreateCharacterMain
 
                 wStWeapon.ToString();
                 wStArmor.ToString();
-                WriteLine("Starting item " + startingItem.ItemName);
+                startingItem.ToString();
+                
 
             }
 

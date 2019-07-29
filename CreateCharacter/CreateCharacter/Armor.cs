@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Console;
 
 namespace CreateCharacterMain
 {
@@ -90,5 +91,15 @@ namespace CreateCharacterMain
                 value = goldValue;
             }
         }
+        public override string ToString()
+        {
+            WriteLine("\n\tArmor Name:         " + armorName);
+            WriteLine("\n\tArmor Defense : " + armorDefense);
+            WriteLine("\n\tArmor Gold Value:   " + goldValue);
+            WriteLine("\n\tDescription : \n" + armorDesc);
+            return null;
+
+        }
+
     }// end class
 }// end namepsace

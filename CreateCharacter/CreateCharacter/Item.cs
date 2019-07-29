@@ -11,9 +11,9 @@ namespace CreateCharacterMain
     class Item
     {
         private string itemName = "";
-        private int healChar = 0;
-        private int iDamage = 0;
-        private int goldValue = 0;
+        private  int healChar = 0;
+        private  int iDamage = 0;
+        private  int goldValue = 0;
 
 
         // no arg constructor
@@ -68,6 +68,16 @@ namespace CreateCharacterMain
                 value = iDamage;
             }
         }// end iDamage
+
+        public override string ToString()
+        {
+            WriteLine("\n\tItem Name:         " + itemName);
+            WriteLine("\n\tItem Restores: " + healChar + " Health Points");
+            WriteLine("\n\tItem Deals: " + iDamage + " points of damage");
+            WriteLine("\n\tArmor Gold Value:   " + goldValue);
+            return null;
+
+        }
 
         //
 
