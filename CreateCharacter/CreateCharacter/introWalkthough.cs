@@ -36,14 +36,32 @@ namespace CreateCharacterMain
         public static void askForName()
         {
             CharacterSheet testCharacter = new CharacterSheet();
-            string charName;
+            string charName = "";
+            int count = 0;
             //Character Name
             Console.WriteLine("Welcome to the create character part of the game!\n");
-
-            Console.WriteLine("First of all, What is your name \n ");
+            Console.WriteLine("First of all, What is your name? \n ");
             charName = Console.ReadLine();
 
+            
+
+            while (charName == "")
+            {
+
+                if(charName == "")
+                {
+                    WriteLine("Enter a name for your charcter please.\n");
+                    charName = Console.ReadLine();
+                }
+
+               
+            }
             Console.WriteLine("\nWell done " + charName + "!");
+            WriteLine("Press enter to continue");
+            ReadKey();
+
+         
+         
         }
 
         /// <summary>
@@ -53,23 +71,35 @@ namespace CreateCharacterMain
 
         public static void getRace()
         {
-            int count = 1;
-            string pRace = "";
-            int age = 0;
+            int count = 1;  // control variable
+            string pRace = "";  // empty place to place character race
+            int age = 0;        // age variable
 
-            while (count == 1)
+            // Race
+            Console.WriteLine("\nThere are four races you can choose from in this program: \n");
+            WriteLine("Human\n" +
+                  "Elf\n" +
+                  "Dwarf\n" +
+                  "Hobbit\n");
+
+            while (count == 1)  // Testing to see if user choses a race and error handles it
             {
-                // Race
-                Console.WriteLine("\nThere are four races you choose from in this program: \n" +
-                       "type in H for Human\n" +
+               
+
+                Console.WriteLine("What Race would you like to be?: \n");
+
+                WriteLine("Type in H for Human\n" +
                        "type in E for Elf\n" +
                        "type in D for Dwarf\n" +
                        "type in HO for Hobbit\n");
-                Console.WriteLine("What Race would you like to be?: \n");
 
-                pRace = Console.ReadLine();
-                Console.WriteLine();
+                
+                pRace =  ReadLine().ToUpper();
+                
+                WriteLine("\n");
 
+                
+                // if user enters H
                 if (pRace == "H")
                 {
                     int ageCounter = 1;
@@ -80,7 +110,7 @@ namespace CreateCharacterMain
 
                         pRace = "Human\n";
                         WriteLine("How old do you want to be as a Human?\n" +
-                            " You're allowed to be between 15-70\n");
+                            "You're allowed to be between 15-70\n");
                         WriteLine("Enter an age between 15-70: \n");
 
                         age = Convert.ToInt32(ReadLine());
@@ -88,13 +118,13 @@ namespace CreateCharacterMain
 
                         if (age < 15)
                         {
-                            WriteLine("You're too young for this adventure");
+                            WriteLine("You're too young for this adventure\n");
 
 
                         }
                         if (age > 70)
                         {
-                            WriteLine("You're too old for this adventure");
+                            WriteLine("You're too old for this adventure\n");
 
                         }
                         if (age >= 15 && age <= 70)
@@ -124,13 +154,13 @@ namespace CreateCharacterMain
 
                         if (age < 300)
                         {
-                            WriteLine("You're too young for this adventure");
+                            WriteLine("You're too young for this adventure\n");
 
 
                         }
                         if (age > 700)
                         {
-                            WriteLine("You're too old for this adventure");
+                            WriteLine("You're too old for this adventure\n");
 
                         }
                         if (age >= 300 && age <= 700)
@@ -159,13 +189,13 @@ namespace CreateCharacterMain
 
                         if (age < 100)
                         {
-                            WriteLine("You're too young for this adventure");
+                            WriteLine("You're too young for this adventure\n");
 
 
                         }
                         if (age > 300)
                         {
-                            WriteLine("You're too old for this adventure");
+                            WriteLine("You're too old for this adventure\n");
 
                         }
                         if (age >= 100 && age <= 300)
@@ -195,13 +225,13 @@ namespace CreateCharacterMain
 
                         if (age < 22)
                         {
-                            WriteLine("You're too young for this adventure");
+                            WriteLine("You're too young for this adventure\n");
 
 
                         }
                         if (age > 90)
                         {
-                            WriteLine("You're too old for this adventure");
+                            WriteLine("You're too old for this adventure\n");
 
                         }
                         if (age >= 22 && age <= 90)
@@ -211,23 +241,22 @@ namespace CreateCharacterMain
                             count++;
 
                         }
-
+                       
                         
                     }//end While   
-                    WriteLine("Enter a correct Age");
+                    
                 }//end IF
 
-
-            
-                
-
-
+                else
+                {
+                    WriteLine("Please enter the correct letter");
+                }// error handle
 
 
             }// end While
 
-            WriteLine("You're a " + age + " Year old " + pRace);
-            WriteLine("Press Enter");
+            WriteLine("You're a " + age + " Year old " + pRace + "\n");
+            WriteLine("Press Enter to Continue.\n\n");
             ReadKey();
 
 
@@ -249,9 +278,9 @@ namespace CreateCharacterMain
 
 
 
-            Console.WriteLine("Here comes the tricky part.\n"
+            Console.WriteLine("Here comes the tricky part.  What class would you like to choose from?\n"
 
-                + "\nWhat class would you like to choose from? \n " +
+                +
                 "\nThere are Five different Classes to choose from and they have unique attributes: \n" +
                 "\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
                 "\nThe Mage has high Intelligence and Wisdom.  Can be very powerful later on. \n" +
