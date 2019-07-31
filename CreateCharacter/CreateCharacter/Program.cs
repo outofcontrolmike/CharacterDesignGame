@@ -25,7 +25,7 @@ namespace CreateCharacterMain
         {
 
 
-
+            // Setting up Character
             introWalkthough.askForName();
             introWalkthough.getRace();
             introWalkthough.getClass();

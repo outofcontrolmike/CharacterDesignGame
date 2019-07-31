@@ -38,6 +38,8 @@ namespace CreateCharacterMain
 
         public static Weapon StWeapon = new Weapon();
         public static Armor StArmor = new Armor();
+
+        public static MagicSpell mageSpell = new MagicSpell();
       
 
 
@@ -80,8 +82,6 @@ namespace CreateCharacterMain
         /// <summary>
         /// Asks user to choose Race and set AGE
         /// </summary>
-
-
         public static void getRace()
         {
             int count = 1;  // control variable
@@ -446,16 +446,16 @@ namespace CreateCharacterMain
                 
 
                 
-                StWeapon.Wname = "Wooden Stalve";
-                StWeapon.AttackPower = 4;
-                StWeapon.WDescription = "A makeshift wooden stick.";
-                StWeapon.Gvalue = 4;
+                wStWeapon.Wname = "Wooden Stalve";
+                wStWeapon.AttackPower = 4;
+                wStWeapon.WDescription = "A makeshift wooden stick.";
+                wStWeapon.Gvalue = 4;
 
                
-                StArmor.ArmorName = "Leather Robe";
-                StArmor.ArmorDefense = 5;
-                StArmor.ArmorDesc = "An lightweight armor.";
-                StArmor.GoldValue = 40;
+                wStArmor.ArmorName = "Leather Robe";
+                wStArmor.ArmorDefense = 5;
+                wStArmor.ArmorDesc = "An lightweight armor.";
+                wStArmor.GoldValue = 40;
 
           
                 startingItem.ItemName = "Potion";
@@ -479,11 +479,8 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(2.2 * strength) + StWeapon.AttackPower);
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + StArmor.ArmorDefense);
 
-
-
-
-
-
+                buildMageSpell();
+                
                 statsDesc();
                 ReadKey();
                 getEquipment();
@@ -584,6 +581,9 @@ namespace CreateCharacterMain
 
         }//end of get stats
 
+        /// <summary>
+        /// Get's Equipment Details 
+        /// </summary>
         private static void getEquipment()
         {
 
@@ -602,6 +602,9 @@ namespace CreateCharacterMain
 
         }
         
+        /// <summary>
+        /// Gets stats Description
+        /// </summary>
         private static void statsDesc()
         {
             Console.WriteLine("\n\tStrength: " + strength +
@@ -621,16 +624,24 @@ namespace CreateCharacterMain
                              
         }
 
-        private static void humanAge()
+        /// <summary>
+        /// sets the mage's build stuff
+        /// </summary>
+        private static void buildMageSpell()
         {
-          
+            mageSpell.Name = "Fire Ball";
+            mageSpell.MagicCost = 20;
+            mageSpell.MDesc = "A scrorching ball of fire that can incenerate enenmies.";
+            mageSpell.magicDamage = 20;
+            mageSpell.MHeal = 0;
+            mageSpell.RequiredLevel = 1;
+
+            mageSpell.ToString();
+
+
         }
+
     }//end of class
-
-  
-
-    
-
 
     }// end of namespace
        
