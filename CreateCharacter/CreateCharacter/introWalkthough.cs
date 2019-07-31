@@ -9,7 +9,7 @@ namespace CreateCharacterMain
     {
 
         public static string charName = "";
-        public static string pRace = "";
+        private static string pRace = "";
         private static int age = 0;
         private static string pClass = "";
         private static int level;
@@ -26,7 +26,20 @@ namespace CreateCharacterMain
         private static int constitution = 0;
         private static int wisdom = 0;
         private static int charisma = 0;
+
+
+        //control variables
+        private static int count = 1;
+        
+
+        public static Weapon wStWeapon = new Weapon();
+        public static Armor wStArmor = new Armor();
+        public static Item startingItem = new Item();
+
+        public static Weapon StWeapon = new Weapon();
+        public static Armor StArmor = new Armor();
       
+
 
 
 
@@ -98,23 +111,30 @@ namespace CreateCharacterMain
                 
                 WriteLine("\n");
 
-                
                 // if user enters H
                 if (pRace == "H")
                 {
                     int ageCounter = 1;
 
-
+                    pRace = "Human\n";
+                    WriteLine("How old do you want to be as a Human?\n" +
+                        "You're allowed to be between 15-70\n");
                     while (ageCounter == 1)
                     {
 
-                        pRace = "Human\n";
-                        WriteLine("How old do you want to be as a Human?\n" +
-                            "You're allowed to be between 15-70\n");
-                        WriteLine("Enter an age between 15-70: \n");
+                        try
+                        {
+                            WriteLine("Enter an age between 15-70: \n");
+                            age = Convert.ToInt32(ReadLine());
+                            WriteLine("\n");
+                        }
+                        catch (System.FormatException)
+                        {
+                            WriteLine("Be sure to actually use numbers.\n");
 
-                        age = Convert.ToInt32(ReadLine());
-                        WriteLine();
+
+                        }// End Try Catch for age
+
 
                         if (age < 15)
                         {
@@ -129,13 +149,15 @@ namespace CreateCharacterMain
                         }
                         if (age >= 15 && age <= 70)
                         {
-
-                            ageCounter++;
                             count++;
+                            ageCounter++;
 
                         }
+
+
                     }//end While   
                 }//end IF
+
 
                 if (pRace == "E")
                 {
@@ -147,10 +169,18 @@ namespace CreateCharacterMain
 
                         pRace = "Elf\n";
                         WriteLine("How old do you want to be as an Elf?\n");
-                        WriteLine("Enter an age between 300-700: \n");
+                        try
+                        {
+                            WriteLine("Enter an age between 300-700: \n");
+                            age = Convert.ToInt32(ReadLine());
+                            WriteLine("\n");
+                        }
+                        catch (System.FormatException)
+                        {
+                            WriteLine("Be sure to actually use numbers.\n");
 
-                        age = Convert.ToInt32(ReadLine());
-                        WriteLine();
+
+                        }// End Try Catch for age
 
                         if (age < 300)
                         {
@@ -180,12 +210,18 @@ namespace CreateCharacterMain
                     while (ageCounter == 1)
                     {
 
-                        pRace = "Dwarf\n";
-                        WriteLine("How old do you want to be as a Dwarf?\n");
-                        WriteLine("Enter an age between 100-300: \n");
+                        try
+                        {
+                            WriteLine("Enter an age between 100-300: \n");
+                            age = Convert.ToInt32(ReadLine());
+                            WriteLine("\n");
+                        }
+                        catch (System.FormatException)
+                        {
+                            WriteLine("Be sure to actually use numbers.\n");
 
-                        age = Convert.ToInt32(ReadLine());
-                        WriteLine();
+
+                        }// End Try Catch for age
 
                         if (age < 100)
                         {
@@ -216,12 +252,19 @@ namespace CreateCharacterMain
                     while (ageCounter == 1)
                     {
 
-                        pRace = "Hobbit\n";
-                        WriteLine("How old do you want to be as a Hobbit?\n");
-                        WriteLine("Enter an age between 22-90: \n");
+                        try
+                        {
+                            WriteLine("Enter an age between 22-90: \n");
+                            age = Convert.ToInt32(ReadLine());
+                            WriteLine("\n");
+                         
+                        }
+                        catch (System.FormatException)
+                        {
+                            WriteLine("Be sure to actually use numbers.\n");
 
-                        age = Convert.ToInt32(ReadLine());
-                        WriteLine();
+
+                        }// End Try Catch for age
 
                         if (age < 22)
                         {
@@ -239,7 +282,7 @@ namespace CreateCharacterMain
 
                             ageCounter++;
                             count++;
-
+                            pRace = "Hobbit";
                         }
                        
                         
@@ -247,10 +290,6 @@ namespace CreateCharacterMain
                     
                 }//end IF
 
-                else
-                {
-                    WriteLine("Please enter the correct letter");
-                }// error handle
 
 
             }// end While
@@ -281,8 +320,10 @@ namespace CreateCharacterMain
             Console.WriteLine("Here comes the tricky part.  What class would you like to choose from?\n"
 
                 +
-                "\nThere are Five different Classes to choose from and they have unique attributes: \n" +
-                "\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
+                "\nThere are Five different Classes to choose from and they have unique attributes: \n");
+
+                 ReadKey();
+                WriteLine("\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
                 "\nThe Mage has high Intelligence and Wisdom.  Can be very powerful later on. \n" +
                 "\nThe Theif has high Dexterity and Charaisma. Accumlates gold very easily and can sneak around. \n" +
                 "\nThe Cleric has high Constitution and Wisdom. Can bear high amounts of damage and cast white magic.\n ");
@@ -323,13 +364,19 @@ namespace CreateCharacterMain
                         pClass = "Cleric";
                         counter++;
                         break;
-                }
+                    default:
+                        WriteLine("\nSince you didn't enter in a value, we assumed you wanted to be a Warrior.  If you're not happy about this, " +
+                            "\nThere will be a chance to reset the intro");
+                        pClass = "Warrior";
+                        counter++;
+                        break;
+                }// end case statement
 
-                Console.WriteLine("\nYou decided to choose the class of " + pClass);
-                counter++;
+                
 
             }// end of while
-
+            Console.WriteLine("\nYou decided to choose the class of " + pClass);
+            
 
         }
 
@@ -339,31 +386,38 @@ namespace CreateCharacterMain
         /// </summary>
         public static void getStats()
         {
-            Console.WriteLine("Your stats are listed below: \n");
+            WriteLine();
+            Console.WriteLine("Press Enter to view your stats for the " + pClass +"\n");
+           
             if (pClass == "Warrior")
             {
                
 
-                //Instantiate Weapon and Armor for start
-                Weapon wStWeapon = new Weapon();
+            
+              
                 wStWeapon.Wname = "Broad Sword";
                 wStWeapon.AttackPower = 20;
                 wStWeapon.WDescription = "A nice broadsword to slay with";
                 wStWeapon.Gvalue = 20;
 
-                Armor wStArmor = new Armor();
+             
+
+               
                 wStArmor.ArmorName = "Chain Mail";
                 wStArmor.ArmorDefense = 10;
                 wStArmor.ArmorDesc = "A specially crafteed suit of chain mail, passed on down by the warriors father";
                 wStArmor.GoldValue = 100;
 
-                Item startingItem = new Item();
+
+                // Instantiate item
+           
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
                 startingItem.Idamage = 0;
                 startingItem.GoldValue = 10;
-                  
 
+
+                // settings variables
                 strength = 18;
                 dexterity = 14;
                 intelligence = 12;
@@ -380,32 +434,9 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
 
-                //Todo.. figure out how to bring in a starting weapon for warrior and armor
-
-
-
-                Console.WriteLine("\n\tStrength: " + strength +
-                                  "\n\tDexterity: " + dexterity +
-                                  "\n\tIntelleigence: " + intelligence +
-                                  "\n\tConstitution: " + constitution +
-                                  "\n\tWisdom: " + wisdom +
-                                  "\n\tCharisma: " + charisma +
-                                  "\n\n\tCharacter Level: " + level +
-                                  "\n\tExperience Points: " + experience +
-                                  "\n\tGold: " + gold +
-                                  "\n\n\tHealth: " + health +
-                                  "\n\tMana: " + magicPoints +
-                                  "\n\tMagic Attack: " + magicAttack +
-                                  "\n\tAttack Power: " + attckPower +
-                                  "\n\tDefense: " + defense);
-
-                WriteLine();
-
-
-                wStWeapon.ToString();
-                wStArmor.ToString();
-                startingItem.ToString();
-
+                statsDesc();
+                ReadKey();
+                getEquipment();
             
 
             }
@@ -414,19 +445,19 @@ namespace CreateCharacterMain
             {
                 
 
-                Weapon StWeapon = new Weapon();
+                
                 StWeapon.Wname = "Wooden Stalve";
                 StWeapon.AttackPower = 4;
                 StWeapon.WDescription = "A makeshift wooden stick.";
                 StWeapon.Gvalue = 4;
 
-                Armor StArmor = new Armor();
+               
                 StArmor.ArmorName = "Leather Robe";
                 StArmor.ArmorDefense = 5;
                 StArmor.ArmorDesc = "An lightweight armor.";
                 StArmor.GoldValue = 40;
 
-                Item startingItem = new Item();
+          
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
                 startingItem.Idamage = 0;
@@ -448,32 +479,14 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(2.2 * strength) + StWeapon.AttackPower);
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + StArmor.ArmorDefense);
 
-                //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
 
 
 
-                Console.WriteLine("\n\tStrength: " + strength +
-                                  "\n\tDexterity: " + dexterity +
-                                  "\n\tIntelleigence: " + intelligence +
-                                  "\n\tConstitution: " + constitution +
-                                  "\n\tWisdom: " + wisdom +
-                                  "\n\tCharisma: " + charisma +
-                                  "\n\n\tCharacter Level: " + level +
-                                  "\n\tExperience Points: " + experience +
-                                  "\n\tGold: " + gold +
-                                  "\n\n\tHealth: " + health +
-                                  "\n\tMana: " + magicPoints +
-                                  "\n\tMagic Attack: " + magicAttack +
-                                  "\n\tAttack Power: " + attckPower +
-                                  "\n\tDefense: " + defense);
 
-
-                StWeapon.ToString();
-                StArmor.ToString();
-                startingItem.ToString();
-
-                WriteLine();
+                statsDesc();
+                ReadKey();
+                getEquipment();
             }
 
             if (pClass == "Theif")
@@ -481,19 +494,17 @@ namespace CreateCharacterMain
                 WriteLine("Theif");
 
                 //Instantiate Weapon and Armor for start
-                Weapon wStWeapon = new Weapon();
+               
                 wStWeapon.Wname = "Dirk";
                 wStWeapon.AttackPower = 15;
                 wStWeapon.WDescription = "A stealhty light weight knife";
                 wStWeapon.Gvalue = 40;
 
-                Armor wStArmor = new Armor();
                 wStArmor.ArmorName = "Cloak";
                 wStArmor.ArmorDefense = 8;
                 wStArmor.ArmorDesc = "A mysterious cloak, looks like it was stolen.";
                 wStArmor.GoldValue = 300;
 
-                Item startingItem = new Item();
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
                 startingItem.Idamage = 0;
@@ -515,32 +526,10 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
 
-                //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
-
-
-
-                Console.WriteLine("\n\tStrength: " + strength +
-                                  "\n\tDexterity: " + dexterity +
-                                  "\n\tIntelleigence: " + intelligence +
-                                  "\n\tConstitution: " + constitution +
-                                  "\n\tWisdom: " + wisdom +
-                                  "\n\tCharisma: " + charisma +
-                                  "\n\n\tCharacter Level: " + level +
-                                  "\n\tExperience Points: " + experience +
-                                  "\n\tGold: " + gold +
-                                  "\n\n\tHealth: " + health +
-                                  "\n\tMana: " + magicPoints +
-                                  "\n\tMagic Attack: " + magicAttack +
-                                  "\n\tAttack Power: " + attckPower +
-                                  "\n\tDefense: " + defense);
-
-                WriteLine();
-
-
-                wStWeapon.ToString();
-                wStArmor.ToString();
-                startingItem.ToString();
+                statsDesc();
+                ReadKey();
+                getEquipment();
             }
 
             if (pClass == "Cleric")
@@ -548,19 +537,19 @@ namespace CreateCharacterMain
                 WriteLine("Cleric");
 
                 //Instantiate Weapon and Armor for start
-                Weapon wStWeapon = new Weapon();
+               
                 wStWeapon.Wname = "Mace";
                 wStWeapon.AttackPower = 18;
                 wStWeapon.WDescription = "Spiked Mace used to detone with";
                 wStWeapon.Gvalue = 40;
 
-                Armor wStArmor = new Armor();
+               
                 wStArmor.ArmorName = "Plated Armor";
                 wStArmor.ArmorDefense = 30;
                 wStArmor.ArmorDesc = "Armor made to withstand the strongest blows.";
                 wStArmor.GoldValue = 300;
 
-                Item startingItem = new Item();
+        
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
                 startingItem.Idamage = 0;
@@ -582,32 +571,10 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(5.2 * strength));
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
 
-                //Todo.. figure out how to bring in a starting weapon for warrior and armor
 
-
-
-
-                Console.WriteLine("\n\tStrength: " + strength +
-                                  "\n\tDexterity: " + dexterity +
-                                  "\n\tIntelleigence: " + intelligence +
-                                  "\n\tConstitution: " + constitution +
-                                  "\n\tWisdom: " + wisdom +
-                                  "\n\tCharisma: " + charisma +
-                                  "\n\n\tCharacter Level: " + level +
-                                  "\n\tExperience Points: " + experience +
-                                  "\n\tGold: " + gold +
-                                  "\n\n\tHealth: " + health +
-                                  "\n\tMana: " + magicPoints +
-                                  "\n\tMagic Attack: " + magicAttack +
-                                  "\n\tAttack Power: " + attckPower +
-                                  "\n\tDefense: " + defense);
-
-                WriteLine();
-
-
-                wStWeapon.ToString();
-                wStArmor.ToString();
-                startingItem.ToString();
+                statsDesc();
+                ReadKey();
+                getEquipment();
 
             }
 
@@ -617,8 +584,52 @@ namespace CreateCharacterMain
 
         }//end of get stats
 
+        private static void getEquipment()
+        {
 
+            WriteLine();
+
+            ReadKey();
+            wStWeapon.ToString();
+
+            ReadKey();
+            wStArmor.ToString();
+
+            ReadKey();
+            WriteLine("Starting Item below.\n");
+            WriteLine("");
+            startingItem.ToString();
+
+        }
+        
+        private static void statsDesc()
+        {
+            Console.WriteLine("\n\tStrength: " + strength +
+                                 "\n\tDexterity: " + dexterity +
+                                 "\n\tIntelleigence: " + intelligence +
+                                 "\n\tConstitution: " + constitution +
+                                 "\n\tWisdom: " + wisdom +
+                                 "\n\tCharisma: " + charisma +
+                                 "\n\n\tCharacter Level: " + level +
+                                 "\n\tExperience Points: " + experience +
+                                 "\n\tGold: " + gold +
+                                 "\n\n\tHealth: " + health +
+                                 "\n\tMana: " + magicPoints +
+                                 "\n\tMagic Attack: " + magicAttack +
+                                 "\n\tAttack Power: " + attckPower +
+                                 "\n\tDefense: " + defense);
+                             
+        }
+
+        private static void humanAge()
+        {
+          
+        }
     }//end of class
+
+  
+
+    
 
 
     }// end of namespace
