@@ -7,7 +7,7 @@ namespace CreateCharacterMain
 {
     class introWalkthough
     {
-
+        #region variables;
         public static string charName = "";
         private static string pRace = "";
         private static int age = 0;
@@ -26,6 +26,7 @@ namespace CreateCharacterMain
         private static int constitution = 0;
         private static int wisdom = 0;
         private static int charisma = 0;
+       
 
 
         //control variables
@@ -40,10 +41,7 @@ namespace CreateCharacterMain
         public static Armor StArmor = new Armor();
 
         public static MagicSpell mageSpell = new MagicSpell();
-      
-
-
-
+      #endregion
 
         /// <summary>
         /// Asks user for Name
@@ -239,6 +237,7 @@ namespace CreateCharacterMain
 
                             ageCounter++;
                             count++;
+                            pRace = "Dwarf";
 
                         }
                     }//end While   
@@ -391,26 +390,17 @@ namespace CreateCharacterMain
            
             if (pClass == "Warrior")
             {
-               
-
-            
-              
+         
                 wStWeapon.Wname = "Broad Sword";
                 wStWeapon.AttackPower = 20;
                 wStWeapon.WDescription = "A nice broadsword to slay with";
                 wStWeapon.Gvalue = 20;
-
-             
-
                
                 wStArmor.ArmorName = "Chain Mail";
                 wStArmor.ArmorDefense = 10;
                 wStArmor.ArmorDesc = "A specially crafteed suit of chain mail, passed on down by the warriors father";
                 wStArmor.GoldValue = 100;
 
-
-                // Instantiate item
-           
                 startingItem.ItemName = "Potion";
                 startingItem.Healchar = 50;
                 startingItem.Idamage = 0;
@@ -439,7 +429,7 @@ namespace CreateCharacterMain
                 getEquipment();
             
 
-            }
+            }// end Warrior
 
             if (pClass == "Mage")
             {
@@ -479,12 +469,12 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(2.2 * strength) + StWeapon.AttackPower);
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + StArmor.ArmorDefense);
 
-                buildMageSpell();
+                buildFireBall();
                 
                 statsDesc();
                 ReadKey();
                 getEquipment();
-            }
+            }// end Mage
 
             if (pClass == "Theif")
             {
@@ -527,7 +517,7 @@ namespace CreateCharacterMain
                 statsDesc();
                 ReadKey();
                 getEquipment();
-            }
+            }// end Theif
 
             if (pClass == "Cleric")
             {
@@ -568,16 +558,14 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(5.2 * strength));
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
 
-
+     
+                // print outs
                 statsDesc();
                 ReadKey();
+                buildCure();
                 getEquipment();
 
-            }
-
-
-
- 
+            }// end Cleric
 
         }//end of get stats
 
@@ -627,7 +615,7 @@ namespace CreateCharacterMain
         /// <summary>
         /// sets the mage's build stuff
         /// </summary>
-        private static void buildMageSpell()
+        private static void buildFireBall()
         {
             mageSpell.Name = "Fire Ball";
             mageSpell.MagicCost = 20;
@@ -639,6 +627,22 @@ namespace CreateCharacterMain
             mageSpell.ToString();
 
 
+        }
+
+        private static void buildCure()
+        {
+
+            WriteLine("Cleric's Magic Spells\n");
+            MagicSpell cure = new MagicSpell();
+
+            cure.Name = "Cure";
+            cure.MagicCost = 10;
+            cure.MDesc = "A basic spell that can heal minor wounds and stop bleeding";
+            cure.MHeal = 30;
+            cure.magicDamage = 0;
+            cure.RequiredLevel = 0;
+
+            cure.ToString();
         }
 
     }//end of class

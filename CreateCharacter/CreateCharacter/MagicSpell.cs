@@ -116,13 +116,23 @@ namespace CreateCharacterMain
             }
         }// required level
 
+        /// <summary>
+        /// To string method from 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             WriteLine("\nSpell Name: " + name);
             WriteLine("\nCost to use: " + magicCost);
             WriteLine("\nSpell description: " + mDesc);
-            WriteLine("\nSpell Damage: " + mDamage);
-            WriteLine("\nSpell Heal: " + mHeal);
+            if (mDamage > 0)
+            {
+                WriteLine("\nSpell Damage: " + mDamage);
+            }
+            if (mHeal > 0)
+            {
+                WriteLine("\nSpell Heal: " + mHeal);
+            }
             WriteLine("\nLevel Required to use: " + requiredLevel);
             return null;
 
