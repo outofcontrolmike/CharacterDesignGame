@@ -688,24 +688,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Michael Wilson\\.nuget\\packages\\": {},
+    "C:\\Users\\wilsonmi\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michael Wilson\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\CreateCharacterMain.csproj",
+      "projectUniqueName": "C:\\Users\\wilsonmi\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\CreateCharacterMain.csproj",
       "projectName": "CreateCharacterMain",
-      "projectPath": "C:\\Users\\Michael Wilson\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\CreateCharacterMain.csproj",
-      "packagesPath": "C:\\Users\\Michael Wilson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michael Wilson\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\obj\\",
+      "projectPath": "C:\\Users\\wilsonmi\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\CreateCharacterMain.csproj",
+      "packagesPath": "C:\\Users\\wilsonmi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\wilsonmi\\Source\\Repos\\CharacterDesignGame\\CreateCharacter\\CreateCharacter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Michael Wilson\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\wilsonmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -729,6 +732,7 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
