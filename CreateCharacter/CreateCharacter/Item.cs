@@ -14,6 +14,7 @@ namespace CreateCharacterMain
         private  int healChar = 0;
         private  int iDamage = 0;
         private  int goldValue = 0;
+        private string itemDesc = "";
 
 
         // no arg constructor
@@ -23,12 +24,13 @@ namespace CreateCharacterMain
         }
 
         // Constructor for two fields
-        public Item(string itemname, int healchar, int idamage, int goldvalue)
+        public Item(string itemname, int healchar, int idamage, int goldvalue, string itemdesc)
         {
             this.itemName = itemname;
             this.healChar = healchar;
             this.iDamage = idamage;
             this.goldValue = goldvalue;
+            this.itemDesc = itemdesc;
         }
 
         //Getters and setters
@@ -80,6 +82,19 @@ namespace CreateCharacterMain
                 goldValue = value;
             }
         }
+
+        public string ItemDesc
+        {
+            get
+            {
+                return itemDesc;
+            }
+            set
+            {
+                itemDesc = value;
+            }
+        }// end itemDesc
+
         public override string ToString()
         {
             if (healChar > 0)
@@ -87,6 +102,7 @@ namespace CreateCharacterMain
                 WriteLine("\nItem Name: " + itemName);
                 WriteLine("\nItem Restores: " + healChar + " Health Points");
                 WriteLine("\nItem Gold Value: " + goldValue);
+                WriteLine("\nItem Description: " + ItemDesc);
                
 
             }
@@ -95,6 +111,14 @@ namespace CreateCharacterMain
                 WriteLine("\nItem Name: " + itemName);
                 WriteLine("\nItem Deals: " + iDamage + " points of damage");
                 WriteLine("\nItem Gold Value: " + goldValue);
+                WriteLine("\nItem Description: " + ItemDesc);
+            }
+
+            if(healChar == 0 && iDamage == 0)
+            {
+                WriteLine("\nItem Name: " + itemName);
+                WriteLine("\nItem Gold Value: " + goldValue);
+                WriteLine("\nItem Description: " + ItemDesc);
             }
             return null;
         }

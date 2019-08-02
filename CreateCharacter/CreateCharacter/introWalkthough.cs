@@ -8,12 +8,13 @@ namespace CreateCharacterMain
     class introWalkthough
     {
         #region variables;
-        public static string charName = "";
+        private static string charName = "";
         private static string pRace = "";
         private static int age = 0;
         private static string pClass = "";
         private static int level;
         private static int experience;
+        private static int nextLevel = 0;
         private static int gold;
         private static int health;
         private static int magicPoints;
@@ -41,14 +42,16 @@ namespace CreateCharacterMain
         public static Armor StArmor = new Armor();
 
         public static MagicSpell mageSpell = new MagicSpell();
-      #endregion
+
+       public static  CharacterSheet playerSheet = new CharacterSheet();
+        #endregion
 
         /// <summary>
         /// Asks user for Name
         /// </summary>
         public static void askForName()
         {
-            CharacterSheet testCharacter = new CharacterSheet();
+            
             string charName = "";
             int count = 0;
             //Character Name
@@ -70,11 +73,15 @@ namespace CreateCharacterMain
                
             }
             Console.WriteLine("\nWell done " + charName + "!");
+            
             WriteLine("Press enter to continue");
             ReadKey();
 
-         
-         
+            playerSheet.Name = charName;
+
+
+
+
         }
 
         /// <summary>
@@ -124,6 +131,7 @@ namespace CreateCharacterMain
                         {
                             WriteLine("Enter an age between 15-70: \n");
                             age = Convert.ToInt32(ReadLine());
+
                             WriteLine("\n");
                         }
                         catch (System.FormatException)
@@ -149,6 +157,8 @@ namespace CreateCharacterMain
                         {
                             count++;
                             ageCounter++;
+                            pRace = "Human";
+                            
 
                         }
 
@@ -282,6 +292,7 @@ namespace CreateCharacterMain
                             ageCounter++;
                             count++;
                             pRace = "Hobbit";
+                           
                         }
                        
                         
@@ -290,13 +301,14 @@ namespace CreateCharacterMain
                 }//end IF
 
 
-
             }// end While
 
             WriteLine("You're a " + age + " Year old " + pRace + "\n");
+            playerSheet.Race = pRace;
             WriteLine("Press Enter to Continue.\n\n");
             ReadKey();
 
+         
 
 
         }
@@ -388,70 +400,84 @@ namespace CreateCharacterMain
             WriteLine();
             Console.WriteLine("Press Enter to view your stats for the " + pClass +"\n");
            
+            buildCharacter();
+            ReadKey();
+             
+            
+
+      
+
+           
+
+          
+
+        }//end of get stats
+
+        public static void buildCharacter()
+        {
+
+
             if (pClass == "Warrior")
             {
-         
+
+
                 wStWeapon.Wname = "Broad Sword";
                 wStWeapon.AttackPower = 20;
                 wStWeapon.WDescription = "A nice broadsword to slay with";
                 wStWeapon.Gvalue = 20;
-               
+
                 wStArmor.ArmorName = "Chain Mail";
                 wStArmor.ArmorDefense = 10;
                 wStArmor.ArmorDesc = "A specially crafteed suit of chain mail, passed on down by the warriors father";
                 wStArmor.GoldValue = 100;
 
-                startingItem.ItemName = "Potion";
-                startingItem.Healchar = 50;
-                startingItem.Idamage = 0;
-                startingItem.GoldValue = 10;
-
-
                 // settings variables
-                strength = 18;
-                dexterity = 14;
-                intelligence = 12;
-                constitution = 15;
-                wisdom = 13;
-                charisma = 15;
 
-                level = 1;
-                experience = 0;
-                gold += 100 * charisma;
-                health = Convert.ToInt32(Math.Ceiling(8.5 * constitution));
-                magicPoints = Convert.ToInt32(Math.Ceiling(3.5 *  wisdom));
-                magicAttack = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
-                attckPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
-                defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
+              
+                playerSheet.CharClass = pClass;
+                playerSheet.Age = age;
+                playerSheet.Level = 1;
+                playerSheet.Experience = 0;
+                playerSheet.NextLevel = 1000;
+                playerSheet.Strength = 18;
+                playerSheet.Dexterity = 14;
+                playerSheet.Intelligence = 12;
+                playerSheet.Constitution = 15;
+                playerSheet.Wisdom = 13;
+                playerSheet.Charisma = 15;
+                playerSheet.EquipedWeapon = wStWeapon.Wname;
+                playerSheet.EquipedArmor = wStArmor.ArmorName;
+                playerSheet.Gold += 100 * charisma;
+                playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.5 * constitution));
+                playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+                playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
+                playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
+                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
 
-                statsDesc();
+                playerSheet.ToString();
+
                 ReadKey();
-                getEquipment();
-            
+
+
 
             }// end Warrior
 
             if (pClass == "Mage")
             {
-                
 
-                
+
+
                 wStWeapon.Wname = "Wooden Stalve";
                 wStWeapon.AttackPower = 4;
                 wStWeapon.WDescription = "A makeshift wooden stick.";
                 wStWeapon.Gvalue = 4;
 
-               
+
                 wStArmor.ArmorName = "Leather Robe";
                 wStArmor.ArmorDefense = 5;
                 wStArmor.ArmorDesc = "An lightweight armor.";
                 wStArmor.GoldValue = 40;
 
-          
-                startingItem.ItemName = "Potion";
-                startingItem.Healchar = 50;
-                startingItem.Idamage = 0;
-                startingItem.GoldValue = 10;
 
                 strength = 10;
                 dexterity = 13;
@@ -462,6 +488,7 @@ namespace CreateCharacterMain
 
                 level = 1;
                 experience = 0;
+                nextLevel = 1200;
                 gold += 100 * charisma;
                 health = Convert.ToInt32(Math.Ceiling(6.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(8.5 * wisdom));
@@ -470,8 +497,8 @@ namespace CreateCharacterMain
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + StArmor.ArmorDefense);
 
                 buildFireBall();
-                
-                statsDesc();
+
+
                 ReadKey();
                 getEquipment();
             }// end Mage
@@ -481,7 +508,7 @@ namespace CreateCharacterMain
                 WriteLine("Theif");
 
                 //Instantiate Weapon and Armor for start
-               
+
                 wStWeapon.Wname = "Dirk";
                 wStWeapon.AttackPower = 15;
                 wStWeapon.WDescription = "A stealhty light weight knife";
@@ -492,11 +519,6 @@ namespace CreateCharacterMain
                 wStArmor.ArmorDesc = "A mysterious cloak, looks like it was stolen.";
                 wStArmor.GoldValue = 300;
 
-                startingItem.ItemName = "Potion";
-                startingItem.Healchar = 50;
-                startingItem.Idamage = 0;
-                startingItem.GoldValue = 10;
-
                 strength = 13;
                 dexterity = 18;
                 intelligence = 14;
@@ -506,6 +528,7 @@ namespace CreateCharacterMain
 
                 level = 1;
                 experience = 0;
+                nextLevel = 800;
                 gold += 100 * charisma;
                 health = Convert.ToInt32(Math.Ceiling(6.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
@@ -514,7 +537,7 @@ namespace CreateCharacterMain
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
 
 
-                statsDesc();
+
                 ReadKey();
                 getEquipment();
             }// end Theif
@@ -524,23 +547,17 @@ namespace CreateCharacterMain
                 WriteLine("Cleric");
 
                 //Instantiate Weapon and Armor for start
-               
+
                 wStWeapon.Wname = "Mace";
                 wStWeapon.AttackPower = 18;
                 wStWeapon.WDescription = "Spiked Mace used to detone with";
                 wStWeapon.Gvalue = 40;
 
-               
+
                 wStArmor.ArmorName = "Plated Armor";
                 wStArmor.ArmorDefense = 30;
                 wStArmor.ArmorDesc = "Armor made to withstand the strongest blows.";
                 wStArmor.GoldValue = 300;
-
-        
-                startingItem.ItemName = "Potion";
-                startingItem.Healchar = 50;
-                startingItem.Idamage = 0;
-                startingItem.GoldValue = 10;
 
                 strength = 16;
                 dexterity = 10;
@@ -551,6 +568,7 @@ namespace CreateCharacterMain
 
                 level = 1;
                 experience = 0;
+                nextLevel = 1000;
                 gold += 100 * charisma;
                 health = Convert.ToInt32(Math.Ceiling(10.5 * constitution));
                 magicPoints = Convert.ToInt32(Math.Ceiling(4.5 * wisdom));
@@ -558,16 +576,15 @@ namespace CreateCharacterMain
                 attckPower = Convert.ToInt32(Math.Ceiling(5.2 * strength));
                 defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity));
 
-     
+
                 // print outs
-                statsDesc();
+
                 ReadKey();
                 buildCure();
                 getEquipment();
 
             }// end Cleric
-
-        }//end of get stats
+        }
 
         /// <summary>
         /// Get's Equipment Details 
@@ -590,27 +607,7 @@ namespace CreateCharacterMain
 
         }
         
-        /// <summary>
-        /// Gets stats Description
-        /// </summary>
-        private static void statsDesc()
-        {
-            Console.WriteLine("\n\tStrength: " + strength +
-                                 "\n\tDexterity: " + dexterity +
-                                 "\n\tIntelleigence: " + intelligence +
-                                 "\n\tConstitution: " + constitution +
-                                 "\n\tWisdom: " + wisdom +
-                                 "\n\tCharisma: " + charisma +
-                                 "\n\n\tCharacter Level: " + level +
-                                 "\n\tExperience Points: " + experience +
-                                 "\n\tGold: " + gold +
-                                 "\n\n\tHealth: " + health +
-                                 "\n\tMana: " + magicPoints +
-                                 "\n\tMagic Attack: " + magicAttack +
-                                 "\n\tAttack Power: " + attckPower +
-                                 "\n\tDefense: " + defense);
-                             
-        }
+    
 
         /// <summary>
         /// sets the mage's build stuff
@@ -645,6 +642,7 @@ namespace CreateCharacterMain
             cure.ToString();
         }
 
+    
     }//end of class
 
     }// end of namespace

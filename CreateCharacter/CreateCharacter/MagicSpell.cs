@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using static System.Console;
+
 namespace CreateCharacterMain
 {
     /// <summary>
@@ -137,7 +138,7 @@ namespace CreateCharacterMain
             return null;
 
         }
-
+        
 
     }// end class
 }// end namespace

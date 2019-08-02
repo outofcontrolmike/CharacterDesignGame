@@ -13,8 +13,12 @@ namespace CreateCharacterMain
         private int age;
         private int level;
         private int experience;
+        private int nextLevel;
         private int gold;
         private int health;
+        private int magicPoints;
+        private int attackPower;
+        private int defense;
         private int magicPower;
         private int strength;
         private int dexterity;
@@ -37,7 +41,7 @@ namespace CreateCharacterMain
         }
 
         public CharacterSheet(string name, string race, string charClass, int age, int level, int experience,
-            int gold, int health, int magicPower, int strength, int dexterity, int intelligence,
+            int nextLevel, int gold, int health, int magicPoints, int attackPower, int defense, int magicPower,  int strength, int dexterity, int intelligence,
             int constitution, int wisdom, int charisma, string equipedWeapon, string equipedArmor)
         {
             this.Name = name;
@@ -46,8 +50,12 @@ namespace CreateCharacterMain
             this.Age = age;
             this.Level = level;
             this.Experience = experience;
+            this.NextLevel = nextLevel;
             this.Gold = gold;
             this.Health = health;
+            this.MagicPoints = magicPoints;
+            this.AttackPower = attackPower;
+            this.Defense = defense;
             this.MagicPower = magicPower;
             this.Strength = strength;
             this.Dexterity = dexterity;
@@ -65,8 +73,12 @@ namespace CreateCharacterMain
         public int Age { get => age; set => age = value; }
         public int Level { get => level; set => level = value; }
         public int Experience { get => experience; set => experience = value; }
+        public int NextLevel { get => nextLevel; set => nextLevel = value; }
         public int Gold { get => gold; set => gold = value; }
         public int Health { get => health; set => health = value; }
+        public int MagicPoints { get => magicPoints; set => magicPoints = value; }
+        public int AttackPower { get => attackPower; set => attackPower = value; }
+        public int Defense { get => defense; set => defense = value; }
         public int MagicPower { get => magicPower; set => magicPower = value; }
         public int Strength { get => strength; set => strength = value; }
         public int Dexterity { get => dexterity; set => dexterity = value; }
@@ -84,22 +96,30 @@ namespace CreateCharacterMain
             WriteLine("Class: " + charClass);
             WriteLine("Age:   " + age);
             WriteLine("Level: " + level + "\t exeperience: " + Experience);
-            WriteLine("Gold   " + gold);
-            WriteLine("Health: " + health + "\t Magic: " + MagicPower);
+            WriteLine("Next Level Up: " + nextLevel);
+            WriteLine("Gold: " + gold);
+            WriteLine("Health: " + health);
+            WriteLine("Attack Power: " + attackPower);
+            WriteLine("Defense: " + defense);
+            WriteLine("Mana: " + magicPoints);
             WriteLine("Strength: " + strength);
             WriteLine("Dexterity: " + dexterity);
-            WriteLine("Intelligence" + intelligence);
-            WriteLine("Constitution" + constitution);
+            WriteLine("Intelligence: " + intelligence);
+            WriteLine("Constitution: " + constitution);
             WriteLine("Wisdom: " + wisdom);
             WriteLine("Charimsa: " + charisma);
             WriteLine("Weapon Equiped: " + equipedWeapon);
             WriteLine("Armor Equiped: " + equipedArmor);
 
 
+
+
             return null;
 
 
         }
+
+
 
 
     }

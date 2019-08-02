@@ -30,10 +30,9 @@ namespace CreateCharacterMain
             introWalkthough.getRace();
             introWalkthough.getClass();
             introWalkthough.getStats();
+           // ItemInventory.itemInventoryArrayMethod();
+           // introWalkthough.buildCharacter();
             
-
-
-
 
 
         }// end of main
