@@ -402,7 +402,8 @@ namespace CreateCharacterMain
             Console.WriteLine("Press Enter to view your stats for the " + pClass + "\n");
 
             BuildCharacter();
-            ReadKey();
+ 
+         
 
         }//end of get stats
 
@@ -413,28 +414,18 @@ namespace CreateCharacterMain
         {
             Clear();
             WriteLine("\nWould you like to view your Weapons and Armor stats?");
-            WriteLine("Enter yes to check them out: ");
+            WriteLine("Enter y to check them out: ");
+
             string choice = Console.ReadLine();
 
-            if (choice == "yes" || choice == "Yes")
+            if (choice.ToUpper() == "Y")
             {
-                
                 wStWeapon.ToString();
                 WriteLine("\n");
                 WriteLine("-----------------------------------------------------------------------------");
                 wStArmor.ToString();
                 WriteLine("\n");
             }
-
-            else
-            {
-                Clear();
-                WriteLine("\n");
-                WriteLine("-----------------------------------------------------------------------------");
-            }
-            
-
-
         }
         public static void BuildCharacter()
         {
@@ -487,6 +478,7 @@ namespace CreateCharacterMain
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
 
                 playerSheet.ToString();
+                GetEquipment();
 
                 ReadKey();
 
@@ -538,6 +530,7 @@ namespace CreateCharacterMain
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
 
                 playerSheet.ToString();
+                GetEquipment();
                 ReadKey();
                 BuildFireBall();
                
@@ -588,7 +581,7 @@ namespace CreateCharacterMain
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
 
                 playerSheet.ToString();
-
+                GetEquipment();
                 ReadKey();
 
             }// end Theif
@@ -637,7 +630,7 @@ namespace CreateCharacterMain
 
 
                 playerSheet.ToString();
-
+                GetEquipment();
                 ReadKey();
                
                 BuildCure();

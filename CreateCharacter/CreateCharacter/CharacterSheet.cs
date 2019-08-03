@@ -5,7 +5,7 @@ using static System.Console;
 
 namespace CreateCharacterMain
 {
-    class CharacterSheet {
+    class CharacterSheet : IntroWalkthough{
         #region properties
         private string name;
         private string race;
@@ -95,6 +95,7 @@ namespace CreateCharacterMain
 
         public override string ToString()
         {
+            Clear();
             WriteLine(charClass.ToUpper());
 
             WriteLine("\nName: " + name);
@@ -108,6 +109,7 @@ namespace CreateCharacterMain
             WriteLine("Health: " + health + "/" + tempHealth);
             WriteLine("Mana: " + magicPoints + "/" + TempMana + ("\n"));
             WriteLine("-----------------------------------------------------------------------------");
+            ReadKey();
 
             WriteLine("\nAttack Power: " + attackPower);
             WriteLine("Defense: " + defense);
@@ -120,11 +122,13 @@ namespace CreateCharacterMain
             WriteLine("Charimsa: " + charisma + "\n");
             WriteLine("Weapon Equiped: " + equipedWeapon);
             WriteLine("Armor Equiped: " + equipedArmor);
+            ReadKey();
             WriteLine("-----------------------------------------------------------------------------");
-
-
-
+            WriteLine("Press Enter to continue");
+            
             return null;
+
+           
 
 
         }

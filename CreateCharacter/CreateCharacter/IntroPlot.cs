@@ -12,9 +12,9 @@ namespace CreateCharacterMain
 
         public static void TheWakeUp()
         {
+            Console.Clear();
             ContinueToGame();
 
-            Clear();
             WriteLine("Welcome to the very beginning of the adventure\n");
             ReadKey();
      
@@ -38,16 +38,19 @@ namespace CreateCharacterMain
                 IntroWalkthough.GetRace();
                 IntroWalkthough.GetClass();
                 IntroWalkthough.GetStats();
-                IntroWalkthough.GetEquipment();
+             
+                Clear();
+            }
 
-                WriteLine("Are you happy with your decisions?  If not press n now if you want to restart the set up");
-                choice = Console.ReadLine();
+            else
+            {
 
+                Console.WriteLine("Press enter to continue to Main game.");
                 ReadKey();
-
+                Clear();
+            }
             }
 
             
         }
     }
-}
