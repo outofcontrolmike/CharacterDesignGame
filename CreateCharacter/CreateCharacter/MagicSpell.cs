@@ -123,6 +123,7 @@ namespace CreateCharacterMain
         /// <returns></returns>
         public override string ToString()
         {
+            WriteLine("-----------------------------------------------------------------------------");
             WriteLine("\nSpell Name: " + name);
             WriteLine("\nCost to use: " + magicCost);
             WriteLine("\nSpell description: " + mDesc);
@@ -136,7 +137,7 @@ namespace CreateCharacterMain
             }
             WriteLine("\nLevel Required to use: " + requiredLevel);
             return null;
-
+            WriteLine("-----------------------------------------------------------------------------");
         }
         
 

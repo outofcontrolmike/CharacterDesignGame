@@ -26,12 +26,14 @@ namespace CreateCharacterMain
 
 
             // Setting up Character
-            introWalkthough.askForName();
-            introWalkthough.getRace();
-            introWalkthough.getClass();
-            introWalkthough.getStats();
-           // ItemInventory.itemInventoryArrayMethod();
-           // introWalkthough.buildCharacter();
+            IntroWalkthough.AskForName();
+            IntroWalkthough.GetRace();
+            IntroWalkthough.GetClass();
+            IntroWalkthough.GetStats();
+            IntroWalkthough.GetEquipment();           // ItemInventory.itemInventoryArrayMethod();
+
+
+            Console.ReadKey();
             
 
 

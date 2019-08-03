@@ -5,8 +5,8 @@ using static System.Console;
 
 namespace CreateCharacterMain
 {
-    class CharacterSheet
-    {
+    class CharacterSheet {
+        #region properties
         private string name;
         private string race;
         private string charClass;
@@ -28,7 +28,7 @@ namespace CreateCharacterMain
         private int charisma;
         private string equipedWeapon;
         private string equipedArmor;
-
+        #endregion
 
         public CharacterSheet()
         {
@@ -91,26 +91,32 @@ namespace CreateCharacterMain
 
         public override string ToString()
         {
-            WriteLine("Name: " + name);
+            WriteLine(charClass.ToUpper());
+
+            WriteLine("\nName: " + name);
             WriteLine("race: " + race);
             WriteLine("Class: " + charClass);
             WriteLine("Age:   " + age);
-            WriteLine("Level: " + level + "\t exeperience: " + Experience);
+            WriteLine("Level: " + level + "\nExeperience: " + Experience);
             WriteLine("Next Level Up: " + nextLevel);
             WriteLine("Gold: " + gold);
+            WriteLine("\n");
             WriteLine("Health: " + health);
-            WriteLine("Attack Power: " + attackPower);
+            WriteLine("Mana: " + magicPoints + ("\n"));
+            WriteLine("-----------------------------------------------------------------------------");
+
+            WriteLine("\nAttack Power: " + attackPower);
             WriteLine("Defense: " + defense);
-            WriteLine("Mana: " + magicPoints);
+      
             WriteLine("Strength: " + strength);
             WriteLine("Dexterity: " + dexterity);
             WriteLine("Intelligence: " + intelligence);
             WriteLine("Constitution: " + constitution);
             WriteLine("Wisdom: " + wisdom);
-            WriteLine("Charimsa: " + charisma);
+            WriteLine("Charimsa: " + charisma + "\n");
             WriteLine("Weapon Equiped: " + equipedWeapon);
             WriteLine("Armor Equiped: " + equipedArmor);
-
+            WriteLine("-----------------------------------------------------------------------------");
 
 
 
