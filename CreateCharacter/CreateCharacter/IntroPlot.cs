@@ -6,24 +6,61 @@ using static System.Console;
 
 namespace CreateCharacterMain
 {
+
+    
     class IntroPlot : IntroWalkthough
     {
+
+        private static string gameName = "Unknown Quest";
         // Create a method for the very first part
 
         public static void TheWakeUp()
         {
+            Part1_1();
+
+        }
+
+        public static void Part1_1()
+        {
             Console.Clear();
             ContinueToGame();
+            Clear();
 
             WriteLine("Welcome to the very beginning of the adventure\n");
+            NameGame();
             ReadKey();
-     
+
             WriteLine("You feel cold, and you're trying to open your eyes.  You don't remember " +
                 " anything recent but you know your name" + " is " + playerSheet.Name + ".  " +
                 " You also remember that you are " + playerSheet.Age + " years old.");
             WriteLine("-----------------------------------------------------------------------------");
         }
 
+        public static void NameGame()
+        {
+            
+            WriteLine("Would you like to rename this game? Enter y if so\n");
+            string choice = Console.ReadLine();
+
+           
+            if(choice == "y")
+            {
+                WriteLine("If so, Enter a new name.  Otherwise press the enter key");
+                string newName = Console.ReadLine();
+                gameName = newName;
+                WriteLine("You've decided to name the game: \t\t" + gameName.ToUpper());
+                Clear();
+
+            }
+            else
+            {
+                WriteLine("Welcome to " + gameName.ToUpper());
+                
+            }
+           
+            
+
+        }
         public static void ContinueToGame()
         {
             Console.Clear();
