@@ -11,9 +11,6 @@ namespace CreateCharacterMain
     /// Purpose:    Simulates a beginning of a game where user creates a character.  -- Text based.  Version 1.0
     /// </summary>
     /// 
-
-
-
         // Test making changes - Checkin to see if Github works
 
     class Program
@@ -31,6 +28,7 @@ namespace CreateCharacterMain
             IntroWalkthough.GetClass();
             IntroWalkthough.GetStats();
             IntroPlot.TheWakeUp();
+
 
 
             ReadKey();
