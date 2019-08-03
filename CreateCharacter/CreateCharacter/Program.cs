@@ -31,6 +31,7 @@ namespace CreateCharacterMain
             IntroWalkthough.GetClass();
             IntroWalkthough.GetStats();
             IntroWalkthough.GetEquipment();           // ItemInventory.itemInventoryArrayMethod();
+            IntroPlot.TheWakeUp();
 
 
             Console.ReadKey();
