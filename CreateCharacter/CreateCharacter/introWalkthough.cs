@@ -64,7 +64,7 @@ namespace CreateCharacterMain
             WriteLine("\n\n\n");
 
             playerSheet.Name = charName;
-
+            Console.Clear();
 
 
 
@@ -79,7 +79,7 @@ namespace CreateCharacterMain
             int count = 1;  // control variable
             string pRace = "";  // empty place to place character race
 
-
+            Console.Clear();
             // Race
             Console.WriteLine("\nThere are four races you can choose from in this program: \n");
             WriteLine("Human\n" +
@@ -300,7 +300,7 @@ namespace CreateCharacterMain
             playerSheet.Race = pRace;
             WriteLine("Press Enter to Continue.\n\n");
             ReadKey();
-
+            Console.Clear();
             WriteLine("-----------------------------------------------------------------------------");
 
 
@@ -321,7 +321,7 @@ namespace CreateCharacterMain
             //Theif
             //Cleric
 
-            WriteLine("-----------------------------------------------------------------------------");
+            Console.Clear();
 
 
             Console.WriteLine("Here comes the tricky part.  What class would you like to choose from?\n"
@@ -385,6 +385,9 @@ namespace CreateCharacterMain
 
             }// end of while
             Console.WriteLine("\nYou decided to choose the class of " + pClass);
+            WriteLine("Press enter to continue");
+            Console.ReadKey();
+        
 
 
         }
@@ -408,14 +411,14 @@ namespace CreateCharacterMain
         /// </summary>
         public static void GetEquipment()
         {
-
+            Clear();
             WriteLine("\nWould you like to view your Weapons and Armor stats?");
             WriteLine("Enter yes to check them out: ");
             string choice = Console.ReadLine();
 
             if (choice == "yes" || choice == "Yes")
             {
-                WriteLine("-----------------------------------------------------------------------------");
+                
                 wStWeapon.ToString();
                 WriteLine("\n");
                 WriteLine("-----------------------------------------------------------------------------");
@@ -425,6 +428,7 @@ namespace CreateCharacterMain
 
             else
             {
+                Clear();
                 WriteLine("\n");
                 WriteLine("-----------------------------------------------------------------------------");
             }
@@ -475,7 +479,9 @@ namespace CreateCharacterMain
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
                 playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+                playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
@@ -524,7 +530,9 @@ namespace CreateCharacterMain
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
                 playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+                playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
@@ -572,7 +580,9 @@ namespace CreateCharacterMain
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
                 playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+                playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
@@ -618,7 +628,9 @@ namespace CreateCharacterMain
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
                 playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+                playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
@@ -646,6 +658,7 @@ namespace CreateCharacterMain
             mageSpell.MHeal = 0;
             mageSpell.RequiredLevel = 1;
 
+            Clear();
             mageSpell.ToString();
 
 
@@ -664,6 +677,7 @@ namespace CreateCharacterMain
             cure.magicDamage = 0;
             cure.RequiredLevel = 0;
 
+            Clear();
             cure.ToString();
         }
 

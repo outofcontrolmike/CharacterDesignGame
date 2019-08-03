@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using static System.Console;
 
@@ -11,7 +12,9 @@ namespace CreateCharacterMain
 
         public static void TheWakeUp()
         {
-            WriteLine("\n\n\n\n\n\n\n");
+            ContinueToGame();
+
+            Clear();
             WriteLine("Welcome to the very beginning of the adventure\n");
             ReadKey();
      
@@ -19,6 +22,32 @@ namespace CreateCharacterMain
                 " anything recent but you know your name" + " is " + playerSheet.Name + ".  " +
                 " You also remember that you are " + playerSheet.Age + " years old.");
             WriteLine("-----------------------------------------------------------------------------");
+        }
+
+        public static void ContinueToGame()
+        {
+            Console.Clear();
+            WriteLine("Are you happy with your decisions?  If not type n now if you want to restart the set up");
+            string choice = ReadLine();
+
+            if (choice.ToUpper() == "N")
+            {
+                Console.Beep();
+                Console.Clear();
+                IntroWalkthough.AskForName();
+                IntroWalkthough.GetRace();
+                IntroWalkthough.GetClass();
+                IntroWalkthough.GetStats();
+                IntroWalkthough.GetEquipment();
+
+                WriteLine("Are you happy with your decisions?  If not press n now if you want to restart the set up");
+                choice = Console.ReadLine();
+
+                ReadKey();
+
+            }
+
+            
         }
     }
 }

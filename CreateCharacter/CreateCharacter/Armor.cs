@@ -97,6 +97,7 @@ namespace CreateCharacterMain
             WriteLine("\nArmor Defense: " + armorDefense);
             WriteLine("\nArmor Gold Value: " + goldValue);
             WriteLine("\nDescription : " + armorDesc);
+            
             return null;
 
         }

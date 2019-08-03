@@ -16,7 +16,9 @@ namespace CreateCharacterMain
         private int nextLevel;
         private int gold;
         private int health;
+        private int tempHealth;
         private int magicPoints;
+        private int tempMana;
         private int attackPower;
         private int defense;
         private int magicPower;
@@ -41,7 +43,7 @@ namespace CreateCharacterMain
         }
 
         public CharacterSheet(string name, string race, string charClass, int age, int level, int experience,
-            int nextLevel, int gold, int health, int magicPoints, int attackPower, int defense, int magicPower,  int strength, int dexterity, int intelligence,
+            int nextLevel, int gold, int health, int healthPoints, int magicPoints, int tempMana, int attackPower, int defense, int magicPower,  int strength, int dexterity, int intelligence,
             int constitution, int wisdom, int charisma, string equipedWeapon, string equipedArmor)
         {
             this.Name = name;
@@ -88,6 +90,8 @@ namespace CreateCharacterMain
         public int Charisma { get => charisma; set => charisma = value; }
         public string EquipedWeapon { get => equipedWeapon; set => equipedWeapon = value; }
         public string EquipedArmor { get => equipedArmor; set => equipedArmor = value; }
+        public int TempHealth { get => tempHealth; set => tempHealth = value; }
+        public int TempMana { get => tempMana; set => tempMana = value; }
 
         public override string ToString()
         {
@@ -101,8 +105,8 @@ namespace CreateCharacterMain
             WriteLine("Next Level Up: " + nextLevel);
             WriteLine("Gold: " + gold);
             WriteLine("\n");
-            WriteLine("Health: " + health);
-            WriteLine("Mana: " + magicPoints + ("\n"));
+            WriteLine("Health: " + health + "/" + tempHealth);
+            WriteLine("Mana: " + magicPoints + "/" + TempMana + ("\n"));
             WriteLine("-----------------------------------------------------------------------------");
 
             WriteLine("\nAttack Power: " + attackPower);
