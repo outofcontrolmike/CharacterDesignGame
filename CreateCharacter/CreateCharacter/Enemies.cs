@@ -62,7 +62,8 @@ namespace CreateCharacterMain
 
        public override string ToString()
         {
-            return true;
+            Console.WriteLine();
+            return null;
         }
     }
 }
