@@ -30,10 +30,10 @@ namespace CreateCharacterMain
             NameGame();
             ReadKey();
 
-            WriteLine("You feel cold, and you're trying to open your eyes.  You don't remember " +
-                " anything recent but you know your name" + " is " + playerSheet.Name + ".  " +
-                " You also remember that you are " + playerSheet.Age + " years old.");
-            WriteLine("-----------------------------------------------------------------------------");
+            WriteLine("\nYou feel cold, and you're trying to open your eyes. You don't remember " +
+                "anything recent but you know your name" + " is " + playerSheet.Name + ".  " +
+                " You also remember that you are " + playerSheet.Age + " years old." + " Because of your age, you realize that you can only be a " + playerSheet.Race + ".");
+                
         }
 
         public static void NameGame()
@@ -45,7 +45,7 @@ namespace CreateCharacterMain
            
             if(choice == "y")
             {
-                WriteLine("If so, Enter a new name.  Otherwise press the enter key");
+                WriteLine("Enter a new name, otherwise press the enter key: ");
                 string newName = Console.ReadLine();
                 gameName = newName;
                 WriteLine("You've decided to name the game: \t\t" + gameName.ToUpper());
@@ -54,7 +54,7 @@ namespace CreateCharacterMain
             }
             else
             {
-                WriteLine("Welcome to " + gameName.ToUpper());
+                WriteLine("\nWelcome to " + gameName.ToUpper());
                 
             }
            
