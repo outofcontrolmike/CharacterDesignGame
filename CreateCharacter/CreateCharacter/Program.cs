@@ -23,6 +23,7 @@ namespace CreateCharacterMain
 
 
             // Setting up Character
+            
             IntroWalkthough.AskForName();
             IntroWalkthough.GetRace();
             IntroWalkthough.GetClass();

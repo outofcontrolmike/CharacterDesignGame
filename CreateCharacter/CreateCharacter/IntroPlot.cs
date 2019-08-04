@@ -7,7 +7,7 @@ using static System.Console;
 namespace CreateCharacterMain
 {
 
-    
+
     class IntroPlot : IntroWalkthough
     {
 
@@ -22,11 +22,11 @@ namespace CreateCharacterMain
 
         public static void Part1_1()
         {
-            firstPar();
+            FirstPar();
             secondPar();
-            
 
-            
+
+
         }
 
         public static void secondPar()
@@ -39,17 +39,19 @@ namespace CreateCharacterMain
             ReadKey(false);
             Clear();
             WriteLine("You stumble out of the cave and find that you're at the top of a small hill.  You can see a " +
-                " rugged path through some weak woods that is followed by a very thick swamp and in the other direction there is a fairly " +
+                "rugged path through some weak woods that is followed by a very thick swamp and in the other direction there is a fairly" +
                 " used path.");
             WriteLine("You decide to look up at the sun to figure out how much daylight you have and to figure out your directions. "
                 + "You reailze the Swamp faces North and the nicer trail is to the West.");
             ReadKey(false);
             Clear();
+            SwampOrWest();
+
 
 
 
         }
-        public static void firstPar()
+        public static void FirstPar()
         {
 
 
@@ -68,28 +70,28 @@ namespace CreateCharacterMain
                 " Your hands are tied together, it's like someone caputred and drugged you.");
             WriteLine("You know you need to get out of this place, good thing you are a " + playerSheet.CharClass + ".  You know just the trick to get out of this situation!");
             ReadKey(false);
-            getOutOfRope();
+            GetOutOfRope();
         }
         /// <summary>
         /// Gets out of rope
         /// </summary>
-        public static void getOutOfRope()
+        public static void GetOutOfRope()
         {
             Clear();
-            if(playerSheet.CharClass == "Warrior")
+            if (playerSheet.CharClass == "Warrior")
             {
                 WriteLine("You use your imense strength to break out of the rope.");
             }
-            if(playerSheet.CharClass == "Mage")
+            if (playerSheet.CharClass == "Mage")
             {
                 WriteLine("Your intelligence makes you think outside of the box. You come up with a quick way" +
                     " to combust the area around the rope into fire.  Once the rope has burned just enough, you rip out of the bondage");
             }
-            if(playerSheet.CharClass == "Theif")
+            if (playerSheet.CharClass == "Theif")
             {
                 WriteLine("Since you're a Theif you already got yourself out of the bondage.");
             }
-            if(playerSheet.CharClass == "Cleric")
+            if (playerSheet.CharClass == "Cleric")
             {
                 WriteLine("The bondage is so tight aroudn your hands, it's very hard for you to get out.  Usually in tight situations" +
                     " you send a prayer off.  You go into deep mediation and relay a connection with your entity and the bondage starts to loosen.  " +
@@ -97,14 +99,25 @@ namespace CreateCharacterMain
             }
             ReadKey();
         }
+        public static void SwampOrWest()
+        {
+            WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west: ");
+            string choice = ReadLine();
+            choice.ToUpper();
+
+            if(choice == "S")
+            {
+                Swamp();
+            }
+        }
         public static void NameGame()
         {
-            
+
             WriteLine("Would you like to rename this game? Enter y if so\n");
             string choice = Console.ReadLine();
 
-           
-            if(choice == "y")
+
+            if (choice == "y")
             {
                 WriteLine("Enter a new name, otherwise press the enter key: ");
                 string newName = Console.ReadLine();
@@ -116,10 +129,10 @@ namespace CreateCharacterMain
             else
             {
                 WriteLine("\nWelcome to " + gameName.ToUpper());
-                
+
             }
-           
-            
+
+
 
         }
         public static void ContinueToGame()
@@ -136,7 +149,7 @@ namespace CreateCharacterMain
                 IntroWalkthough.GetRace();
                 IntroWalkthough.GetClass();
                 IntroWalkthough.GetStats();
-             
+
                 Clear();
             }
 
@@ -147,8 +160,43 @@ namespace CreateCharacterMain
                 ReadKey();
                 Clear();
             }
-            }
-
-            
         }
+
+        public static void Swamp()
+        {
+            Clear();
+            WriteLine("You decide that the swamp looks like a neat place to explore, maybe you'll find out" +
+                " more about why you woke up in a cave.\n" +
+                "You had no trouble bouldering down the small bluff.  You notice there's an even bigger cave entrance behind you " +
+                "facing the south, however it's boarded up.  You press onward on the rugged trail towards the swamp.\n");
+            Clear();
+            WriteLine("After about a half mile down the trail, it ends to the entrance of a gross looking swamp." +
+                " You hear something that sounds like it's popping and you realize there are bubbles coming out of the swamp water" +
+                " near you.");
+            CheckBubbles();
+        }
+
+        public static void CheckBubbles()
+        {
+            Clear();
+            if(playerSheet.Wisdom >= 14)
+            {
+                WriteLine("Your Wisdom knows better than to stick your hand into a bubbling part of a swamp." +
+                    " You decide to wait a minute or two.\n");
+
+                    if(playerSheet.Intelligence >= 15)
+                {
+                    WriteLine("You're aware that swamps sometimes produce bog gas which is a mixture of natural earth gasses." +
+                        " You know best to turn back and quit wasting your time.");
+                }
+                else
+                {
+                    WriteLine("You're not sure why the swamp is bubbiling but you know not to get involved.  You decide to turn back.");
+                }
+            }
+        }
+        
+
+
     }
+}

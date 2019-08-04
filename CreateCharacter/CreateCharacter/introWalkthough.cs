@@ -674,6 +674,8 @@ namespace CreateCharacterMain
             cure.ToString();
         }
 
+   
+
     
     }//end of class
 

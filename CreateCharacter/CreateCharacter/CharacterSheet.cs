@@ -109,7 +109,8 @@ namespace CreateCharacterMain
             WriteLine("Health: " + health + "/" + tempHealth);
             WriteLine("Mana: " + magicPoints + "/" + TempMana + ("\n"));
             WriteLine("-----------------------------------------------------------------------------");
-            ReadKey();
+            WriteLine("Press Enter for more stats");
+            ReadKey(false);
 
             WriteLine("\nAttack Power: " + attackPower);
             WriteLine("Defense: " + defense);
