@@ -50,6 +50,8 @@ namespace CreateCharacterMain
             ReadKey(false);
             Clear();
             SwampOrWest();
+            West();
+            StrangerEncounter();
 
 
 
@@ -149,7 +151,8 @@ namespace CreateCharacterMain
 
             if (choice == "W")
             {
-                West();
+                Clear();
+                WriteLine("You decide to head west and take the safe route.");
             }
         }// end SwampOrWest
 
@@ -198,9 +201,9 @@ namespace CreateCharacterMain
                 WriteLine("You seem intrigured by this, you've never seen anything like this.");
                 WriteLine("Do you want to venture into the swamp and see what this is? Enter 1 for yes, press any other key to leave" +
                     " the swamp");
-                int choice = Convert.ToInt32(ReadLine());
+                string choice = Console.ReadLine();
 
-                if (choice == 1)
+                if (choice == "1")
                 {
                     int damage = 10;
                     int updatedHealth = playerSheet.TempHealth - damage;
@@ -217,15 +220,68 @@ namespace CreateCharacterMain
 
                 WriteLine("You decided to leave the swamp.");
 
+                ReadKey(false);
+
             }// end else
         }// end check bubbles
 
         public static void West()
         {
             Clear();
-            WriteLine("");
+            WriteLine("You've been walking along this path now for about a mile, the scenery is a lightwooded area" +
+                " that looks like is fading away.  Something smells very odd close by, you happen to notice a corpse" +
+                " lying on it's back.  You can't tell what sex it is, it looks like it was eaten alive, by you also can't tell" +
+                " what from.  ");
+            WriteLine("Are you interested in checking the corpse?  Checking corpses is a thing to keep in mind " +
+                " since you can salvage useable things from them. ");
+            CheckCorpse();
+           
 
         }// end West
+
+        public static void CheckCorpse()
+        {
+
+            WriteLine("Press 1 if you are interested in checking the corpse for valuables: ");
+            int choice = Convert.ToInt32(ReadLine());
+            
+            if(choice == 1)
+            {
+                Clear();
+                if(playerSheet.Race == "Human")
+                {
+                    WriteLine("You happen to spot something shinny beside the corpse.  You realize it's a memento that you " +
+                        " completely forgot about.  You grab the sliver ring packed with an amythest.");
+                }
+                if(playerSheet.Race == "Elf")
+                {
+                    WriteLine("You found your brooch that you've been missing.  You've had this for Many years.");
+                }
+                if (playerSheet.Race == "Dwarf")
+                {
+                    WriteLine("Out of the corner of your eye you notice a leather bag right next to the corpse." +
+                        " You quickly snatch it and open it to find a small batch of gold that is worth 100.");
+                    playerSheet.Gold += 100;
+                }
+                if(playerSheet.Race == "Hobbit")
+                {
+                    WriteLine("You notice a small little journal that looks like was used for notes.  You grabbed and opened it up" +
+                        " to find that there are recipies that you could be using for all of your future events.  " +
+                        "You stash this away and save it for later.");
+                }
+
+                WriteLine("Press any key to contiune.");
+                ReadKey(false);
+            }// end check Corpse
+            
+        }
+
+        public static void StrangerEncounter()
+        {
+            Clear();
+            WriteLine("You head down the path for about another half mile and you realize the woods are becoming less abundant" +
+                ".  You eventually break out of the woods into a huge valley.");
+        }
     }
 
 
