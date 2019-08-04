@@ -105,7 +105,7 @@ namespace CreateCharacterMain
             string choice = ReadLine();
             choice.ToUpper();
 
-            if(choice == "S")
+            if( choice == "S")
             {
                 Swamp();
             }
@@ -169,10 +169,12 @@ namespace CreateCharacterMain
                 " more about why you woke up in a cave.\n" +
                 "You had no trouble bouldering down the small bluff.  You notice there's an even bigger cave entrance behind you " +
                 "facing the south, however it's boarded up.  You press onward on the rugged trail towards the swamp.\n");
+            ReadKey(false);
             Clear();
             WriteLine("After about a half mile down the trail, it ends to the entrance of a gross looking swamp." +
                 " You hear something that sounds like it's popping and you realize there are bubbles coming out of the swamp water" +
                 " near you.");
+            ReadKey();
             CheckBubbles();
         }
 
@@ -193,8 +195,36 @@ namespace CreateCharacterMain
                 {
                     WriteLine("You're not sure why the swamp is bubbiling but you know not to get involved.  You decide to turn back.");
                 }
-            }
-        }
+            
+            
+            }// end if
+            else
+            {
+                
+                WriteLine("You seem intrigured by this, you've never seen anything like this.");
+                WriteLine("Do you want to venture into the swamp and see what this is? Enter 1 for yes, press any other key to leave" +
+                    " the swamp");
+                int choice = Convert.ToInt32(ReadLine());
+                
+                if(choice == 1)
+                {
+                    int damage = 10;
+                    int updatedHealth = playerSheet.TempHealth - damage;
+
+                    WriteLine("You take a few steps into the swamp.  It is very hard to move through and it's suprisingly warm." +
+                        "  As you walk closer to the bubbles you realize your about knee deep in the swamp." +
+                        "  You notice an awful stench coming from the bubbles, it's worse than any farm work you've delt with" +
+                        "  Your knees start to buckle and you start gagging.  You loose your footing and bang your knee into a small " +
+                        "structure in the swamp, that really hurt.");
+                    WriteLine("You lost " + damage +(" health points.") + " " +
+                        "Your current health is " +  (updatedHealth) + "/" + playerSheet.Health);
+                        
+                }// end
+
+                WriteLine("You decided to leave the swamp.");
+               
+            }// end else
+        }// end check bubbles
         
 
 
