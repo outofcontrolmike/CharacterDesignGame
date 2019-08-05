@@ -8,6 +8,8 @@ namespace CreateCharacterMain
     /// <summary>
     /// Class for building Armor objects that characters can use
     /// </summary>
+    /// 
+    ///woohoo
     class Armor
     {
         // What will Armor have?
