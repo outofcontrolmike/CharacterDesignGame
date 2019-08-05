@@ -23,7 +23,8 @@ namespace CreateCharacterMain
 
 
             // Setting up Character
-            
+
+          
             IntroWalkthough.AskForName();
             IntroWalkthough.GetRace();
             IntroWalkthough.GetClass();
@@ -36,7 +37,20 @@ namespace CreateCharacterMain
             
 
 
+
         }// end of main
+
+        /// <summary>
+        /// Changes color of background and forecolor
+        /// </summary>
+        public static void changeColor()
+        {
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("Press any key to continue");
+            Console.ReadKey();
+        }
 
 
 

@@ -43,8 +43,6 @@ namespace CreateCharacterMain
             Console.WriteLine("First of all, What is your name? \n ");
             charName = Console.ReadLine();
 
-
-
             while (charName == "")
             {
 
@@ -56,7 +54,9 @@ namespace CreateCharacterMain
 
 
             }
+            
             Console.WriteLine("\nWell done " + charName + "!");
+            Beep(10000 /2, 200);
 
             WriteLine("Press enter to continue");
             ReadKey();
@@ -65,8 +65,6 @@ namespace CreateCharacterMain
 
             playerSheet.Name = charName;
             Console.Clear();
-
-
 
 
         }
@@ -103,6 +101,8 @@ namespace CreateCharacterMain
 
                 WriteLine("\n");
                 WriteLine("-----------------------------------------------------------------------------");
+
+                Clear();
                 // if user enters H
                 if (pRace == "H")
                 {
@@ -329,7 +329,8 @@ namespace CreateCharacterMain
                 +
                 "\nThere are Five different Classes to choose from and they have unique attributes: \n");
 
-            ReadKey();
+            ReadKey(false);
+            Clear();
             WriteLine("\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
             "\nThe Mage has high Intelligence and Wisdom.  Can be very powerful later on. \n" +
             "\nThe Theif has high Dexterity and Charaisma. Accumlates gold very easily and can sneak around. \n" +
@@ -337,7 +338,8 @@ namespace CreateCharacterMain
 
 
             WriteLine("Press Enter to bring up character select");
-            ReadKey();
+            ReadKey(false);
+            Clear();
             WriteLine("-----------------------------------------------------------------------------");
 
             WriteLine(
@@ -346,8 +348,9 @@ namespace CreateCharacterMain
                       "\ntype in 3 for Theif\n" +
                       "\ntype in 4 for Cleric \n");
 
-
+            
             pClass = Console.ReadLine();
+           
 
 
             int counter = 1;
@@ -414,7 +417,7 @@ namespace CreateCharacterMain
         {
             Clear();
             WriteLine("\nWould you like to view your Weapons and Armor stats?");
-            WriteLine("Enter y to check them out: ");
+            WriteLine("Enter y to check them out: \n");
 
             string choice = Console.ReadLine();
 
@@ -480,7 +483,8 @@ namespace CreateCharacterMain
                 playerSheet.ToString();
                 GetEquipment();
 
-                ReadKey();
+                
+
 
             }// end Warrior
 
@@ -531,7 +535,6 @@ namespace CreateCharacterMain
 
                 playerSheet.ToString();
                 GetEquipment();
-                ReadKey();
                 BuildFireBall();
                
             }// end Mage
@@ -582,7 +585,7 @@ namespace CreateCharacterMain
 
                 playerSheet.ToString();
                 GetEquipment();
-                ReadKey();
+             
 
             }// end Theif
 
@@ -600,11 +603,11 @@ namespace CreateCharacterMain
                 wStArmor.GoldValue = 300;
 
                 int strength = 14;
-                int dexterity = 10;
+                int dexterity = 12;
                 int intelligence = 13;
                 int constitution = 18;
                 int wisdom = 17;
-                int charisma = 15;
+                int charisma = 16;
 
                 playerSheet.CharClass = pClass;
                 playerSheet.Age = age;
@@ -631,7 +634,7 @@ namespace CreateCharacterMain
 
                 playerSheet.ToString();
                 GetEquipment();
-                ReadKey();
+             
                
                 BuildCure();
            
