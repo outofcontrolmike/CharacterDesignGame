@@ -40,9 +40,9 @@ namespace CreateCharacterMain
 
             string charName;
             //Character Name
-            Console.WriteLine("Welcome to the create character part of the game!\n");
-            Console.WriteLine("First of all, What is your name? \n ");
-            charName = Console.ReadLine();
+            WriteLine("Welcome to the create character part of the game!\n");
+            WriteLine("First of all, What is your name? \n ");
+            charName = ReadLine();
 
             while (charName == "")
             {
@@ -50,25 +50,23 @@ namespace CreateCharacterMain
                 if (charName == "")
                 {
                     WriteLine("Enter a name for your charcter please.\n");
-                    charName = Console.ReadLine();
+                    charName = ReadLine();
                 }
 
+            }// end while
 
-            }
-            
-            Console.WriteLine("\nWell done " + charName + "!");
+            WriteLine("\nWell done " + charName.ToUpper() + "!");
             Beep(10000 /2, 200);
 
-            WriteLine("Press enter to continue");
-            ReadKey();
+            
+            ReadKey(false);
             WriteLine("-----------------------------------------------------------------------------");
             WriteLine("\n\n\n");
 
-            playerSheet.Name = charName;
-            Console.Clear();
+            playerSheet.Name = charName.ToUpper();
+            Clear();
 
-
-        }
+        }// end GetName
 
         /// <summary>
         /// Asks user to choose Race and set AGE
@@ -78,9 +76,9 @@ namespace CreateCharacterMain
             int count = 1;  // control variable
             string pRace = "";  // empty place to place character race
 
-            Console.Clear();
+            Clear();
             // Race
-            Console.WriteLine("\nThere are four races you can choose from in this program: \n");
+            WriteLine("\nThere are four races you can choose from in this program: \n");
             WriteLine("Human\n" +
                   "Elf\n" +
                   "Dwarf\n" +
@@ -90,7 +88,7 @@ namespace CreateCharacterMain
             {
 
 
-                Console.WriteLine("What Race would you like to be?: \n");
+                WriteLine("What Race would you like to be?: \n");
 
                 WriteLine("Type in H for Human\n" +
                        "type in E for Elf\n" +
@@ -111,7 +109,7 @@ namespace CreateCharacterMain
 
                     pRace = "Human\n";
                     WriteLine("How old do you want to be as a Human?\n" +
-                        "You're allowed to be between 15-70\n");
+                        "You're allowed to be between 15-70.\n");
                     while (ageCounter == 1)
                     {
 
@@ -124,7 +122,7 @@ namespace CreateCharacterMain
                         }
                         catch (System.FormatException)
                         {
-                            WriteLine("Be sure to actually use numbers.\n");
+                            WriteLine("Be sure to actually use numbers!\n");
 
 
                         }// End Try Catch for age
@@ -132,13 +130,13 @@ namespace CreateCharacterMain
 
                         if (ageHolder < 15)
                         {
-                            WriteLine("You're too young for this adventure\n");
+                            WriteLine("You're too young for this adventure!\n");
 
 
                         }
                         if (ageHolder > 70)
                         {
-                            WriteLine("You're too old for this adventure\n");
+                            WriteLine("You're too old for this adventure!\n");
 
                         }
                         if (ageHolder >= 15 && ageHolder <= 70)
@@ -150,7 +148,7 @@ namespace CreateCharacterMain
 
 
 
-                        }
+                        }// end if's
 
 
                     }//end While   
@@ -297,17 +295,16 @@ namespace CreateCharacterMain
 
             }// end While
 
-            WriteLine("You're a " + age + " Year old " + pRace + "\n");
+            WriteLine("You're a " + age + " Year old " + pRace + "!\n");
             playerSheet.Race = pRace;
-            WriteLine("Press Enter to Continue.\n\n");
-            ReadKey();
-            Console.Clear();
+            ReadKey(false);
+            Clear();
             WriteLine("-----------------------------------------------------------------------------");
 
 
 
 
-        }
+        }// end GetRace
 
         /// <summary>
         /// Gets Class from Character
@@ -322,18 +319,18 @@ namespace CreateCharacterMain
             //Theif
             //Cleric
 
-            Console.Clear();
+            Clear();
 
 
-            Console.WriteLine("Here comes the tricky part.  What class would you like to choose from?\n"
+            WriteLine("Here comes the tricky part.  What class would you like to choose from?\n"
 
                 +
                 "\nThere are Five different Classes to choose from and they have unique attributes: \n");
 
             ReadKey(false);
             Clear();
-            WriteLine("\nThe Warrior has high Strength and Constitution.  Makes a great close combat fighter.\n" +
-            "\nThe Mage has high Intelligence and Wisdom.  Can be very powerful later on. \n" +
+            WriteLine("\nThe Warrior has high Strength and Constitution. Makes a great close combat fighter.\n" +
+            "\nThe Mage has high Intelligence and Wisdom. Can be very powerful later on. \n" +
             "\nThe Theif has high Dexterity and Charaisma. Accumlates gold very easily and can sneak around. \n" +
             "\nThe Cleric has high Constitution and Wisdom. Can bear high amounts of damage and cast white magic.\n ");
 
@@ -350,9 +347,7 @@ namespace CreateCharacterMain
                       "\ntype in 4 for Cleric \n");
 
             
-            pClass = Console.ReadLine();
-           
-
+            pClass = ReadLine();
 
             int counter = 1;
             while (counter == 1)
@@ -388,13 +383,12 @@ namespace CreateCharacterMain
 
 
             }// end of while
-            Console.WriteLine("\nYou decided to choose the class of " + pClass);
-            WriteLine("Press enter to continue");
-            Console.ReadKey();
+            WriteLine("\nYou decided to choose the class of " + pClass);
+            ReadKey(false);
         
 
 
-        }
+        }// GetClass
 
         /// <summary>
         /// <summary>
@@ -403,7 +397,7 @@ namespace CreateCharacterMain
         public static void GetStats()
         {
             WriteLine();
-            Console.WriteLine("Press Enter to view your stats for the " + pClass + "\n");
+            WriteLine("Press Enter to view your stats for the " + pClass + "\n");
 
             BuildCharacter();
  
@@ -420,7 +414,7 @@ namespace CreateCharacterMain
             WriteLine("\nWould you like to view your Weapons and Armor stats?");
             WriteLine("Enter y to check them out: \n");
 
-            string choice = Console.ReadLine();
+            string choice = ReadLine();
 
             if (choice.ToUpper() == "Y")
             {
@@ -431,14 +425,13 @@ namespace CreateCharacterMain
                 WriteLine("\n");
                 ReadKey(false);
             }
-        }
+        }// End GetEquipment
         public static void BuildCharacter()
         {
 
 
             if (pClass == "Warrior")
             {
-
 
                 wStWeapon.Wname = "Broad Sword";
                 wStWeapon.AttackPower = 20;
@@ -454,8 +447,8 @@ namespace CreateCharacterMain
 
                 int strength = 18;
                 int dexterity = 14;
-                int intelligence = 12;
-                int wisdom = 13;
+                int intelligence = 10;
+                int wisdom = 12;
                 int charisma = 15;
                 int constitution = 15;
                 
@@ -485,8 +478,6 @@ namespace CreateCharacterMain
                 playerSheet.ToString();
                 GetEquipment();
 
-                
-
 
             }// end Warrior
 
@@ -508,7 +499,7 @@ namespace CreateCharacterMain
                 int strength = 10;
                 int dexterity = 13;
                 int intelligence = 18;
-                int constitution = 10;
+                int constitution = 11;
                 int wisdom = 18;
                 int charisma = 13;
 
@@ -604,12 +595,12 @@ namespace CreateCharacterMain
                 wStArmor.ArmorDesc = "Armor made to withstand the strongest blows.";
                 wStArmor.GoldValue = 300;
 
-                int strength = 14;
-                int dexterity = 12;
-                int intelligence = 13;
+                int strength = 13;
+                int dexterity = 11;
+                int intelligence = 12;
                 int constitution = 18;
                 int wisdom = 17;
-                int charisma = 16;
+                int charisma = 17;
 
                 playerSheet.CharClass = pClass;
                 playerSheet.Age = age;
@@ -642,7 +633,7 @@ namespace CreateCharacterMain
            
 
             }// end Cleric
-        }
+        }// end BuildCharacter
 
         /// <summary>
         /// sets the mage's build stuff

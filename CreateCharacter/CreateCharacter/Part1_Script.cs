@@ -10,54 +10,95 @@ namespace CreateCharacterMain
         private static string gameName = "Unknown Quest";
         public static void FirstPart()
         {
-
-
             Clear();
             ContinueToGame();
+            NameGame();
             Clear();
 
-            NameGame();
-            ReadKey();
-
             WriteLine("\nWelcome to the very beginning of the adventure\n");
+            ReadKey(false);
+            Clear();
             WriteLine("\nYou feel cold, and you're trying to open your eyes. You don't remember " +
-                "anything recent but you know your name" + " is " + playerSheet.Name + ".  " +
-                " You also remember that you are " + playerSheet.Age + " years old." + " Because of your age, you realize that you can only be a " + playerSheet.Race + ".");
-            WriteLine("\nYou finally managed to open your eyes you notice a quaint fire pit in front of you." +
-                " Your hands are tied together, it's like someone caputred and drugged you.\n");
-            WriteLine("You know you need to get out of this place, good thing you are a " + playerSheet.CharClass + ".  You know just the trick to get out of this situation!");
+                "anything recent but you know your name is " + playerSheet.Name + "." +
+                "\nYou also remember that you are " + playerSheet.Age + " years old." + " " +
+                "Because of your age, you realize that you can only be a " + playerSheet.Race + ".");
+            WriteLine("\nYou finally managed to open your eyes you notice a smouldered fire pit in front of you." +
+                " Your hands are tied together, it's like someone captured and drugged you.\n");
+            WriteLine("You know you need to get out of this place, good thing you are a " + playerSheet.CharClass + ". " +
+                "You know just the trick to get out of this situation!");
             ReadKey(false);
             GetOutOfRope();
-        }
+        }// end FirstPart
+
+
+        /// <summary>
+        /// Let's user re enter set up
+        /// </summary>
+        public static void ContinueToGame()
+        {
+            Clear();
+            WriteLine("Are you happy with your decisions?  If not type n now if you want to restart the set up\n");
+            string choice = ReadLine();
+
+            if (choice.ToUpper() == "N")
+            {
+                Beep();
+                Clear();
+                AskForName();
+                GetRace();
+                GetClass();
+                GetStats();
+
+                Clear();
+            }
+
+            else
+            {
+
+
+                ReadKey(false);
+                Clear();
+            }
+        }// end ContinueToGame
+
+        public static void NameGame()
+        {
+
+            WriteLine("Would you like to rename this game? Enter Y if so\n");
+            string choice = ReadLine();
+
+
+            if (choice.ToUpper() == "Y")
+            {
+                WriteLine("\nEnter a new name, otherwise press the enter key:\n");
+                string newName = ReadLine();
+
+                gameName = newName;
+                Clear();
+
+                WriteLine("\nYou've decided to name the game:\n" + gameName.ToUpper());
+                ReadKey(false);
+                Clear();
+
+
+
+            }
+            else
+            {
+                Clear();
+                WriteLine("\nWelcome to " + gameName.ToUpper());
+                ReadKey(false);
+                Clear();
+            }
+
+
+
+        }// end Rename Game
+
         /// <summary>
         /// Gets out of rope
         /// </summary>
         /// 
-        public static void SecondPart()
-        {
-            Clear();
-            WriteLine("Now that you're out of the rope you decided to stand up and observe the cave.\n");
-            WriteLine("From what you can tell, you're at the back of a cave. The fire pit you are by looks abandoned.\n" +
-                "There is no trace of whoever brought you here, so you decide to leave the cave.\n");
-            Console.WriteLine("Press Enter to procced.");
-            ReadKey(false);
-            Clear();
-            WriteLine("You stumble out of the cave and find that you're at the top of a small hill.  You can see a " +
-                "rugged path through some weak woods that is followed by a very thick swamp and in the other direction there is a fairly" +
-                " used path.");
-            WriteLine("\nYou decide to look up at the sun to figure out how much daylight you have and to figure out your directions. "
-                + "You reailze the Swamp faces North and the nicer trail is to the West.");
-            ReadKey(false);
-            Clear();
-            SwampOrWest();
-            West();
-            StrangerEncounter();
-
-
-
-
-
-        }
         public static void GetOutOfRope()
         {
             Clear();
@@ -68,7 +109,7 @@ namespace CreateCharacterMain
             if (playerSheet.CharClass == "Mage")
             {
                 WriteLine("Your intelligence makes you think outside of the box. You come up with a quick way" +
-                    " to combust the area around the rope into fire.  Once the rope has burned just enough, you rip out of the bondage");
+                    " to combust the area around the rope into fire. Once the rope has burned just enough, you rip out of the bondage!");
             }
             if (playerSheet.CharClass == "Theif")
             {
@@ -76,82 +117,53 @@ namespace CreateCharacterMain
             }
             if (playerSheet.CharClass == "Cleric")
             {
-                WriteLine("The bondage is so tight aroudn your hands, it's very hard for you to get out.  Usually in tight situations" +
+                WriteLine("The bondage is so tight aroudn your hands, it's very hard for you to get out. Usually in tight situations" +
                     " you send a prayer off.  You go into deep mediation and relay a connection with your entity and the bondage starts to loosen.  " +
-                    "You're safely able break loose");
+                    "You're safely able break loose.");
             }
-            ReadKey();
+            ReadKey(false);
 
         }
 
-        public static void NameGame()
+        //--------------------------------------------------//
+
+        /// <summary>
+        /// Second part of the first -- I know, bad naming
+        /// </summary>
+        public static void SecondPart()
         {
-
-            WriteLine("Would you like to rename this game? Enter y if so\n");
-            string choice = Console.ReadLine();
-
-
-            if (choice == "y")
-            {
-                WriteLine("\nEnter a new name, otherwise press the enter key: \n");
-                string newName = Console.ReadLine();
-                gameName = newName;
-                Clear();
-
-                WriteLine("\nYou've decided to name the game: " + gameName.ToUpper());
-                ReadKey(false);
-                Clear();
-
-
-
-            }
-            else
-            {
-                WriteLine("\nWelcome to " + gameName.ToUpper());
-                ReadKey(false);
-                Clear();
-            }
+            Clear();
+            WriteLine("Now that you're out of the rope you decided to stand up and observe the cave.\n");
+            WriteLine("From what you can tell, you're at the back of a cave. The fire pit you are by looks abandoned.\n" +
+                "There is no trace of whoever brought you here, so you decide to leave the cave.\n");
+         
+            ReadKey(false);
+            Clear();
+            WriteLine("You stumble out of the cave and find that you're at the top of a small hill. You can see a " +
+                "rugged path through some weak woods that is followed by a very thick swamp and in the other direction there is a fairly" +
+                " used path.");
+            WriteLine("\nYou decide to look up at the sun to figure out how much daylight you have and to figure out your directions."
+                + " You reailze the Swamp faces North and the nicer trail is to the West.");
+            ReadKey(false);
+            SwampOrWest();
+            West();
+            StrangerEncounter();
 
 
+        }
 
-        }// end Rename Game
-        public static void ContinueToGame()
-        {
-            Console.Clear();
-            WriteLine("Are you happy with your decisions?  If not type n now if you want to restart the set up");
-            string choice = ReadLine();
 
-            if (choice.ToUpper() == "N")
-            {
-                Console.Beep();
-                Console.Clear();
-                IntroWalkthough.AskForName();
-                IntroWalkthough.GetRace();
-                IntroWalkthough.GetClass();
-                IntroWalkthough.GetStats();
-
-                Clear();
-            }
-
-            else
-            {
-
-                Console.WriteLine("Press enter to continue to Main game.");
-                ReadKey(false);
-                Clear();
-            }
-        }// end ContinueToGame
 
         public static void SwampOrWest()
         {
-
+            Clear();
 
             int counter = 1;
             while (counter == 1)
             {
                 WriteLine("Choose a direction:");
 
-                WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west: ");
+                WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west:");
                 string choice = ReadLine().ToUpper();
 
                 if (choice == "S")
@@ -222,7 +234,7 @@ namespace CreateCharacterMain
                 WriteLine("You seem intrigured by this, you've never seen anything like this.");
                 WriteLine("Do you want to venture into the swamp and see what this is? \n\nEnter 1 for yes, press any other key to leave" +
                     " the swamp.");
-                string choice = Console.ReadLine();
+                string choice = ReadLine();
 
 
                 if (choice == "1")
@@ -286,26 +298,26 @@ namespace CreateCharacterMain
                 {
                     WriteLine("You happen to spot something shinny beside the corpse. You realize it's a memento that you" +
                         " completely forgot about. You grab the sliver ring packed with an amythest.");
-                    Console.Beep(3908, 800);
+                    Beep(3908, 800);
                 }
                 if (playerSheet.Race == "Elf")
                 {
                     WriteLine("You found your brooch that you've been missing.  You've had this for Many years.");
-                    Console.Beep(3098, 800);
+                    Beep(3098, 800);
                 }
                 if (playerSheet.Race == "Dwarf")
                 {
                     WriteLine("Out of the corner of your eye you notice a leather bag right next to the corpse." +
                         " You quickly snatch it and open it to find a small batch of gold that is worth 100.");
                     playerSheet.Gold += 100;
-                    Console.Beep(2000, 800);
+                    Beep(2000, 800);
                 }
                 if (playerSheet.Race == "Hobbit")
                 {
                     WriteLine("You notice a small little journal that looks like was used for notes. You grabbed and opened it up" +
                         " to find that there are recipies that you could be using for all of your future events. \n" +
                         "\nYou stash this away and save it for later.");
-                    Console.Beep(1506, 800);
+                    Beep(1506, 800);
                 }
 
                 WriteLine("\nPress any key to contiune.");
@@ -333,6 +345,8 @@ namespace CreateCharacterMain
         public static void ListenFor()
         {
             Clear();
+            WriteLine("All of a sudden you hear the sound of horse hooves coming up from way you came.");
+            ReadKey(false);
             //1st route
             if (playerSheet.Dexterity >= 16)
             {
@@ -360,11 +374,11 @@ namespace CreateCharacterMain
             {
                 Clear();
                 WriteLine("You weren't quick enough to hide behind anything, the stranger looks suprised to run into you.");
-                if(playerSheet.Charisma > 16)
+                if (playerSheet.Charisma > 14)
                 {
-                 
+
                     WriteLine("Since your Charisma is one of your best attributes you are easliy able to talk to the stranger easily.");
-                        if(playerSheet.CharClass == "Cleric")
+                    if (playerSheet.CharClass == "Cleric")
                     {
                         WriteLine("\nYou can sense that the stranger has a wound that needs healed up");
                         WriteLine("YOU 'Hey stranger, I know you're in pain at the moment.  I am a cleric and" +
@@ -398,8 +412,8 @@ namespace CreateCharacterMain
 
 
                 }
-               
-                    ReadKey(false);
+
+                ReadKey(false);
             }
 
         }// end Listen for
@@ -410,7 +424,7 @@ namespace CreateCharacterMain
         public static void Confortation()
         {
 
-            
+
             if (playerSheet.Charisma >= 14 && playerSheet.Charisma < 16)
             {
                 WriteLine("You step out from behind the boulder, trying not to appear intimidating.");
@@ -426,7 +440,7 @@ namespace CreateCharacterMain
                 ReadKey(false);
 
             }
-            if(playerSheet.Charisma < 14)
+            if (playerSheet.Charisma < 14)
             {
                 WriteLine("You step out from behind the boulder, with a weapon in hand.");
                 WriteLine("\nYOU: 'I'm not sure where I am, but I don't have time for games either." +
@@ -462,7 +476,7 @@ namespace CreateCharacterMain
                     "Choose from the two options below: \n" +
                     "Confront the traveler --- type in 'h'" +
                     "\nKnock out the traveler --- type in 'k'");
-                
+
 
                 string option = ReadLine().ToUpper();
 
@@ -501,7 +515,7 @@ namespace CreateCharacterMain
                 " as far as you can. ");
             WriteLine("\nPress enter to fire ");
             ReadKey();
-            if (slingChance > chanceToHit) 
+            if (slingChance > chanceToHit)
             {
                 Clear();
                 WriteLine("The rock zips downward toward the strangers head and knocks him straight down." +
@@ -523,6 +537,9 @@ namespace CreateCharacterMain
                 " well fed and taken care of.");
             ReadKey();
         }// end Describe Stranger
+
+
+
     }
 
 

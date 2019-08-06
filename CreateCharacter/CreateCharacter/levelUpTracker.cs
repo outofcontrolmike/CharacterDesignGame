@@ -18,8 +18,8 @@ namespace CreateCharacterMain
         {
             if (IntroWalkthough.playerSheet.Experience >= IntroWalkthough.playerSheet.NextLevel)
             {
-                Console.Clear();
-                Console.WriteLine("You made it to level " + IntroWalkthough.playerSheet.Level + 1 + "!\n");
+                Clear();
+                WriteLine("You made it to level " + IntroWalkthough.playerSheet.Level + 1 + "!\n");
 
                 // Health
                 // Mana
@@ -27,7 +27,7 @@ namespace CreateCharacterMain
                 // Defense
                 // level
 
-                Console.Beep();
+                Beep();
                 int tMaxHealth = IntroWalkthough.playerSheet.Health;
 
                 

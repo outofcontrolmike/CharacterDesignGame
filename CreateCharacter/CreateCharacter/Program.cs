@@ -45,11 +45,11 @@ namespace CreateCharacterMain
         /// </summary>
         public static void changeColor()
         {
-            Console.BackgroundColor = ConsoleColor.Yellow;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("Press any key to continue");
-            Console.ReadKey();
+            BackgroundColor = ConsoleColor.Yellow;
+            Clear();
+            ForegroundColor = ConsoleColor.Black;
+            Write("Press any key to continue");
+            ReadKey();
         }
 
 
