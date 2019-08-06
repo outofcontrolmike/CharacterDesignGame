@@ -368,7 +368,7 @@ namespace CreateCharacterMain
                     {
                         WriteLine("\nYou can sense that the stranger has a wound that needs healed up");
                         WriteLine("YOU 'Hey stranger, I know you're in pain at the moment.  I am a cleric and" +
-                            " I can heal your would with a spell.");
+                            " I can heal your wound with a spell.");
                         WriteLine("\nThe stranger trusts you well enough and strugggles" +
                             " to get off his horse and then sits on the ground. ");
                         WriteLine("\nMy foots hurts very badley, I think it's broken.");
@@ -377,8 +377,26 @@ namespace CreateCharacterMain
                         WriteLine("You tell the stranger to take his boot off and he cries out in pain while he's attempting it.");
                         WriteLine("You can definitley tell his foot is messed up.  You decide a good way to handle this would be" +
                             " to use the Cure Spell you have.");
+                        WriteLine("You start concentrating very hard and focusing your energy on mending the wound.");
+                        WriteLine("Over the past two minutes you were able to speed up the healing of the foot by tenfold." +
+                            " You watch as relief changes the face of the stranger.");
+                        ReadKey();
+                        Clear();
+                        WriteLine("STRANGER: 'Thank the heavens that we ran into eachother' I wasn't sure if I'd be" +
+                            " able to fight anything I encountered next.");
+                        WriteLine("Would you happen to want a ride down to the village?");
+                        WriteLine("You realized your tired and exhausted yourself and there's not way you could make" +
+                            " it to the village on foot by the end of the day.");
+                        WriteLine("You gladly get on the back of the horse with the stranger and head down into the valley.");
 
                     }
+                    else
+                    {
+                        WriteLine("STRANGER: 'You look absolutley awful, you need to drink some water quick!'");
+                        WriteLine("\nYou struggle your way on to the back of the horse and head down further into the valley.");
+                    }
+
+
                 }
                
                     ReadKey(false);
@@ -404,7 +422,7 @@ namespace CreateCharacterMain
                 WriteLine("STRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
                     " I could give you a ride down to the river and help you become rejuvinated.\n");
                 WriteLine("Normally you would say no to strangers but you can barely think straight at the moment." +
-                    "\nYou gladly accept the offer and hop on the back of the strangers horse.");
+                    "\nYou gladly accept the offer and hop on the back of the stranger's horse.");
                 ReadKey(false);
 
             }
