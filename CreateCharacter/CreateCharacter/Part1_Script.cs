@@ -97,13 +97,13 @@ namespace CreateCharacterMain
                 string newName = Console.ReadLine();
                 gameName = newName;
                 Clear();
-                
+
                 WriteLine("\nYou've decided to name the game: " + gameName.ToUpper());
                 ReadKey(false);
                 Clear();
-               
-                
-                
+
+
+
             }
             else
             {
@@ -144,20 +144,32 @@ namespace CreateCharacterMain
 
         public static void SwampOrWest()
         {
-            WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west: ");
-            string choice = ReadLine().ToUpper();
-          
 
-            if (choice == "S")
-            {
-                Swamp();
-            }
 
-            if (choice == "W")
+            int counter = 1;
+            while (counter == 1)
             {
-                Clear();
-                WriteLine("You decide to head west and take the safe route.");
-                ReadKey(false);
+                WriteLine("Choose a direction:");
+                
+                WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west: ");
+                string choice = ReadLine().ToUpper();
+
+                if (choice == "S")
+                {
+                    counter++;
+                    Swamp();
+                    ReadKey(false);
+
+                }
+
+                if (choice == "W")
+                {
+                    counter++;
+                    Clear();
+                    WriteLine("You decide to head west and take the safe route.");
+                    ReadKey(false);
+                }
+               
             }
         }// end SwampOrWest
 
@@ -176,7 +188,7 @@ namespace CreateCharacterMain
                 " near you.");
             ReadKey();
             CheckBubbles();
-            WriteLine("After coughing and gagging from the bog fog you realize you made it back to the cave you awoke from." +
+            WriteLine("\nAfter coughing and gagging from the bog fog you realize you made it back to the cave you awoke from." +
                 "  You end up heading down the fairly used path, towards the west.");
             ReadKey();
         }// end Swamp Scenario
@@ -206,15 +218,16 @@ namespace CreateCharacterMain
             }// end if
             else
             {
-                
+
                 WriteLine("You seem intrigured by this, you've never seen anything like this.");
-                WriteLine("Do you want to venture into the swamp and see what this is? \nEnter 1 for yes, press any other key to leave" +
+                WriteLine("Do you want to venture into the swamp and see what this is? \n\nEnter 1 for yes, press any other key to leave" +
                     " the swamp.");
                 string choice = Console.ReadLine();
-                Clear();
+
 
                 if (choice == "1")
                 {
+                    Clear();
                     int damage = 10;
                     int updatedHealth = playerSheet.TempHealth - damage;
 
@@ -230,9 +243,13 @@ namespace CreateCharacterMain
 
                 }// end
 
-                WriteLine("You decided to leave the swamp.");
+
+
+                WriteLine("\nYou decided to back out of the swamp and go back to where it's safe.");
+               
+                ReadKey(false);
                 Clear();
-                WriteLine("");
+
                 ReadKey(false);
 
             }// end else
@@ -248,46 +265,53 @@ namespace CreateCharacterMain
             WriteLine("Are you interested in checking the corpse?  Checking corpses is a thing to keep in mind " +
                 " since you can salvage useable things from them. ");
             CheckCorpse();
-           
+
 
         }// end West
 
+        /// <summary>
+        /// Option to search a coropse, boolean logic - checks to see if boolean is typed in
+        /// </summary>
         public static void CheckCorpse()
         {
 
-            WriteLine("Press 1 if you are interested in checking the corpse for valuables:");
-            int choice = Convert.ToInt32(ReadLine());
-            
-            if(choice == 1)
+            WriteLine("\ntype in 'search' if you are interested in checking the corpse for valuables:\n");
+            string search = ReadLine();
+
+            if (search.ToUpperInvariant() == "SEARCH")
+                
             {
                 Clear();
-                if(playerSheet.Race == "Human")
+                if (playerSheet.Race == "Human")
                 {
                     WriteLine("You happen to spot something shinny beside the corpse. You realize it's a memento that you" +
                         " completely forgot about. You grab the sliver ring packed with an amythest.");
+                    Console.Beep(3908, 800);
                 }
-                if(playerSheet.Race == "Elf")
+                if (playerSheet.Race == "Elf")
                 {
                     WriteLine("You found your brooch that you've been missing.  You've had this for Many years.");
+                    Console.Beep(3098, 800);
                 }
                 if (playerSheet.Race == "Dwarf")
                 {
                     WriteLine("Out of the corner of your eye you notice a leather bag right next to the corpse." +
                         " You quickly snatch it and open it to find a small batch of gold that is worth 100.");
                     playerSheet.Gold += 100;
-                    Console.Beep(38, 10000);
+                    Console.Beep(2000, 800);
                 }
-                if(playerSheet.Race == "Hobbit")
+                if (playerSheet.Race == "Hobbit")
                 {
                     WriteLine("You notice a small little journal that looks like was used for notes. You grabbed and opened it up" +
                         " to find that there are recipies that you could be using for all of your future events. \n" +
-                        "You stash this away and save it for later.");
+                        "\nYou stash this away and save it for later.");
+                    Console.Beep(1506, 800);
                 }
 
-                WriteLine("Press any key to contiune.");
+                WriteLine("\nPress any key to contiune.");
                 ReadKey(false);
             }// end check Corpse
-            
+
         }
 
         public static void StrangerEncounter()
@@ -302,22 +326,34 @@ namespace CreateCharacterMain
                 " down towards the river, you're rather thirsty.");
             ReadKey(false);
             ListenFor();
-            
-                
+
+
         }// end Stranger Encounter
 
-       public static void ListenFor()
+        public static void ListenFor()
         {
             Clear();
-            if(playerSheet.Dexterity >= 16)
+            //1st route
+            if (playerSheet.Dexterity >= 16)
             {
                 WriteLine("You hear the sound of horse footsteps from quite a ways back from the way you came.\n" +
                     "You've got plenty of time to hide and possibly sneak up on the stranger that's about to appear.\n");
                 ReadKey();
                 SneakUp();
+
+            }
+            //2nd route
+            if (playerSheet.Dexterity < 16 && playerSheet.Dexterity >=13)
+            {
+                Clear();
+                WriteLine("You managed to sneak behind a boulder just before the stranger arrived.\n");
+                DescStranger();
+                WriteLine("\n The stranger knows that someone is recently there.");
+                WriteLine("\n STRANGER: 'I know someone is here, I am not afraid to endanger you")
                 
             }
-            if(playerSheet.Dexterity < 16)
+            //3rd route
+            if(playerSheet.Dexterity < 13)
             {
 
             }
@@ -339,8 +375,8 @@ namespace CreateCharacterMain
                 WriteLine("After a minute passes by you finally see a traveler appear. ");
                 DescStranger();
                 Clear();
-                WriteLine("You have the thought of ")
-                ReadKey();
+                //  WriteLine("You have the thought of ");
+                ReadKey(false);
             }
 
             else

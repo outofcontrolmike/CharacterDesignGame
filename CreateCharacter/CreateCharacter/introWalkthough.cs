@@ -37,7 +37,7 @@ namespace CreateCharacterMain
         public static void AskForName()
         {
 
-            string charName = "";
+            string charName;
             //Character Name
             Console.WriteLine("Welcome to the create character part of the game!\n");
             Console.WriteLine("First of all, What is your name? \n ");
@@ -428,6 +428,7 @@ namespace CreateCharacterMain
                 WriteLine("-----------------------------------------------------------------------------");
                 wStArmor.ToString();
                 WriteLine("\n");
+                ReadKey(false);
             }
         }
         public static void BuildCharacter()
