@@ -191,14 +191,15 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("You decide that the swamp looks like a neat place to explore, maybe you'll find out" +
                 " more about why you woke up in a cave.\n" +
-                "You had no trouble bouldering down the small bluff. You notice there's an even bigger cave entrance behind you " +
-                "facing the south, however it's boarded up.  You press onward on the rugged trail towards the swamp.\n");
+                "\nYou had no trouble bouldering down the small bluff. You notice there's an even bigger cave entrance behind you " +
+                "facing the south, however it's boarded up. You press onward on the rugged trail towards the swamp.");
             ReadKey(false);
             Clear();
-            WriteLine("After about a half mile down the trail, it ends to the entrance of a gross looking swamp." +
+            WriteLine("After about a half mile down the trail, the trail opens up to the entrance of a gross looking swamp." +
                 " You hear something that sounds like it's popping and you realize there are bubbles coming out of the swamp water" +
                 " near you.");
             ReadKey();
+         
             CheckBubbles();
             WriteLine("\nAfter coughing and gagging from the bog fog you realize you made it back to the cave you awoke from." +
                 "  You end up heading down the fairly used path, towards the west.");
@@ -222,7 +223,7 @@ namespace CreateCharacterMain
                 }
                 else
                 {
-                    WriteLine("You're not sure why the swamp is bubiling but you know not to get involved.  You decide to turn back.");
+                    WriteLine("You're not sure why the swamp is bubiling but you know not to get involved. You decide to turn back.");
                     ReadKey(false);
                 }
 
@@ -243,10 +244,10 @@ namespace CreateCharacterMain
                     int damage = 10;
                     int updatedHealth = playerSheet.TempHealth - damage;
 
-                    WriteLine("You take a few steps into the swamp.  It is very hard to move through and it's suprisingly warm." +
-                        "  As you walk closer to the bubbles you realize your about knee deep in the swamp.\n" +
-                        "  You notice an awful stench coming from the bubbles, it's worse than any farm work you've delt with" +
-                        "  Your knees start to buckle and you start gagging.  You loose your footing and bang your knee into a small " +
+                    WriteLine("You take a few steps into the swamp. It is very hard to move through and it's suprisingly warm." +
+                        "\nAs you walk closer to the bubbles you realize your about knee deep in the swamp.\n" +
+                        "You notice an awful stench coming from the bubbles, it's worse than any farm work you've delt with." +
+                        "\nYour knees start to buckle and you start gagging. You loose your footing and bang your knee into a small " +
                         "structure in the swamp, that really hurt!\n");
                     WriteLine("You lost " + damage + (" health points.") + " " +
                         "Your current health is " + (updatedHealth) + "/" + playerSheet.Health);
@@ -271,14 +272,14 @@ namespace CreateCharacterMain
         {
             Clear();
             WriteLine("You've been walking along this path now for about a mile, the scenery is a lightwooded area" +
-                " that looks like is fading away\n.  Something smells very odd close by, you happen to notice a corpse" +
-                " lying on it's back.  You can't tell what sex it is, it looks like it was eaten alive, by you also can't tell" +
+                " that looks like is fading away" + 
+                "\nSomething smells very odd close by, you happen to notice a corpse" +
+                " lying on it's back.  " +
+                "\nYou can't tell what sex it is, it looks like it was eaten alive, by you also can't tell" +
                 " what from.\n");
             WriteLine("Are you interested in checking the corpse?  Checking corpses is a thing to keep in mind " +
-                " since you can salvage useable things from them. ");
+                "since you can salvage useable things from them.");
             CheckCorpse();
-
-
         }// end West
 
         /// <summary>
@@ -286,7 +287,6 @@ namespace CreateCharacterMain
         /// </summary>
         public static void CheckCorpse()
         {
-
             WriteLine("\ntype in 'search' if you are interested in checking the corpse for valuables:\n");
             string search = ReadLine();
 
@@ -319,22 +319,26 @@ namespace CreateCharacterMain
                         "\nYou stash this away and save it for later.");
                     Beep(1506, 800);
                 }
-
-                WriteLine("\nPress any key to contiune.");
+                
+              
                 ReadKey(false);
             }// end check Corpse
 
-        }
+          
 
+        }//End Check Corpse
+
+        ///---------------------------------------------------------------///
         public static void StrangerEncounter()
         {
             Clear();
             WriteLine("You head down the path for about another half mile and you realize the woods are becoming less abundant.\n" +
-                ".  You eventually break out of the woods at the top of huge valley.\n" +
+                "You eventually break out of the woods at the top of huge valley.\n" +
                 "This valley has a giant landscape, and a river that flows from the northeast to the southwest, however " +
                 "this looks rather far away, at least five miles to the river.\n");
             WriteLine("\nPast the river you see what seems to be a village. This whole place is somewhere you haven't" +
-                " been before. \nYou honestly don't know how to get back to your home, maybe it's best if you walk" +
+                " been before. " +
+                "\nYou honestly don't know how to get back to your home, maybe it's best if you walk" +
                 " down towards the river, you're rather thirsty.");
             ReadKey(false);
             ListenFor();
@@ -342,6 +346,9 @@ namespace CreateCharacterMain
 
         }// end Stranger Encounter
 
+        /// <summary>
+        /// These scenarios branch out, be careful
+        /// </summary>
         public static void ListenFor()
         {
             Clear();
@@ -350,10 +357,17 @@ namespace CreateCharacterMain
             //1st route
             if (playerSheet.Dexterity >= 16)
             {
-                WriteLine("You hear the sound of horse footsteps from quite a ways back from the way you came.\n" +
-                    "You've got plenty of time to hide and possibly sneak up on the stranger that's about to appear.\n");
-                ReadKey();
+                Clear();
+                WriteLine("You've got plenty of time to hide and possibly sneak up on the stranger that's about to appear.");
+                ReadKey(false);
                 SneakUp();
+
+                // Add Scenario logic for three sceanrios
+                // 1- Wait and follow
+                // 2 - Steal horse
+                // 3 - Confront/Befriend
+
+                
 
             }
             //2nd route
@@ -367,6 +381,8 @@ namespace CreateCharacterMain
                     " From what you can tell the stranger sounds like a man.");
                 ReadKey(false);
                 Confortation();
+
+             // Call Scenario Logic for Befriend
 
             }
             //3rd route
@@ -409,11 +425,12 @@ namespace CreateCharacterMain
                         WriteLine("STRANGER: 'You look absolutley awful, you need to drink some water quick!'");
                         WriteLine("\nYou struggle your way on to the back of the horse and head down further into the valley.");
                     }
-
+                   
 
                 }
 
                 ReadKey(false);
+                // Call logic for befriending
             }
 
         }// end Listen for
@@ -423,7 +440,6 @@ namespace CreateCharacterMain
         /// </summary>
         public static void Confortation()
         {
-
 
             if (playerSheet.Charisma >= 14 && playerSheet.Charisma < 16)
             {
@@ -469,13 +485,13 @@ namespace CreateCharacterMain
             if (choice == "1")
             {
                 WriteLine("\nYou scaled to the top of a nearby tree along the path, no one can tell you're up there.\n");
-                WriteLine("After a minute passes by you finally see a traveler appear. ");
+                WriteLine("After a minute passes by you finally see a traveler appear.");
                 DescStranger();
                 Clear();
                 WriteLine("You definitley have the option to try to steal this stranger's horse.\n" +
-                    "Choose from the two options below: \n" +
-                    "Confront the traveler --- type in 'h'" +
-                    "\nKnock out the traveler --- type in 'k'");
+                    "Choose from the two options below: \n\n" +
+                    "Wait--- type in 'W'" +
+                    "\nKnockOut --- type in 'K'");
 
 
                 string option = ReadLine().ToUpper();
@@ -484,7 +500,7 @@ namespace CreateCharacterMain
                 {
                     WriteLine("\nYou decide to wait out the stranger.");
                     WriteLine("\n Time passes by and you watch the stranger ride his horse further down into the valley," +
-                        " and head towards the river.  You decide to follow in his steps.");
+                        " and head towards the river. You decide to follow in his steps.");
                     ReadKey();
                 }
                 if (option == "K")
@@ -498,7 +514,8 @@ namespace CreateCharacterMain
             else
             {
                 Clear();
-                Confortation();
+                WriteLine("You end up befriending the stranger and heading down with them into the valley");
+               
             }
             ReadKey(false);
 
@@ -507,38 +524,61 @@ namespace CreateCharacterMain
         public static void KnockOut()
         {
             int slingChance = playerSheet.Dexterity * 6;
-            int chanceToHit = 50;
+            int chanceToHit = 30;
             Clear();
-            WriteLine("You deicde to try to knock out the stranger.  Since you have good depth perception you should be able to " +
+            WriteLine("You deicde to try to knock out the stranger. Since you have good depth perception you should be able to " +
                 "attempt this by using handy dandy sling.\n" +
                 "You pull out your far range weapon and load it with one of your dull rocks and stretch back" +
-                " as far as you can. ");
+                " as far as you can.");
             WriteLine("\nPress enter to fire ");
-            ReadKey();
+            ReadKey(false);
             if (slingChance > chanceToHit)
             {
                 Clear();
                 WriteLine("The rock zips downward toward the strangers head and knocks him straight down." +
-                    " \nThe horse is freaking out and about to get away, however you drop from the tree onto the horse" +
+                    " \nThe horse is causing a rampage and about to get away, however you drop from the tree onto the horse" +
                     " and start heading down towards the valley.");
                 ReadKey(false);
             }
             /// else
 
-        }
+        }// end Knock Out
 
         /// <summary>
         /// Describes the Stranger
         /// </summary>
         public static void DescStranger()
         {
-            WriteLine("The stranger is clothed in long sleeve chestware and wool pants.  They have a hood on, otherwise" +
-                " you could tell what gender they are.  They are sitting riding on a well build dark brown horse, looks" +
+            Clear();
+            WriteLine("The stranger is clothed in long sleeve chestware and wool pants. They have a hood on, otherwise" +
+                " you could tell what gender they are. They are sitting riding on a well build dark brown horse, looks" +
                 " well fed and taken care of.");
             ReadKey();
         }// end Describe Stranger
 
+        /// <summary>
+        /// Scenario for getting down to the river -- Stranger takes you to town
+        /// </summary>
+        public static void Befriend()
+        {
 
+        }
+
+        /// <summary>
+        /// Scenario for getting down to the river 
+        /// </summary>
+        public static void StolenHorse()
+        {
+
+        }
+
+        /// <summary>
+        /// Scenario for LoneWolf -- Later run into stranger
+        /// </summary>
+        public static void LoneWolf()
+        {
+
+        }
 
     }
 
