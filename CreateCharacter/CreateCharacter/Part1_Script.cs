@@ -150,7 +150,7 @@ namespace CreateCharacterMain
             while (counter == 1)
             {
                 WriteLine("Choose a direction:");
-                
+
                 WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west: ");
                 string choice = ReadLine().ToUpper();
 
@@ -169,7 +169,7 @@ namespace CreateCharacterMain
                     WriteLine("You decide to head west and take the safe route.");
                     ReadKey(false);
                 }
-               
+
             }
         }// end SwampOrWest
 
@@ -246,7 +246,7 @@ namespace CreateCharacterMain
 
 
                 WriteLine("\nYou decided to back out of the swamp and go back to where it's safe.");
-               
+
                 ReadKey(false);
                 Clear();
 
@@ -279,7 +279,7 @@ namespace CreateCharacterMain
             string search = ReadLine();
 
             if (search.ToUpperInvariant() == "SEARCH")
-                
+
             {
                 Clear();
                 if (playerSheet.Race == "Human")
@@ -319,7 +319,7 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("You head down the path for about another half mile and you realize the woods are becoming less abundant.\n" +
                 ".  You eventually break out of the woods at the top of huge valley.\n" +
-                "This valley has a giant ladnscape, and a river that flows from the northeast to the southwest, however " +
+                "This valley has a giant landscape, and a river that flows from the northeast to the southwest, however " +
                 "this looks rather far away, at least five miles to the river.\n");
             WriteLine("\nPast the river you see what seems to be a village. This whole place is somewhere you haven't" +
                 " been before. \nYou honestly don't know how to get back to your home, maybe it's best if you walk" +
@@ -343,22 +343,87 @@ namespace CreateCharacterMain
 
             }
             //2nd route
-            if (playerSheet.Dexterity < 16 && playerSheet.Dexterity >=13)
+            if (playerSheet.Dexterity < 16 && playerSheet.Dexterity >= 13)
             {
                 Clear();
                 WriteLine("You managed to sneak behind a boulder just before the stranger arrived.\n");
                 DescStranger();
-                WriteLine("\n The stranger knows that someone is recently there.");
-                WriteLine("\n STRANGER: 'I know someone is here, I am not afraid to endanger you")
-                
+                WriteLine("\n The stranger knows that someone is around.");
+                WriteLine("\n\n STRANGER: 'Whoever it is, come out now.  I don't have time for these games.'" +
+                    " From what you can tell the stranger sounds like a man.");
+                ReadKey(false);
+                Confortation();
+
             }
             //3rd route
-            if(playerSheet.Dexterity < 13)
+            if (playerSheet.Dexterity < 13)
             {
+                Clear();
+                WriteLine("You weren't quick enough to hide behind anything, the stranger looks suprised to run into you.");
+                if(playerSheet.Charisma > 16)
+                {
+                 
+                    WriteLine("Since your Charisma is one of your best attributes you are easliy able to talk to the stranger easily.");
+                        if(playerSheet.CharClass == "Cleric")
+                    {
+                        WriteLine("\nYou can sense that the stranger has a wound that needs healed up");
+                        WriteLine("YOU 'Hey stranger, I know you're in pain at the moment.  I am a cleric and" +
+                            " I can heal your would with a spell.");
+                        WriteLine("\nThe stranger trusts you well enough and strugggles" +
+                            " to get off his horse and then sits on the ground. ");
+                        WriteLine("\nMy foots hurts very badley, I think it's broken.");
+                        ReadKey(false);
+                        Clear();
+                        WriteLine("You tell the stranger to take his boot off and he cries out in pain while he's attempting it.");
+                        WriteLine("You can definitley tell his foot is messed up.  You decide a good way to handle this would be" +
+                            " to use the Cure Spell you have.");
 
+                    }
+                }
+               
+                    ReadKey(false);
             }
 
-        }
+        }// end Listen for
+
+        /// <summary>
+        /// Confront the Stranger
+        /// </summary>
+        public static void Confortation()
+        {
+
+            
+            if (playerSheet.Charisma >= 14 && playerSheet.Charisma < 16)
+            {
+                WriteLine("You step out from behind the boulder, trying not to appear intimidating.");
+                WriteLine("\nYOU:  'Hello Stranger, I was not trying to seem like a threat.  I am not familair with the area" +
+                    " I woke up in a cave a couple miles back from where you came from and I'm trying to get back home." +
+                    "  I don't know where to even start.' ");
+                ReadKey(false);
+                Clear();
+                WriteLine("STRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
+                    " I could give you a ride down to the river and help you become rejuvinated.\n");
+                WriteLine("Normally you would say no to strangers but you can barely think straight at the moment." +
+                    "\nYou gladly accept the offer and hop on the back of the strangers horse.");
+                ReadKey(false);
+
+            }
+            if(playerSheet.Charisma < 14)
+            {
+                WriteLine("You step out from behind the boulder, with a weapon in hand.");
+                WriteLine("\nYOU: 'I'm not sure where I am, but I don't have time for games either." +
+                    " \nI woke up in a cave a couple miles back from where you came from and I'm trying to get back home." +
+                    "  \nI don't know where to even start.' ");
+                ReadKey(false);
+                Clear();
+                WriteLine("STRANGER: 'I see that you feel threatned, if you put up that mean face and weapon I could help you out.");
+                WriteLine("STRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
+                    " I could give you a ride down to the river and help you become rejuvinated.\n");
+                WriteLine("Normally you would say no to strangers but you can barely think straight at the moment." +
+                    "\nYou gladly accept the offer and hop on the back of the strangers horse.");
+                ReadKey(false);
+            }
+        }// end confrotation
 
         /// <summary>
         /// Called by Listen For - Theif
@@ -375,24 +440,71 @@ namespace CreateCharacterMain
                 WriteLine("After a minute passes by you finally see a traveler appear. ");
                 DescStranger();
                 Clear();
-                //  WriteLine("You have the thought of ");
+                WriteLine("You definitley have the option to try to steal this stranger's horse.\n" +
+                    "Choose from the two options below: \n" +
+                    "Confront the traveler --- type in 'h'" +
+                    "\nKnock out the traveler --- type in 'k'");
+                
+
+                string option = ReadLine().ToUpper();
+
+                if (option == "W")
+                {
+                    WriteLine("\nYou decide to wait out the stranger.");
+                    WriteLine("\n Time passes by and you watch the stranger ride his horse further down into the valley," +
+                        " and head towards the river.  You decide to follow in his steps.");
+                    ReadKey();
+                }
+                if (option == "K")
+                {
+                    KnockOut();
+                }
+
                 ReadKey(false);
             }
 
             else
             {
-                DescStranger();
+                Clear();
+                Confortation();
             }
+            ReadKey(false);
+
+        }// end SneakUp
+
+        public static void KnockOut()
+        {
+            int slingChance = playerSheet.Dexterity * 6;
+            int chanceToHit = 50;
+            Clear();
+            WriteLine("You deicde to try to knock out the stranger.  Since you have good depth perception you should be able to " +
+                "attempt this by using handy dandy sling.\n" +
+                "You pull out your far range weapon and load it with one of your dull rocks and stretch back" +
+                " as far as you can. ");
+            WriteLine("\nPress enter to fire ");
+            ReadKey();
+            if (slingChance > chanceToHit) 
+            {
+                Clear();
+                WriteLine("The rock zips downward toward the strangers head and knocks him straight down." +
+                    " \nThe horse is freaking out and about to get away, however you drop from the tree onto the horse" +
+                    " and start heading down towards the valley.");
+                ReadKey(false);
+            }
+            /// else
 
         }
 
+        /// <summary>
+        /// Describes the Stranger
+        /// </summary>
         public static void DescStranger()
         {
             WriteLine("The stranger is clothed in long sleeve chestware and wool pants.  They have a hood on, otherwise" +
                 " you could tell what gender they are.  They are sitting riding on a well build dark brown horse, looks" +
                 " well fed and taken care of.");
             ReadKey();
-        }
+        }// end Describe Stranger
     }
 
 

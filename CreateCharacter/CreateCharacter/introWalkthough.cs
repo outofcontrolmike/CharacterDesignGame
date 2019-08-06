@@ -27,6 +27,7 @@ namespace CreateCharacterMain
         public static Armor StArmor = new Armor();
 
         public static MagicSpell mageSpell = new MagicSpell();
+        public static MagicSpell cure = new MagicSpell();
 
         public static CharacterSheet playerSheet = new CharacterSheet();
         #endregion
@@ -661,11 +662,11 @@ namespace CreateCharacterMain
 
         }
 
-        private static void BuildCure()
+        public static void BuildCure()
         {
 
        
-            MagicSpell cure = new MagicSpell();
+           
 
             cure.Name = "Cure";
             cure.MagicCost = 10;
