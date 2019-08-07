@@ -342,6 +342,7 @@ namespace CreateCharacterMain
                 " down towards the river, you're rather thirsty.");
             ReadKey(false);
             ListenFor();
+            ReadKey(false);
 
 
         }// end Stranger Encounter
@@ -382,7 +383,8 @@ namespace CreateCharacterMain
                 ReadKey(false);
                 Confortation();
 
-             // Call Scenario Logic for Befriend
+                // Call Scenario Logic for Befriend
+                Befriend();
 
             }
             //3rd route
@@ -430,7 +432,7 @@ namespace CreateCharacterMain
                 }
 
                 ReadKey(false);
-                // Call logic for befriending
+                Befriend();
             }
 
         }// end Listen for
@@ -501,20 +503,24 @@ namespace CreateCharacterMain
                     WriteLine("\nYou decide to wait out the stranger.");
                     WriteLine("\n Time passes by and you watch the stranger ride his horse further down into the valley," +
                         " and head towards the river. You decide to follow in his steps.");
-                    ReadKey();
+                    ReadKey(false);
+                    LoneWolf();
+
                 }
                 if (option == "K")
                 {
                     KnockOut();
+                    StolenHorse();
                 }
 
                 ReadKey(false);
-            }
+            }//end choice
 
             else
             {
                 Clear();
                 WriteLine("You end up befriending the stranger and heading down with them into the valley");
+                Befriend();
                
             }
             ReadKey(false);
@@ -572,12 +578,24 @@ namespace CreateCharacterMain
             WriteLine("/nMoment's pass by and the stranger stops at a certain spot a long the river.");
             ReadKey(false);
             Clear();
-            WriteLine("Jobe: 'This place looks like a safe place. If you want to search the nearby woods for some firewood" +
-                " I can catch some fish for dinner form the river.'");
-            WriteLine("You head out towards the woods and find plenty of dry wood ot use to start a fire." +
+            WriteLine("Jobe: ' " +
+                "This place looks like a safe place. If you want to search the nearby woods for some firewood" +
+                " I can catch some fish for dinner form the river.  Make sure you go get some water first.'");
+            WriteLine("\nWater does sound pretty damn good about now. You dash out towards the river and fall into it, comsuming water." +
+                " After drinking as much water as you could you start hiccuping.");
+            WriteLine("\nAfter your attack of the hiccups you head out towards the woods and find plenty of dry wood ot use to start a fire." +
                 "\nYou head back to the camping spot and build a make shift fire pit out of some near by rocks and" +
                 " managed to make a cooking pit to easily cook over.");
             WriteLine("\nYou watch Jobe walking the river side with a heafty size net full of fish.");
+            CookMorning();
+            VillageDesc();
+
+            // Don't go past Village Desc -- make a new class for Tavern
+
+        }// end Befriend
+
+        public static void CookMorning()
+        {
             WriteLine("\nJobe: 'We ain't going hungry tonight my friend.'");
             WriteLine("You watch Jobe quckily skin and remove the guts from 12 fish and observe him" +
                 " skewer them all. \n" +
@@ -593,13 +611,157 @@ namespace CreateCharacterMain
             WriteLine("\nAfter about an 1 hour of riding through the valley, Jobe starts talking your ear off.");
             ReadKey(false);
             Conversation();
-
-            
+            Clear();
+            WriteLine("After some miscellanous conversations you arrive to the village entrance.");
+            WriteLine("Jobe: 'Well, this is where I say goodbye.  Maybe I'll see you again someday if I run" +
+                " into you out in the world. Good luck on finding your home.");
+            ReadKey(false);
         }
+
+       
+        public static void StolenHorse()
+        {
+            Clear();
+            WriteLine("You're making very quick time, you're already at the river." +
+                "\nYou let the horse and yourself take a break and drink from the vigrously flowing river, it tastes delicious." +
+                "\nAfter about half an hour of a rest you decide it's a good idea to keep moving to the village off in the distance.");
+            ReadKey(false);
+            Clear();
+            WriteLine("You rip through the land over a couple hours of time and are arriving the front of the village." +
+                " As the horse, you stole, slows down you notice something very weird happening." +
+                " The horse starts slowey fading and all of a sudden you fall to the ground." +
+                " \nLuckily you weren't moving too fast, the collision with the ground didn't cause any damage to you." +
+                " The horse owner must have used a spell on the horse to transport it back, You've heard about the Blink spell before.");
+            ReadKey(false);
+            Clear();
+            VillageDesc();
+
+
+        }// end StolenHorse
+
+        /// <summary>
+        /// Scenario for LoneWolf -- Later run into stranger
+        /// </summary>
+        public static void LoneWolf()
+        {
+            Clear();
+            WriteLine("You've been walking for quite a while now.  It's about 2 hours until night time." +
+                "\nYou eventually make it close to the river and you see the stranger setting up camp.");
+            WriteLine("You can either go confront the stranger or you can wait til later in the night to steal the" +
+            " stranger's horse.");
+            ReadKey(false);
+            StealOrConfront();
+
+        }// end LoneWolf
+
+        public static void StealOrConfront()
+        {
+            Clear();
+            WriteLine("Would you like to Confront the stranger and gain an ally?\n" +
+                "Enter yes to confront the stranger.  Otherwise we're assuming you're going" +
+                " to steal the horse overnight.");
+            string choice = ReadLine();
+            ReadKey();
+
+            if(choice.ToUpper() == "YES")
+            {
+                Confront();
+            }
+            else
+            {
+                StealHorse();
+            }
+            
+
+        }//End StealOrConfront
+
+        public static void Confront()
+        {
+            Clear();
+            WriteLine("You've decided to confront the stranger.");
+            WriteLine("\nYou start walking their way and as you get closer you notice they are facing the" +
+                " sunset.  You decide yell out at them to get there attention." +
+                " YOU: 'HEYYYYYYYYY!!!'");
+            WriteLine("The stranger turns around and with their hand around their sword sheath.");
+            WriteLine("\nYou slow down and lock eyes with the stranger." +
+                "\nSTRANGER: 'Who are you?! Were you following me?  if so,how far!?'");
+            WriteLine("YOU: 'My name is " + playerSheet.Name + ".  I mean no harm." +
+                " I've known about you since the bluff south of here. I heard someone coming from the cave" +
+                " so I hid up in a tree and waited for them to pass by." +
+                " Believe it or not I woke up this morning in the cave above the bluff and I'm not sure" +
+                " how to get back to my hometown. I don't know where I am.");
+            ReadKey(false);
+            Clear();
+            WriteLine("The stranger locks eyes with you.\n\n" +
+                "Stranger: 'My name is Jobe. You're welcome to stay hear at the fire with me." +
+                " You better do yourself a favor and get you some water to drink from the river, you look rough." +
+                "\nWhile you're over grabbing some water can you check my fishing trap?" +
+                "\n'If you're lucky there might be enough dinner for the both of us.");
+            ReadKey(false);
+            Clear();
+            WriteLine("You walk over to the river and fill up on water and also wash yourself." +
+                "\nYou walk over to where the fishing trap is.  It's one of the biggest" +
+                " net's you've ever seen." +
+                "\nThe net has quite a haul and you're happy to see it since you're hungy as well." +
+                "\nYou bring the fishing back to the fire pit and Jobe has a big smile on his face," +
+                " he must love food.");
+
+                
+
+        }
+
+        public static void StealHorse()
+        {
+            Clear();
+            WriteLine("You decided to wait til later in the night to steal the horse." +
+                "\nHours passed by, you managed to sleep a little.  It's slightly hard to see but you can see" +
+                "embers of the stranger's campfire." +
+                "\nYou stealthly walk over to stranger's fire." +
+                "\nThe stranger needs to be knocked out so that he doesn't know who's taking his horse." +
+                "\nYou deicde to use some of a special elixir to place on a cloth to put over" +
+                "the strangers face to drug him.");
+                ReadKey(false);
+            Clear();
+            WriteLine("You sneak up to the stranger sleeping on the ground and place the" +
+                " drugged cloth over his face." +
+                "\nThe stranger starts to reach out to stop what's going on then instantely he" +
+                " slows down and eventually falls back asleep.");
+            WriteLine("\nYou find a thick stick to catch on fire" +
+                " to use as a light source.\n" +
+                "After about half a minute you've gota strong fire on the torch you made." +
+                "\n\nYou calmly walk over to the horse and mount it. It seems to be" +
+                " okay with you getting on top of it. You direct the horse to the east to a small" +
+                "bridge and you cross it.");
+            ReadKey(false);
+            Clear();
+            WriteLine("After about an hour of riding you notice towards the east the sun is rising.");
+            WriteLine("You realize the town is probably another couple hours away, so you continue to journey.");
+            WriteLine("\nAfter sometime you reach the edging of the village.");
+            WriteLine(
+            "\nAs the horse, you stole, slows down you notice something very weird happening." +
+                " The horse starts slowey fading and all of a sudden you fall to the ground." +
+                " \nLuckily you weren't moving too fast, the collision with the ground didn't cause any damage to you." +
+                " The horse owner must have used a spell on the horse to transport it back, You've heard about the Blink spell before.");
+            ReadKey(false);
+            Clear();
+            VillageDesc();
+
+        }// end StealHorse
+
+        public static void VillageDesc()
+        {
+            Clear();
+            WriteLine("You walk into the village along a dirt path and notice there is basically one" +
+                " main road that goes through.  You see a few main bulidings and a what looks like a tavern down in the distance");
+            WriteLine("Surronding the vilalge you see lot's of agriculture. The village seems to be inhabbited by some decently smart" +
+                " people to surive on their own.");
+            WriteLine("You decide to head to the tavern and get more information about what's around the area.");
+            ReadKey(false);
+        }// end Village Desc
 
         public static void Conversation()
         {
-            if(playerSheet.Race == "Human")
+            if (playerSheet.Race == "Human")
             {
                 Clear();
                 WriteLine("It's a good thing that you're a Human. The village we are going to is mainly popoulated " +
@@ -629,7 +791,7 @@ namespace CreateCharacterMain
                 WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
                 ReadKey();
             }
-            
+
             if (playerSheet.Race == "Dwarf")
             {
                 Clear();
@@ -667,18 +829,6 @@ namespace CreateCharacterMain
         /// <summary>
         /// Scenario for getting down to the river 
         /// </summary>
-        public static void StolenHorse()
-        {
-
-        }
-
-        /// <summary>
-        /// Scenario for LoneWolf -- Later run into stranger
-        /// </summary>
-        public static void LoneWolf()
-        {
-
-        }
 
     }
 
