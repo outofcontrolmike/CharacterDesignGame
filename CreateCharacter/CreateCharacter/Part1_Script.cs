@@ -561,9 +561,109 @@ namespace CreateCharacterMain
         /// </summary>
         public static void Befriend()
         {
+            Clear();
+            WriteLine("You watch as the scenery into the valley gets much more beatiful, time slips by" +
+                " and you notice you have about two hours of daylight left.");
+            WriteLine("\n'STRANGER: 'Oh by the way, I forgot to mention my name, my name is Jobe.  What is yours?");
+            WriteLine("\nYOU: 'My name is " + playerSheet.Name + ".");
+            WriteLine("\nJobe: 'Okay then " + playerSheet.Name + "!  We are going to stop near the river and make camp for the night, I don't feel comfortable" +
+                " riding my horse at night.'");
+            WriteLine("You agree with the stranger completley.");
+            WriteLine("/nMoment's pass by and the stranger stops at a certain spot a long the river.");
+            ReadKey(false);
+            Clear();
+            WriteLine("Jobe: 'This place looks like a safe place. If you want to search the nearby woods for some firewood" +
+                " I can catch some fish for dinner form the river.'");
+            WriteLine("You head out towards the woods and find plenty of dry wood ot use to start a fire." +
+                "\nYou head back to the camping spot and build a make shift fire pit out of some near by rocks and" +
+                " managed to make a cooking pit to easily cook over.");
+            WriteLine("\nYou watch Jobe walking the river side with a heafty size net full of fish.");
+            WriteLine("\nJobe: 'We ain't going hungry tonight my friend.'");
+            WriteLine("You watch Jobe quckily skin and remove the guts from 12 fish and observe him" +
+                " skewer them all. \n" +
+                "You built a roaring fire and the fish cooks with no problem at all.");
+            WriteLine("\nYou guys share some stories about your childhoods and make a plan to leave early the next morning.");
+            WriteLine("Eventually the two of you fall asleep covered in cloaks, listening to the roaring sound of the river.");
+            ReadKey(false);
+            Clear();
+            WriteLine("\nYou both awake in the morning and luckily nothing messed with you overnight. Jobe picked a pretty good" +
+                " spot to camp and hide out.");
+            WriteLine("You both pick up camp and load up on water, You know it will be at least a few hours until you get to town.");
+            WriteLine("\nYou both get on the horse and find a small bridge to cross over the river.");
+            WriteLine("\nAfter about an 1 hour of riding through the valley, Jobe starts talking your ear off.");
+            ReadKey(false);
+            Conversation();
 
+            
         }
 
+        public static void Conversation()
+        {
+            if(playerSheet.Race == "Human")
+            {
+                Clear();
+                WriteLine("It's a good thing that you're a Human. The village we are going to is mainly popoulated " +
+                    "by Humans.");
+                WriteLine("'You won't have any problems getting along with anybody in town. I'd suggest that you" +
+                    " go to the Tavern to learn about what your next step should be.'");
+                WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
+                WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
+                    " to the town anyways. I was banished long ago and I've been on my own for years.'");
+                WriteLine("\nYOU 'Why were you BANISHED?");
+                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
+                ReadKey();
+            }
+
+            if (playerSheet.Race == "Elf")
+            {
+                Clear();
+                WriteLine("'You might have a little bit of trouble with fitting into the village" +
+                    ". The village we are going to is mainly populated " +
+                    "by Humans.  I wouldn't stay long if I were you.'");
+                WriteLine("' I'd suggest that you" +
+                    " go to the Tavern to learn about what your next step should be.'");
+                WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
+                WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
+                    " to the town anyways. I was banished long ago and I've been on my own for years.'");
+                WriteLine("\nYOU 'Why were you BANISHED?");
+                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
+                ReadKey();
+            }
+            
+            if (playerSheet.Race == "Dwarf")
+            {
+                Clear();
+                WriteLine("'You shouldn't have too much trouble with fitting into the village" +
+                    ". The village we are going to is mainly populated " +
+                    "by Humans and they like to trade with the Dwarven. I wouldn't stay long if I were you, the government " +
+                    " may try to take advantage of you though. Therefore, be careful.'");
+                WriteLine("' I'd suggest that you" +
+                    " go to the Tavern to learn about what your next step should be.'");
+                WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
+                WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
+                    " to the town anyways. I was banished long ago and I've been on my own for years.'");
+                WriteLine("\nYOU 'Why were you BANISHED?");
+                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
+                ReadKey();
+            }
+
+            if (playerSheet.Race == "Hobbit")
+            {
+                Clear();
+                WriteLine("'You shouldn't have too much trouble with fitting into the village" +
+                    ". The village we are going to is mainly populated " +
+                    "by Humans and they like to be spoiled by Hobbits. I wouldn't stay long if I were you, the townsfolk  " +
+                    " may try to take advantage of you though. Therefore, be careful.'");
+                WriteLine("' I'd suggest that you" +
+                    " go to the Tavern to learn about what your next step should be.'");
+                WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
+                WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
+                    " to the town anyways. I was banished long ago and I've been on my own for years.'");
+                WriteLine("\nYOU 'Why were you BANISHED?");
+                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
+                ReadKey();
+            }
+        }// end Conversation
         /// <summary>
         /// Scenario for getting down to the river 
         /// </summary>
