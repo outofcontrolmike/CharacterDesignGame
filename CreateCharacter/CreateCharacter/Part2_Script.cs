@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using static System.Console;
 
+
 namespace CreateCharacterMain
 {
     class Part2_Script : Part1_Script
     {
 
         private static int counter = 0;
+        private static int drinkCount;
         // Make ideas for the Tavern
         // Player should sit down
         // Player should look at menu
@@ -51,12 +53,10 @@ namespace CreateCharacterMain
                 "simulate a cheers for good times.\n" +
                 "Under the logo the name of the tavern is displayed -- " +
                 "\n\nFRIENDS INN");
-            WriteLine("You push the heavy oak doors open and make your entrance into the bar.");
+            WriteLine("\nYou push the heavy oak doors open and make your entrance into the bar.");
             ReadKey(false);
             OpenDoors();
-            
-
-
+    
 
             ReadKey(false);
         }// end BarDesc
@@ -64,9 +64,9 @@ namespace CreateCharacterMain
         public static void OpenDoors()
         {
             Clear();
-
-            //Testing below
-            CharacterSheet.playerSheet.Race = "Hobbit";
+            //Testing
+            //CharacterSheet.playerSheet.Race = "Hobbit";
+            
             string caseSwitch = CharacterSheet.playerSheet.Race;
 
             switch (caseSwitch)
@@ -121,13 +121,12 @@ namespace CreateCharacterMain
 
             string[] bDesc = new string[] {"Delicious Well Water", "A fine well bodied lager", "Sweet Honey mead made locally",
             "Healthy wine made from local berries", "Imported Red Wine", "India Pale Ale - You've never heard of such a thing"};
-            
 
             Clear();
             WriteLine("Drink Menu".ToUpper());
-            CharacterSheet.playerSheet.Gold = 130;
+           // CharacterSheet.playerSheet.Gold = 200;
 
-            if (playerSheet.Gold >=100)
+            if (playerSheet.Gold >=120)
             {
                 //Somehow incorporate a for loop that access each elements in array
                 for (int i = 0; i < bNames.Length; i++)
@@ -166,8 +165,7 @@ namespace CreateCharacterMain
 
                 if (playerSheet.Gold <= 90)
                 {
-                    WriteLine("\nBartender: 'You're gonna blow all your money here, not allowed for a" +
-                        " stranger.'");
+                    WriteLine("\nBartender: 'You're gonna blow all your money here, you've had too much!'");
                     counter++;
 
                 }
@@ -181,18 +179,67 @@ namespace CreateCharacterMain
                     counter++;
                 }// end quit
 
-
-
-
-
             }// end while
 
+            //How drunk is the character?
 
+            HowDrunk();
 
             
             ReadKey(false);
 
         }//end BeverageString
+
+        public static void HowDrunk()
+        {
+            Clear();
+            if(drinkCount <3)
+            {
+        
+                WriteLine("\nYou've decided your ready to turn in for the day, you ask the bartender about" +
+                    " renting a room upstairs.");
+                WriteLine("\nBartender: 'That's gonna be 30 gold for tonight!'");
+                WriteLine("\nYou place the gold on the bar while he gets out your key." +
+                   "\nYou get up  and then you walk up the creaky stairs" +
+                   " and find your loft - room 202");
+                WriteLine("\nYou enter the room and make yourself at home, finally comfrotable for once." +
+                    "\nTomorrow will be a new day.");
+                WriteLine("\nNext thing you know you're in bed and closing your eyes.");
+
+            }
+
+            if (drinkCount <= 5 && drinkCount >= 3)
+            {
+                WriteLine("You're Feeling pretty good.");
+                WriteLine("\nYou've decided your ready to turn in for the day, you ask the bartender about" +
+                    " renting a room upstairs.");
+                WriteLine("\nBartender: 'That's gonna be 30 gold for tonight!'");
+                playerSheet.Gold -= 30;
+                WriteLine("\nYou have " + playerSheet.Gold + "gold");
+                WriteLine("\nYou place the gold on the bar while he gets out your key." +
+                    "\nYou get up slowely to brace your balance and then you walk up the creaky stairs" +
+                    " and find your loft - room 202");
+                WriteLine("\nYou enter the room and make yourself at home, finally comfrotable for once." +
+                    "\nTomorrow will be a new day.");
+                WriteLine("\nNext thing you know you're in bed and closing your eyes.");
+               
+                
+            }
+            if(drinkCount > 5 && drinkCount <=10)
+            {
+                Random rnd = new Random();
+
+                int drunkRandom = 8 * ( rnd.Next(4, 8));
+                WriteLine("You're a mess, you need help getting up stairs.");
+                WriteLine("You pull out some gold out your pockets and you don't care" +
+                    " about how much your paying.");
+                playerSheet.Gold -= drunkRandom;
+                WriteLine("\nYou hear the bartender count out " + drunkRandom + "gold.");
+                WriteLine("\nA couple of regulars from the bar grab you and that's the last thing you remember.");
+                WriteLine("\nGood night for now.");
+            }
+            ReadKey(false);
+        }// end HowDrunk
 
         public static void ChooseBeverage()
         {
@@ -208,6 +255,7 @@ namespace CreateCharacterMain
                 case "1":
                     WriteLine("You purchased a Lager, that cost you " + bPrices[1] + " gold.");
                     playerSheet.Gold -= bPrices[1];
+                    drinkCount++;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     ReadKey(false);
                     break;
@@ -215,30 +263,36 @@ namespace CreateCharacterMain
                 case "2":
                     WriteLine("You purchased some Honey Mead, that costs you " + bPrices[2] + " gold.");
                     playerSheet.Gold -= bPrices[2];
+                    drinkCount = 2;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    
                     break;
 
                 case "3":
                     WriteLine("You purchased Elder Berry Wine, that costs you " + bPrices[2] + " gold.");
                     playerSheet.Gold -= bPrices[2];
+                    drinkCount = 3;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
                 case "4":
                     WriteLine("You purchased Red Wine, that costs you " + bPrices[3] + " gold.");
                     playerSheet.Gold -= bPrices[3];
+                    drinkCount = 4;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
                 case "5":
                     WriteLine("You purchased some skunnky smelling OLD Town IPA, that costs you " + bPrices[4] + " gold.");
                     playerSheet.Gold -= bPrices[4];
+                    drinkCount = 2;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
                 case "6":
                     WriteLine("You purchased Well Water, that costs you " + bPrices[0] + " gold.");
                     playerSheet.Gold -= bPrices[0];
+                    drinkCount -= 1;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
@@ -251,4 +305,6 @@ namespace CreateCharacterMain
 
 
     }
+
+   
 }

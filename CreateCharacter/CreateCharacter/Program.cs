@@ -24,14 +24,14 @@ namespace CreateCharacterMain
 
             // Setting up Character
 
-          
-            //IntroWalkthough.AskForName();
-            //IntroWalkthough.GetRace();
-            //IntroWalkthough.GetClass();
-            //IntroWalkthough.GetStats();
-            //IntroPlot.TheWakeUp();
 
-            Part2_Script.Tavern();
+            IntroWalkthough.AskForName();
+            IntroWalkthough.GetRace();
+            IntroWalkthough.GetClass();
+            IntroWalkthough.GetStats();
+            IntroPlot.TheWakeUp();
+            
+          
 
 
 
