@@ -352,8 +352,7 @@ namespace CreateCharacterMain
             int counter = 1;
             while (counter == 1)
             {
-                string caseSwitch = pClass;
-
+  
                 switch (pClass)
                 {
                     case "1":
