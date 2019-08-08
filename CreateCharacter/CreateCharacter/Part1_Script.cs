@@ -161,9 +161,9 @@ namespace CreateCharacterMain
             int counter = 1;
             while (counter == 1)
             {
-                WriteLine("Choose a direction:");
+                WriteLine("Choose a direction:".ToUpper());
 
-                WriteLine("Which direction would you like to go?  Press 's' for swamp or 'w' for west:");
+                WriteLine("\nWhich direction would you like to go?  Press 's' for swamp or 'w' for west:");
                 string choice = ReadLine().ToUpper();
 
                 if (choice == "S")
@@ -273,11 +273,11 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("You've been walking along this path now for about a mile, the scenery is a lightwooded area" +
                 " that looks like is fading away" + 
-                "\nSomething smells very odd close by, you happen to notice a corpse" +
+                "\n\nSomething smells very odd close by, you happen to notice a corpse" +
                 " lying on it's back.  " +
                 "\nYou can't tell what sex it is, it looks like it was eaten alive, by you also can't tell" +
                 " what from.\n");
-            WriteLine("Are you interested in checking the corpse?  Checking corpses is a thing to keep in mind " +
+            WriteLine("\nAre you interested in checking the corpse?  Checking corpses is a thing to keep in mind " +
                 "since you can salvage useable things from them.");
             CheckCorpse();
         }// end West
@@ -334,9 +334,9 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("You head down the path for about another half mile and you realize the woods are becoming less abundant.\n" +
                 "You eventually break out of the woods at the top of huge valley.\n" +
-                "This valley has a giant landscape, and a river that flows from the northeast to the southwest, however " +
+                "\nThis valley has a giant landscape, and a river that flows from the northeast to the southwest, however " +
                 "this looks rather far away, at least five miles to the river.\n");
-            WriteLine("\nPast the river you see what seems to be a village. This whole place is somewhere you haven't" +
+            WriteLine("Past the river you see what seems to be a village. This whole place is somewhere you haven't" +
                 " been before. " +
                 "\nYou honestly don't know how to get back to your home, maybe it's best if you walk" +
                 " down towards the river, you're rather thirsty.");
@@ -363,11 +363,6 @@ namespace CreateCharacterMain
                 ReadKey(false);
                 SneakUp();
 
-                // Add Scenario logic for three sceanrios
-                // 1- Wait and follow
-                // 2 - Steal horse
-                // 3 - Confront/Befriend
-
                 
 
             }
@@ -378,8 +373,8 @@ namespace CreateCharacterMain
                 WriteLine("You managed to sneak behind a boulder just before the stranger arrived.\n");
                 DescStranger();
                 WriteLine("\n The stranger knows that someone is around.");
-                WriteLine("\n\n STRANGER: 'Whoever it is, come out now.  I don't have time for these games.'" +
-                    " From what you can tell the stranger sounds like a man.");
+                WriteLine("\n\n STRANGER: 'Whoever it is, come out now. I don't have time for these games.'" +
+                    " \nFrom what you can tell the stranger sounds like a man.");
                 ReadKey(false);
                 Confortation();
 
@@ -399,9 +394,9 @@ namespace CreateCharacterMain
                     if (playerSheet.CharClass == "Cleric")
                     {
                         WriteLine("\nYou can sense that the stranger has a wound that needs healed up");
-                        WriteLine("YOU 'Hey stranger, I know you're in pain at the moment.  I am a cleric and" +
+                        WriteLine("YOU: 'Hey stranger, I know you're in pain at the moment.  I am a cleric and" +
                             " I can heal your wound with a spell.");
-                        WriteLine("\nThe stranger trusts you well enough and strugggles" +
+                        WriteLine("\nThe stranger trusts you well enough and struggles" +
                             " to get off his horse and then sits on the ground. ");
                         WriteLine("\nMy foots hurts very badley, I think it's broken.");
                         ReadKey(false);
@@ -409,17 +404,17 @@ namespace CreateCharacterMain
                         WriteLine("You tell the stranger to take his boot off and he cries out in pain while he's attempting it.");
                         WriteLine("You can definitley tell his foot is messed up.  You decide a good way to handle this would be" +
                             " to use the Cure Spell you have.");
-                        WriteLine("You start concentrating very hard and focusing your energy on mending the wound.");
+                        WriteLine("\nYou start concentrating very hard and focusing your energy on mending the wound.");
                         WriteLine("Over the past two minutes you were able to speed up the healing of the foot by tenfold." +
                             " You watch as relief changes the face of the stranger.");
                         ReadKey();
                         Clear();
                         WriteLine("STRANGER: 'Thank the heavens that we ran into eachother' I wasn't sure if I'd be" +
                             " able to fight anything I encountered next.");
-                        WriteLine("Would you happen to want a ride down to the village?");
-                        WriteLine("You realized your tired and exhausted yourself and there's not way you could make" +
+                        WriteLine("\nWould you happen to want a ride down to the village?");
+                        WriteLine("\nYou realized your tired and exhausted yourself and there's not way you could make" +
                             " it to the village on foot by the end of the day.");
-                        WriteLine("You gladly get on the back of the horse with the stranger and head down into the valley.");
+                        WriteLine("\nYou gladly get on the back of the horse with the stranger and head down into the valley.");
 
                     }
                     else
@@ -446,14 +441,14 @@ namespace CreateCharacterMain
             if (playerSheet.Charisma >= 14 && playerSheet.Charisma < 16)
             {
                 WriteLine("You step out from behind the boulder, trying not to appear intimidating.");
-                WriteLine("\nYOU:  'Hello Stranger, I was not trying to seem like a threat.  I am not familair with the area" +
+                WriteLine("\nYOU: 'Hello Stranger, I was not trying to seem like a threat.  I am not familair with the area" +
                     " I woke up in a cave a couple miles back from where you came from and I'm trying to get back home." +
-                    "  I don't know where to even start.' ");
+                    "  I don't know where to even start.'");
                 ReadKey(false);
                 Clear();
                 WriteLine("STRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
                     " I could give you a ride down to the river and help you become rejuvinated.\n");
-                WriteLine("Normally you would say no to strangers but you can barely think straight at the moment." +
+                WriteLine("\nNormally you would say no to strangers but you can barely think straight at the moment." +
                     "\nYou gladly accept the offer and hop on the back of the stranger's horse.");
                 ReadKey(false);
 
@@ -467,9 +462,9 @@ namespace CreateCharacterMain
                 ReadKey(false);
                 Clear();
                 WriteLine("STRANGER: 'I see that you feel threatned, if you put up that mean face and weapon I could help you out.");
-                WriteLine("STRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
+                WriteLine("\nSTRANGER: 'You really look like you could use some water, you probably haven't seen yourself latley.'" +
                     " I could give you a ride down to the river and help you become rejuvinated.\n");
-                WriteLine("Normally you would say no to strangers but you can barely think straight at the moment." +
+                WriteLine("\nNormally you would say no to strangers but you can barely think straight at the moment." +
                     "\nYou gladly accept the offer and hop on the back of the strangers horse.");
                 ReadKey(false);
             }
@@ -481,7 +476,7 @@ namespace CreateCharacterMain
         public static void SneakUp()
         {
             Clear();
-            WriteLine("Press 1 if you'd like to hide!\n");
+            WriteLine("Press 1 if you'd like to hide!\n".ToUpper());
             string choice = ReadLine();
 
             if (choice == "1")
@@ -492,7 +487,7 @@ namespace CreateCharacterMain
                 Clear();
                 WriteLine("You definitley have the option to try to steal this stranger's horse.\n" +
                     "Choose from the two options below: \n\n" +
-                    "Wait--- type in 'W'" +
+                    "Wait --- type in 'W'" +
                     "\nKnockOut --- type in 'K'");
 
 
@@ -520,6 +515,7 @@ namespace CreateCharacterMain
             {
                 Clear();
                 WriteLine("You end up befriending the stranger and heading down with them into the valley");
+                ReadKey(false);
                 Befriend();
                
             }
@@ -570,12 +566,12 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("You watch as the scenery into the valley gets much more beatiful, time slips by" +
                 " and you notice you have about two hours of daylight left.");
-            WriteLine("\n'STRANGER: 'Oh by the way, I forgot to mention my name, my name is Jobe.  What is yours?");
-            WriteLine("\nYOU: 'My name is " + playerSheet.Name + ".");
+            WriteLine("\nSTRANGER: 'Oh by the way, I forgot to mention my name, my name is Jobe.  What is yours?'");
+            WriteLine("\nYOU: 'My name is " + playerSheet.Name + "'.");
             WriteLine("\nJobe: 'Okay then " + playerSheet.Name + "!  We are going to stop near the river and make camp for the night, I don't feel comfortable" +
                 " riding my horse at night.'");
-            WriteLine("You agree with the stranger completley.");
-            WriteLine("/nMoment's pass by and the stranger stops at a certain spot a long the river.");
+            WriteLine("\nYou agree with the stranger completley.");
+            WriteLine("\nMoment's pass by and the stranger stops at a certain spot a long the river.");
             ReadKey(false);
             Clear();
             WriteLine("Jobe: ' " +
@@ -597,7 +593,7 @@ namespace CreateCharacterMain
         public static void CookMorning()
         {
             WriteLine("\nJobe: 'We ain't going hungry tonight my friend.'");
-            WriteLine("You watch Jobe quckily skin and remove the guts from 12 fish and observe him" +
+            WriteLine("\nYou watch Jobe quckily skin and remove the guts from 12 fish and observe him" +
                 " skewer them all. \n" +
                 "You built a roaring fire and the fish cooks with no problem at all.");
             WriteLine("\nYou guys share some stories about your childhoods and make a plan to leave early the next morning.");
@@ -606,14 +602,14 @@ namespace CreateCharacterMain
             Clear();
             WriteLine("\nYou both awake in the morning and luckily nothing messed with you overnight. Jobe picked a pretty good" +
                 " spot to camp and hide out.");
-            WriteLine("You both pick up camp and load up on water, You know it will be at least a few hours until you get to town.");
-            WriteLine("\nYou both get on the horse and find a small bridge to cross over the river.");
+            WriteLine("You guys picked up camp and load up on water, You know it will be at least a few hours until you get to town.");
+            WriteLine("\nYou and Jobe get on the horse and find a small bridge to cross over the river.");
             WriteLine("\nAfter about an 1 hour of riding through the valley, Jobe starts talking your ear off.");
             ReadKey(false);
             Conversation();
             Clear();
             WriteLine("After some miscellanous conversations you arrive to the village entrance.");
-            WriteLine("Jobe: 'Well, this is where I say goodbye.  Maybe I'll see you again someday if I run" +
+            WriteLine("\nJobe: 'Well, this is where I say goodbye.  Maybe I'll see you again someday if I run" +
                 " into you out in the world. Good luck on finding your home.");
             ReadKey(false);
         }
@@ -651,6 +647,8 @@ namespace CreateCharacterMain
             " stranger's horse.");
             ReadKey(false);
             StealOrConfront();
+            VillageDesc();
+            
 
         }// end LoneWolf
 
@@ -658,14 +656,15 @@ namespace CreateCharacterMain
         {
             Clear();
             WriteLine("Would you like to Confront the stranger and gain an ally?\n" +
-                "Enter yes to confront the stranger.  Otherwise we're assuming you're going" +
-                " to steal the horse overnight.");
+                "/nEnter yes to confront the stranger.  Otherwise we're assuming you're going" +
+                "to steal the horse overnight.");
             string choice = ReadLine();
-            ReadKey();
+            ReadKey(false);
 
             if(choice.ToUpper() == "YES")
             {
                 Confront();
+                CookMorning();
             }
             else
             {
@@ -696,7 +695,7 @@ namespace CreateCharacterMain
                 "Stranger: 'My name is Jobe. You're welcome to stay hear at the fire with me." +
                 " You better do yourself a favor and get you some water to drink from the river, you look rough." +
                 "\nWhile you're over grabbing some water can you check my fishing trap?" +
-                "\n'If you're lucky there might be enough dinner for the both of us.");
+                "\n\n'If you're lucky there might be enough dinner for the both of us.");
             ReadKey(false);
             Clear();
             WriteLine("You walk over to the river and fill up on water and also wash yourself." +
@@ -706,19 +705,17 @@ namespace CreateCharacterMain
                 "\nYou bring the fishing back to the fire pit and Jobe has a big smile on his face," +
                 " he must love food.");
 
-                
-
         }
 
         public static void StealHorse()
         {
             Clear();
             WriteLine("You decided to wait til later in the night to steal the horse." +
-                "\nHours passed by, you managed to sleep a little.  It's slightly hard to see but you can see" +
+                "\nHours passed by, you managed to sleep a little. It's slightly hard to see but you can see" +
                 "embers of the stranger's campfire." +
-                "\nYou stealthly walk over to stranger's fire." +
+                "\n\nYou stealthly walk over to stranger's fire." +
                 "\nThe stranger needs to be knocked out so that he doesn't know who's taking his horse." +
-                "\nYou deicde to use some of a special elixir to place on a cloth to put over" +
+                "\n\nYou deicde to use some of a special elixir to place on a cloth to put over" +
                 "the strangers face to drug him.");
                 ReadKey(false);
             Clear();
@@ -752,10 +749,11 @@ namespace CreateCharacterMain
         {
             Clear();
             WriteLine("You walk into the village along a dirt path and notice there is basically one" +
-                " main road that goes through.  You see a few main bulidings and a what looks like a tavern down in the distance");
-            WriteLine("Surronding the vilalge you see lot's of agriculture. The village seems to be inhabbited by some decently smart" +
+                " main road that goes through." +
+                "\nYou see a few main bulidings and a what looks like a tavern down in the distance");
+            WriteLine("\nSurronding the village you see lot's of agriculture. \nThe village seems to be inhabbited by some decently smart" +
                 " people to surive on their own.");
-            WriteLine("You decide to head to the tavern and get more information about what's around the area.");
+            WriteLine("\nYou decide to head to the tavern and get more information about what's around the area.");
             ReadKey(false);
         }// end Village Desc
 
@@ -764,39 +762,39 @@ namespace CreateCharacterMain
             if (playerSheet.Race == "Human")
             {
                 Clear();
-                WriteLine("It's a good thing that you're a Human. The village we are going to is mainly popoulated " +
+                WriteLine("JOBE: 'It's a good thing that you're a Human. \nThe village we are going to is mainly popoulated " +
                     "by Humans.");
                 WriteLine("'You won't have any problems getting along with anybody in town. I'd suggest that you" +
                     " go to the Tavern to learn about what your next step should be.'");
                 WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
                 WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
                     " to the town anyways. I was banished long ago and I've been on my own for years.'");
-                WriteLine("\nYOU 'Why were you BANISHED?");
-                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
-                ReadKey();
-            }
+                WriteLine("\nYOU 'Why were you BANISHED?'");
+                WriteLine("\n'Let's just say me and the mayor have two different ideas on how handle the economy of the town.'");
+                ReadKey(false);
+            }// end Human
 
             if (playerSheet.Race == "Elf")
             {
                 Clear();
-                WriteLine("'You might have a little bit of trouble with fitting into the village" +
-                    ". The village we are going to is mainly populated " +
+                WriteLine("JOBE: 'You might have a little bit of trouble with fitting into the village" +
+                    ". \nThe village we are going to is mainly populated " +
                     "by Humans.  I wouldn't stay long if I were you.'");
                 WriteLine("' I'd suggest that you" +
                     " go to the Tavern to learn about what your next step should be.'");
                 WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
                 WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
                     " to the town anyways. I was banished long ago and I've been on my own for years.'");
-                WriteLine("\nYOU 'Why were you BANISHED?");
-                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
-                ReadKey();
-            }
+                WriteLine("\nYOU 'Why were you BANISHED?'");
+                WriteLine("\n'Let's just say me and the mayor have two different ideas on how handle the economy of the town.'");
+                ReadKey(false);
+            }// end Elf
 
             if (playerSheet.Race == "Dwarf")
             {
                 Clear();
-                WriteLine("'You shouldn't have too much trouble with fitting into the village" +
-                    ". The village we are going to is mainly populated " +
+                WriteLine("JOBE: 'You shouldn't have too much trouble with fitting into the village" +
+                    ". \nThe village we are going to is mainly populated " +
                     "by Humans and they like to trade with the Dwarven. I wouldn't stay long if I were you, the government " +
                     " may try to take advantage of you though. Therefore, be careful.'");
                 WriteLine("' I'd suggest that you" +
@@ -804,16 +802,16 @@ namespace CreateCharacterMain
                 WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
                 WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
                     " to the town anyways. I was banished long ago and I've been on my own for years.'");
-                WriteLine("\nYOU 'Why were you BANISHED?");
-                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
-                ReadKey();
-            }
+                WriteLine("\nYOU: 'Why were you BANISHED?'");
+                WriteLine("\n'Let's just say me and the mayor have two different ideas on how handle the economy of the town.");
+                ReadKey(false);
+            }// end Dwarf
 
             if (playerSheet.Race == "Hobbit")
             {
                 Clear();
-                WriteLine("'You shouldn't have too much trouble with fitting into the village" +
-                    ". The village we are going to is mainly populated " +
+                WriteLine("JOBE: 'You shouldn't have too much trouble with fitting into the village" +
+                    ". \nThe village we are going to is mainly populated " +
                     "by Humans and they like to be spoiled by Hobbits. I wouldn't stay long if I were you, the townsfolk  " +
                     " may try to take advantage of you though. Therefore, be careful.'");
                 WriteLine("' I'd suggest that you" +
@@ -821,10 +819,10 @@ namespace CreateCharacterMain
                 WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
                 WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
                     " to the town anyways. I was banished long ago and I've been on my own for years.'");
-                WriteLine("\nYOU 'Why were you BANISHED?");
-                WriteLine("\nLet's just say me and the mayor have two different ideas on how handle the economy of the town.");
-                ReadKey();
-            }
+                WriteLine("\nYOU: 'Why were you BANISHED?'");
+                WriteLine("\n'Let's just say me and the mayor have two different ideas on how handle the economy of the town.'");
+                ReadKey(false);
+            }//end Hobbit
         }// end Conversation
         /// <summary>
         /// Scenario for getting down to the river 

@@ -33,7 +33,7 @@ namespace CreateCharacterMain
 
 
 
-            ReadKey();
+        
             
 
 
