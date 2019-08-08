@@ -7,6 +7,8 @@ namespace CreateCharacterMain
 {
     class Part2_Script : Part1_Script
     {
+
+        private static int counter = 0;
         // Make ideas for the Tavern
         // Player should sit down
         // Player should look at menu
@@ -122,27 +124,129 @@ namespace CreateCharacterMain
             
 
             Clear();
+            WriteLine("Drink Menu".ToUpper());
+            CharacterSheet.playerSheet.Gold = 130;
 
-            //Somehow incorporate a for loop that access each elements in array
-            for(int i = 0; i < bNames.Length; i++)
+            if (playerSheet.Gold >=100)
             {
-                WriteLine("-------------------------------------------------------------");
-                WriteLine(bNames[i] + "\t%" + bABV[i] + "\t$" + bPrices[i] +
-                    "\n\nDescription: " + bDesc[i]);
-                ReadKey(false);
-               
+                //Somehow incorporate a for loop that access each elements in array
+                for (int i = 0; i < bNames.Length; i++)
+                {
+                    WriteLine("-------------------------------------------------------------");
+                    WriteLine(bNames[i].ToUpper() + "\t%" + bABV[i] + "\t$" + bPrices[i] +
+                        "\n\nDescription: " + bDesc[i]);
 
-             
-            }
-            WriteLine("-------------------------------------------------------------");
-            WriteLine("Any of this Interesting?");
-            WriteLine("Press Enter to go to choose a selection.");
+                }
+                WriteLine("-------------------------------------------------------------");
+                WriteLine("Are any of these options interesting to you??");
+                WriteLine("Press Enter to go to choose a selection.".ToUpper());
+                ReadKey(false);
+
+            }// over 100 if
+
+          
+
+            Clear();
+
+            while (counter == 0)
+            {
+
+
+
+                WriteLine("Drink Selection Menu".ToUpper());
+                WriteLine("____________________");
+                WriteLine("\nType '1' for Lager" +
+                           "\nType '2' for Mead" +
+                            "\nType '3' for Elderberry Wine" +
+                            "\nType '4' for Red Wine" +
+                            "\nType '5' for Old Town IPA" +
+                            "\nType '6' for Water");
+                ChooseBeverage();
+
+
+                if (playerSheet.Gold <= 90)
+                {
+                    WriteLine("\nBartender: 'You're gonna blow all your money here, not allowed for a" +
+                        " stranger.'");
+                    counter++;
+
+                }
+
+                if(playerSheet.Gold >= 100)
+                WriteLine("\nType out quit if you want to exit the menu and quit drinking.\n");
+                string quit = ReadLine();
+
+                if (quit.ToUpper() == "QUIT")
+                {
+                    counter++;
+                }// end quit
+
+
+
+
+
+            }// end while
+
+
+
+            
             ReadKey(false);
+
         }//end BeverageString
 
-        public static void chooseBeverage()
+        public static void ChooseBeverage()
         {
+            
 
+            string caseSwitch = ReadLine();
+            Clear();
+
+            int[] bPrices = new int[] { 3, 10, 20, 30, 50, 40 };
+
+            switch (caseSwitch)
+            {
+                case "1":
+                    WriteLine("You purchased a Lager, that cost you " + bPrices[1] + " gold.");
+                    playerSheet.Gold -= bPrices[1];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    ReadKey(false);
+                    break;
+
+                case "2":
+                    WriteLine("You purchased some Honey Mead, that costs you " + bPrices[2] + " gold.");
+                    playerSheet.Gold -= bPrices[2];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    break;
+
+                case "3":
+                    WriteLine("You purchased Elder Berry Wine, that costs you " + bPrices[2] + " gold.");
+                    playerSheet.Gold -= bPrices[2];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    break;
+
+                case "4":
+                    WriteLine("You purchased Red Wine, that costs you " + bPrices[3] + " gold.");
+                    playerSheet.Gold -= bPrices[3];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    break;
+
+                case "5":
+                    WriteLine("You purchased some skunnky smelling OLD Town IPA, that costs you " + bPrices[4] + " gold.");
+                    playerSheet.Gold -= bPrices[4];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    break;
+
+                case "6":
+                    WriteLine("You purchased Well Water, that costs you " + bPrices[0] + " gold.");
+                    playerSheet.Gold -= bPrices[0];
+                    WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
+                    break;
+
+                default: WriteLine("You must have not wanted a drink. Press any key to bring up the menu.");
+                    break;
+            }
+
+           
         }
 
 
