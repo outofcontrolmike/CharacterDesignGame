@@ -222,8 +222,14 @@ namespace CreateCharacterMain
                 WriteLine("\nYou enter the room and make yourself at home, finally comfrotable for once." +
                     "\nTomorrow will be a new day.");
                 WriteLine("\nNext thing you know you're in bed and closing your eyes.");
-               
+                ReadKey(false);
+                Clear();
+                WriteLine("You awake in the morning with sun blinding your eyes through the window." +
+               " Your stomach is also rumbiling.");
+                WriteLine("\nYou decide to go downstairs to retrieve some breakfast and coffee.");
+                ReadKey(false);
                 
+
             }
             if(drinkCount > 5 && drinkCount <=10)
             {
@@ -237,6 +243,11 @@ namespace CreateCharacterMain
                 WriteLine("\nYou hear the bartender count out " + drunkRandom + "gold.");
                 WriteLine("\nA couple of regulars from the bar grab you and that's the last thing you remember.");
                 WriteLine("\nGood night for now.");
+                ReadKey(false);
+                Clear();
+                WriteLine("\nYou wake up in the morning with a killer headache. You roll out of bed to go downstairs" +
+                    " to get some breakfast and hopefully some coffee.");
+                
             }
             ReadKey(false);
         }// end HowDrunk
