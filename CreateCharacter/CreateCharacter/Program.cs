@@ -27,14 +27,14 @@ namespace CreateCharacterMain
 
             //IntroWalkthough.AskForName();
             //IntroWalkthough.GetRace();
-            //IntroWalkthough.GetClass();
-            //IntroWalkthough.GetStats();
-            //IntroPlot.TheWakeUp();
+            //////IntroWalkthough.GetClass();
+            //////IntroWalkthough.GetStats();
+            //////IntroPlot.TheWakeUp();
 
             CharacterSheet.playerSheet.Gold = 1000;
             Part3_Script.Battle();
-            
-          
+
+
 
 
 

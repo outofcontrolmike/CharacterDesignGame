@@ -110,6 +110,7 @@ namespace CreateCharacterMain
                     pRace = "Human\n";
                     WriteLine("How old do you want to be as a Human?\n" +
                         "You're allowed to be between 15-70.\n");
+
                     while (ageCounter == 1)
                     {
 
@@ -119,6 +120,28 @@ namespace CreateCharacterMain
                             ageHolder = Convert.ToInt32(ReadLine());
 
                             WriteLine("\n");
+
+                            if (ageHolder < 15)
+                            {
+                                WriteLine("You're too young for this adventure!\n");
+
+
+                            }
+                            if (ageHolder > 70)
+                            {
+                                WriteLine("You're too old for this adventure!\n");
+
+                            }
+                            if (ageHolder >= 15 && ageHolder <= 70)
+                            {
+                                count++;
+                                ageCounter++;
+                                pRace = "Human";
+                                age = ageHolder;
+
+
+
+                            }// end if's
                         }
                         catch (System.FormatException)
                         {
@@ -126,31 +149,6 @@ namespace CreateCharacterMain
 
 
                         }// End Try Catch for age
-
-
-                        if (ageHolder < 15)
-                        {
-                            WriteLine("You're too young for this adventure!\n");
-
-
-                        }
-                        if (ageHolder > 70)
-                        {
-                            WriteLine("You're too old for this adventure!\n");
-
-                        }
-                        if (ageHolder >= 15 && ageHolder <= 70)
-                        {
-                            count++;
-                            ageCounter++;
-                            pRace = "Human";
-                            age = ageHolder;
-
-
-
-                        }// end if's
-
-
                     }//end While   
                 }//end IF
 
@@ -170,6 +168,26 @@ namespace CreateCharacterMain
                             WriteLine("Enter an age between 300-700: \n");
                             ageHolder = Convert.ToInt32(ReadLine());
                             WriteLine("\n");
+                            if (ageHolder < 300)
+                            {
+                                WriteLine("You're too young for this adventure\n");
+
+
+                            }
+                            if (ageHolder > 700)
+                            {
+                                WriteLine("You're too old for this adventure\n");
+
+                            }
+                            if (ageHolder >= 300 && ageHolder <= 700)
+                            {
+
+                                ageCounter++;
+                                count++;
+                                pRace = "Elf";
+                                age = ageHolder;
+
+                            }
                         }
                         catch (System.FormatException)
                         {
@@ -178,26 +196,7 @@ namespace CreateCharacterMain
 
                         }// End Try Catch for age
 
-                        if (ageHolder < 300)
-                        {
-                            WriteLine("You're too young for this adventure\n");
-
-
-                        }
-                        if (ageHolder > 700)
-                        {
-                            WriteLine("You're too old for this adventure\n");
-
-                        }
-                        if (ageHolder >= 300 && ageHolder <= 700)
-                        {
-
-                            ageCounter++;
-                            count++;
-                            pRace = "Elf";
-                            age = ageHolder;
-
-                        }
+                      
                     }//end While   
                 }//end IF
                 if (pRace == "D")
@@ -207,40 +206,44 @@ namespace CreateCharacterMain
 
                     while (ageCounter == 1)
                     {
-
+                        
                         try
                         {
+                            
                             WriteLine("Enter an age between 100-300: \n");
                             ageHolder = Convert.ToInt32(ReadLine());
                             WriteLine("\n");
+
+                            if (ageHolder < 100)
+                            {
+                                WriteLine("You're too young for this adventure\n");
+
+
+                            }
+                            if (ageHolder > 300)
+                            {
+                                WriteLine("You're too old for this adventure\n");
+
+                            }
+                            if (ageHolder >= 100 && ageHolder <= 300)
+                            {
+
+                                ageCounter++;
+                                count++;
+                                pRace = "Dwarf";
+                                age = ageHolder;
+
+                            }
                         }
                         catch (System.FormatException)
                         {
                             WriteLine("Be sure to actually use numbers.\n");
+                           
 
 
                         }// End Try Catch for age
 
-                        if (ageHolder < 100)
-                        {
-                            WriteLine("You're too young for this adventure\n");
-
-
-                        }
-                        if (ageHolder > 300)
-                        {
-                            WriteLine("You're too old for this adventure\n");
-
-                        }
-                        if (ageHolder >= 100 && ageHolder <= 300)
-                        {
-
-                            ageCounter++;
-                            count++;
-                            pRace = "Dwarf";
-                            age = ageHolder;
-
-                        }
+                       
                     }//end While   
                 }//end IF
 
@@ -258,6 +261,29 @@ namespace CreateCharacterMain
                             ageHolder = Convert.ToInt32(ReadLine());
                             WriteLine("\n");
 
+                            if (ageHolder < 22)
+                            {
+                                WriteLine("You're too young for this adventure\n");
+
+
+                            }
+                            if (ageHolder > 90)
+                            {
+                                WriteLine("You're too old for this adventure\n");
+
+                            }
+                            if (ageHolder >= 22 && ageHolder <= 90)
+                            {
+
+                                ageCounter++;
+                                count++;
+                                pRace = "Hobbit";
+                                age = ageHolder;
+
+                            }
+
+
+
                         }
                         catch (System.FormatException)
                         {
@@ -266,28 +292,7 @@ namespace CreateCharacterMain
 
                         }// End Try Catch for age
 
-                        if (ageHolder < 22)
-                        {
-                            WriteLine("You're too young for this adventure\n");
-
-
-                        }
-                        if (ageHolder > 90)
-                        {
-                            WriteLine("You're too old for this adventure\n");
-
-                        }
-                        if (ageHolder >= 22 && ageHolder <= 90)
-                        {
-
-                            ageCounter++;
-                            count++;
-                            pRace = "Hobbit";
-                            age = ageHolder;
-
-                        }
-
-
+                       
                     }//end While   
 
                 }//end IF

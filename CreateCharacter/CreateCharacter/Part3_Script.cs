@@ -5,11 +5,11 @@ using static System.Console;
 
 namespace CreateCharacterMain
 {
-    class Part3_Script: Part2_Script
+    class Part3_Script : Part2_Script
     {
 
         private static Enemies Bandit = new Enemies();
-
+        private static int tip;
 
         /// <summary>
         /// Method that controls the chapter
@@ -39,17 +39,18 @@ namespace CreateCharacterMain
         /// </summary>
         public static void setEnemy()
         {
-            Enemies Bandit = new Enemies();
+
 
             Bandit.Name = "Jamahl";
             Bandit.Health = 20;
             Bandit.TempHealth = 20;
-            Bandit.Mana = 0;
+            Bandit.Mana = 10;
             Bandit.TempMana = 20;
-            Bandit.AttackPower = 0;
+            Bandit.AttackPower = 30;
             Bandit.Defense = 40;
             Bandit.GainedExp = 1400;
             Bandit.GainedGold = 100;
+        
         }//end setEnemy
 
         public static void StoryBeforeBattle()
@@ -91,8 +92,11 @@ namespace CreateCharacterMain
             WriteLine("You decide to go back up to your room to gather your things and start" +
                 " on your adventure to see town.");
             WriteLine("\nRight as your about to leave you hear yelling from downstairs.");
-            WriteLine("");
-            WriteLine(Bandit.Name);
+            ReadKey(false);
+
+            //Test - 
+
+            UpOrDown();
             ReadKey(false);
 
 
@@ -100,39 +104,106 @@ namespace CreateCharacterMain
 
         public static void LeaveTip()
         {
-            Clear();
-            WriteLine("You currently have " + playerSheet.Gold + " gold.");
-            WriteLine("Enter the amount of gold that you want to tip.");
-            int tip = Convert.ToInt32(ReadLine());
 
-            
-            if (playerSheet.Gold > tip)
+            int counter = 1;
+
+            while (counter == 1)
             {
-                if (tip > 0)
+                try
                 {
-                    WriteLine("You decided to leave " + tip + " gold for a tip.");
-                    playerSheet.Gold -= tip;
+                    Clear();
+                    WriteLine("You currently have " + playerSheet.Gold + " gold.");
+                    WriteLine("Enter the amount of gold that you want to tip.");
+                    tip = Convert.ToInt32(ReadLine());
 
-                }// Tipped
+                    if (playerSheet.Gold > tip)
+                    {
+                        if (tip > 0)
+                        {
+                            WriteLine("You decided to leave " + tip + " gold for a tip.");
+                            playerSheet.Gold -= tip;
 
-                if(tip == 0)
+
+
+                        }// Tipped
+
+                        if (tip == 0)
+                        {
+                            WriteLine("You didn't want to leave a tip.");
+
+                        }
+
+                    }// end if
+                    if (tip > playerSheet.Gold)
+                    {
+                        WriteLine("You don't have enough money to tip. Missed your chance.");
+
+                    }
+                    counter++;
+                }// end while
+
+                catch (System.FormatException)
                 {
-                    WriteLine("You didn't want to leave a tip.");
+                    WriteLine("Enter actual numbers!");
                 }
 
-                if(tip < 0)
+                ReadKey(false);
+            }// end LeaveTip
+
+
+        }//end Part3
+
+        public static void UpOrDown()
+        {
+
+            WriteLine("You can either go downstairs and get involved or you can stay" +
+                       " upstairs and hide out.");
+            int counter = 0;
+            while (counter == 0)
+           {
+                try
                 {
-                    WriteLine("You're trying to break the program.");
+
+                    Clear();
+
+                    WriteLine("\nEnter 'D' for Downstairs" +
+                       "       \nEnter 'U' for Upstairs\n");
+
+                    string choice = ReadLine();
+                    if (choice.ToUpper() == "D")
+                    {
+                        counter++;
+                        WriteLine("\nYou decided to go downstairs");
+                        //Call Down
+                    }
+                    if (choice.ToUpper() == "U")
+                    {
+                        WriteLine("\nYou decided to stay upstairs.");
+                        counter++;
+                        //Call UP
+                    }
                 }
-            }// end if
-            if(tip > playerSheet.Gold)
-            {
-                WriteLine("You don't have enough money to tip. Missed your chance.");
-            }
-            
-            ReadKey(false);
-        }// end LeaveTip
+
+                catch (FormatException)
+                {
+                    WriteLine("Wrong choice bub");
+                    
+                }
 
 
-    }//end Part3
+
+       
+
+
+            }// end while
+
+   
+        }//end UpOrDown
+
+        public static void Up()
+        {
+            WriteLine();
+        }
+    }
+
 }
