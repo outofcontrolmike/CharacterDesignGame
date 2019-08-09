@@ -50,7 +50,7 @@ namespace CreateCharacterMain
             Bandit.Defense = 40;
             Bandit.GainedExp = 1400;
             Bandit.GainedGold = 100;
-        
+
         }//end setEnemy
 
         public static void StoryBeforeBattle()
@@ -160,7 +160,7 @@ namespace CreateCharacterMain
                        " upstairs and hide out.");
             int counter = 0;
             while (counter == 0)
-           {
+            {
                 try
                 {
 
@@ -178,7 +178,7 @@ namespace CreateCharacterMain
                     }
                     if (choice.ToUpper() == "U")
                     {
-                        WriteLine("\nYou decided to stay upstairs.");
+                        Up();
                         counter++;
                         //Call UP
                     }
@@ -187,23 +187,77 @@ namespace CreateCharacterMain
                 catch (FormatException)
                 {
                     WriteLine("Wrong choice bub");
-                    
+
                 }
-
-
-
-       
-
 
             }// end while
 
-   
         }//end UpOrDown
 
         public static void Up()
         {
-            WriteLine();
+            Clear();
+            WriteLine("\nYou decided to stay upstairs.");
+            WriteLine("After a few minutes of hearing more yelling and slamming you hear foot steps pounding up the stairs.");
+            WriteLine("\nBefore you know it a Bandit swings your room door open and charges at you" +
+                " with fierce eyes.");
+            ReadKey(false);
+
+            BanditFight();
+            
         }
+
+        public static void BanditFight()
+        {
+            ReadKey();
+            while (playerSheet.TempHealth > 0 && Bandit.TempHealth > 0)
+            {
+                int compDext = 10;
+                
+                if(playerSheet.Dexterity >= compDext)
+                {
+                    PlayerAttack();
+                    BanditAttack();
+                }
+
+                if(playerSheet.Dexterity < compDext)
+                {
+                    
+                    BanditAttack();
+                    PlayerAttack();
+                }
+            }
+        }
+
+        public static void PlayerAttack()
+        {
+            int rHealth = Bandit.TempHealth;
+            int health = Bandit.Health;
+
+            int damageDeltToComputer = Bandit.TempHealth - (playerSheet.AttackPower - Bandit.Defense);
+
+            Clear();
+            WriteLine("Player deals " + damageDeltToComputer + " to Bandit.");
+            WriteLine("\nBandit remaining Health " + rHealth + "/" + health);
+            ReadKey(false);
+            
+            //int damageToPlayer = Bandit.AttackPower - playerSheet.Defense;
+        }
+        public static void BanditAttack()
+        {
+            
+            int rHealth = playerSheet.TempHealth;
+            int health = playerSheet.Health;
+            int BAttackPow = Bandit.AttackPower;
+            int playerDef = playerSheet.Defense;
+
+            int damageDeltToPlayer = rHealth - (BAttackPow - playerDef);
+
+            Clear();
+            WriteLine("Bandit Deals " + damageDeltToPlayer + " to Player.");
+            WriteLine("\nBandit remaining Health " + rHealth + "/" + health);
+            ReadKey(false);
+        }// end BanditAttack
     }
 
 }
