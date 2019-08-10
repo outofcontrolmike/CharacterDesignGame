@@ -520,7 +520,7 @@ namespace CreateCharacterMain
                 Befriend();
                
             }
-            ReadKey(false);
+           
 
         }// end SneakUp
 

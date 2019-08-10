@@ -44,6 +44,9 @@ namespace CreateCharacterMain
 
         }//end setEnemy
 
+        /// <summary>
+        /// Preludes into battle
+        /// </summary>
         public static void StoryBeforeBattle()
         {
             Clear();
@@ -95,6 +98,9 @@ namespace CreateCharacterMain
 
         }//end StoryBeforeBattle
 
+        /// <summary>
+        /// Option to leave tip
+        /// </summary>
         public static void LeaveTip()
         {
 
@@ -146,6 +152,9 @@ namespace CreateCharacterMain
 
         }//end Part3
 
+        /// <summary>
+        /// Option for upstaris or downstairs
+        /// </summary>
         public static void UpOrDown()
         {
 
@@ -187,6 +196,9 @@ namespace CreateCharacterMain
 
         }//end UpOrDown
 
+        /// <summary>
+        /// Scenario for down
+        /// </summary>
         public static void Down()
         {
             Clear();
@@ -198,6 +210,9 @@ namespace CreateCharacterMain
             ReadKey(false);
         }
 
+        /// <summary>
+        /// Scenario for Up
+        /// </summary>
         public static void Up()
         {
             Clear();
@@ -211,6 +226,9 @@ namespace CreateCharacterMain
 
         }//End UP
 
+        /// <summary>
+        /// The Fight Logic
+        /// </summary>
         public static void BanditFight()
         {
 
@@ -297,6 +315,52 @@ namespace CreateCharacterMain
 
         }// end BanditFight
 
+        /// <summary>
+        /// Default attack
+        /// </summary>
+        public static void Attack()
+        {
+            int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
+            Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
+
+
+            Clear();
+            WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
+
+            if (Bandit.TempHealth > 0)
+            {
+                WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
+            }
+            ReadKey(false);
+        }
+        /// <summary>
+        /// Mage Attack
+        /// </summary>
+        public static void MageAction()
+        {
+            Clear();
+            playerSheet.TempMana -= mageSpell.MagicCost;
+            int magicDamage = Bandit.Defense - (playerSheet.MagicPower + mageSpell.MagicDamage);
+            Bandit.TempHealth -= Math.Abs(magicDamage);
+            WriteLine("Player casts " + mageSpell.Name + " " + Math.Abs(magicDamage) + " of damage to Bandit.");
+            WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
+            ReadKey(false);
+
+        }
+        /// <summary>
+        /// Attack Decision
+        /// </summary>
+        /// 
+        public static void ClericMagic()
+        {
+            Clear();
+            playerSheet.TempMana -= mageSpell.MagicCost;
+            int magicHeal = cure.MHeal;
+            playerSheet.TempHealth += Math.Abs(magicHeal);
+            WriteLine("Player casts " + cure.Name + " to heal " + Math.Abs(magicHeal) + " points of health.");
+            WriteLine("\nPlayer Health = " + playerSheet.TempHealth + "/" + playerSheet.Health);
+            ReadKey(false);
+        }
         public static void PlayerAttack()
         {
             //Mage
@@ -312,48 +376,20 @@ namespace CreateCharacterMain
                 
                     if (choice == "1")
                     {
-                        int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-                        Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
-
-
-                        Clear();
-                        WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-
-                        if (Bandit.TempHealth > 0)
-                        {
-                            WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                        }
-                        ReadKey(false);
+                    Attack();
                     }// end choice 1
 
                     //magic
                     if (choice == "2")
                     {
 
-                        Clear();
-                        playerSheet.TempMana -= mageSpell.MagicCost;
-                        int magicDamage = Bandit.Defense - (playerSheet.MagicPower + mageSpell.MagicDamage);
-                        Bandit.TempHealth -= Math.Abs(magicDamage);
-                        WriteLine("Player casts " + mageSpell.Name + " " + Math.Abs(magicDamage) + " of damage to Bandit.");
-                        WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                        ReadKey(false);
-
+                    MageAction();
+                        
                     }
 
                 else
                 {
-                    int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-                    Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
-
-
-                    Clear();
-                    WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-
-                    if (Bandit.TempHealth > 0)
-                    {
-                        WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                    }
-                    ReadKey(false);
+                    Attack();
                 }
                     
                     
@@ -375,69 +411,25 @@ namespace CreateCharacterMain
 
                 if (choice == "1")
                 {
-                    int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-                    Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
-
-
-                    Clear();
-                    WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-
-                    if (Bandit.TempHealth > 0)
-                    {
-                        WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                    }
-                    ReadKey(false);
+                    Attack();
                 }// end choice 1
 
                 //magic
                 if (choice == "2")
                 {
-
-                    Clear();
-                    playerSheet.TempMana -= mageSpell.MagicCost;
-                    int magicHeal = cure.MHeal;
-                    playerSheet.TempHealth += Math.Abs(magicHeal);
-                    WriteLine("Player casts " + cure.Name + " to heal " + Math.Abs(magicHeal) + " points of health.");
-                    WriteLine("\nPlayer Health = " + playerSheet.TempHealth + "/" + playerSheet.Health);
-                    ReadKey(false);
-
-
+                    ClericMagic();
                 }
                 else
                 {
-                    int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-                    Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
-
-
-                    Clear();
-                    WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-
-                    if (Bandit.TempHealth > 0)
-                    {
-                        WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                    }
-                    ReadKey(false);
+                    Attack();
                 }
 
             }// end if Cleric
 
             else
             {
-                int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-                Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
 
-
-                Clear();
-                WriteLine("Press any key to attack.");
-                ReadKey(false);
-                Clear();
-                WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-
-                if (Bandit.TempHealth > 0)
-                {
-                    WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
-                }
-                ReadKey(false);
+                Attack();
             }
 
         }
