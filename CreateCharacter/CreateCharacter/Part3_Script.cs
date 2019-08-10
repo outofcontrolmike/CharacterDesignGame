@@ -40,7 +40,7 @@ namespace CreateCharacterMain
             Bandit.TempMana = 20;
             Bandit.AttackPower = 10;
             Bandit.Defense = 40;
-            Bandit.GainedExp = 1400;
+            Bandit.GainedExp = 5000;
             Bandit.GainedGold = 100;
 
         }//end setEnemy
@@ -236,7 +236,16 @@ namespace CreateCharacterMain
                         
                         WriteLine("You deafeated the Bandit!");
                         ReadKey(false);
-                        levelUpTracker.Checklevel();
+                        WriteLine("\nYou gained " + Bandit.GainedExp + " Experience");
+                        WriteLine("\nYou gained " + Bandit.GainedGold + " Gold");
+                        playerSheet.Experience += Bandit.GainedExp;
+                        playerSheet.Gold += Bandit.GainedGold;
+                        ReadKey(false);
+
+                        for (int i = 0; i <= 10; i++)
+                        {
+                            levelUpTracker.Checklevel();
+                        }
                     }
                 }// end while
             }

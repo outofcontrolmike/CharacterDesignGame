@@ -8,18 +8,17 @@ namespace CreateCharacterMain
     /// <summary>
     /// point of this class is to keep track of levels for character
     /// </summary>
-    class levelUpTracker
+    class levelUpTracker : Program
     {
 
-        CharacterSheet levelup = new CharacterSheet();
-       
+
       
         public static void Checklevel()
         {
             if (IntroWalkthough.playerSheet.Experience >= IntroWalkthough.playerSheet.NextLevel)
             {
                 Clear();
-                WriteLine("You made it to level " + IntroWalkthough.playerSheet.Level + 1 + "!\n");
+                WriteLine("You made it to level " + (IntroWalkthough.playerSheet.Level + 1)+ "!\n");
 
                 // Health
                 // Mana
@@ -48,7 +47,8 @@ namespace CreateCharacterMain
                 WriteLine("Your magic points increased by: " + (IntroWalkthough.playerSheet.Wisdom * 1));
                 WriteLine("Your attack power increased by: " + (IntroWalkthough.playerSheet.Strength * 1));
                 WriteLine("Your Defense Increased by: " + (IntroWalkthough.playerSheet.Dexterity * 1));
-                WriteLine("");
+                WriteLine("\nYour next level is at " + IntroWalkthough.playerSheet.NextLevel * 2);
+                WriteLine("Current Expereince: " + IntroWalkthough.playerSheet.Experience + " Experience");
                 ReadKey(false);
 
               
