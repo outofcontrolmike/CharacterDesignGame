@@ -43,7 +43,7 @@ namespace CreateCharacterMain
             WriteLine("Welcome to the create character part of the game!\n");
             WriteLine("First of all, What is your name? \n ");
             charName = ReadLine();
-
+            Clear();
             while (charName == "")
             {
 
@@ -56,7 +56,7 @@ namespace CreateCharacterMain
 
             }// end while
 
-            WriteLine("\nWell done " + charName.ToUpper() + "!");
+            WriteLine("Well done " + charName.ToUpper() + "!");
             Beep(10000 /2, 200);
 
             
@@ -79,7 +79,7 @@ namespace CreateCharacterMain
 
             Clear();
             // Race
-            WriteLine("\nThere are four races you can choose from in this program: \n");
+            WriteLine("There are four races you can choose from in this program: \n");
             WriteLine("Human\n" +
                   "Elf\n" +
                   "Dwarf\n" +
@@ -306,7 +306,7 @@ namespace CreateCharacterMain
                     }//end While   
 
                 }//end IF
-                WriteLine("-----------------------------------------------------------------------------");
+              
 
             }// end While
 
@@ -353,7 +353,7 @@ namespace CreateCharacterMain
             WriteLine("Press Enter to bring up character select");
             ReadKey(false);
             Clear();
-            WriteLine("-----------------------------------------------------------------------------");
+            
 
             WriteLine(
                     "\ntype in 1 for Warrior \n" +
@@ -678,7 +678,7 @@ namespace CreateCharacterMain
             cure.Name = "Cure";
             cure.MagicCost = 10;
             cure.MDesc = "A basic spell that can heal minor wounds and stop bleeding";
-            cure.MHeal = 30;
+            cure.MHeal = Convert.ToInt32(Math.Ceiling(2.5 * playerSheet.Wisdom));
             cure.MagicDamage = 0;
             cure.RequiredLevel = 0;
 

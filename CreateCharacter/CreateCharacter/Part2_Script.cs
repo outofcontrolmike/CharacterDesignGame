@@ -46,7 +46,7 @@ namespace CreateCharacterMain
         public static void BarDesc()
         {
             //Start from outside
-            
+            Clear();
             WriteLine("\nAfter a little bit of a walk you finally reach the foundation of the tavern." +
                 "\nThe building seems to be made by the inspiration of a log cabin, it's two stories tall." +
                 "\n\nThere is a logo that displays two hands each holding a mug and they are bumping together to" +
@@ -153,12 +153,14 @@ namespace CreateCharacterMain
 
                 WriteLine("Drink Selection Menu".ToUpper());
                 WriteLine("____________________");
-                WriteLine("\nType '1' for Lager" +
-                           "\nType '2' for Mead" +
-                            "\nType '3' for Elderberry Wine" +
-                            "\nType '4' for Red Wine" +
-                            "\nType '5' for Old Town IPA" +
-                            "\nType '6' for Water");
+                WriteLine("\nType '1' for Lager (counts as 1)" +
+                           "\nType '2' for Mead (counts as 2)" +
+                            "\nType '3' for Elderberry Wine (counts as 3)" +
+                            "\nType '4' for Red Wine (counts as 3)" +
+                            "\nType '5' for Old Town IPA (counts as 2)" +
+                            "\nType '6' for Water (-1, helps you sober up.");
+                WriteLine("\nNumber of drinks = " + drinkCount);
+                WriteLine("\nSomething bad might happen if your drink count is more than 12.");
                 ChooseBeverage();
 
 
@@ -196,7 +198,7 @@ namespace CreateCharacterMain
             Clear();
             if(drinkCount <3)
             {
-        
+            
                 WriteLine("\nYou've decided your ready to turn in for the day, you ask the bartender about" +
                     " renting a room upstairs.");
                 WriteLine("\nBartender: 'That's gonna be 30 gold for tonight!'");
@@ -206,10 +208,11 @@ namespace CreateCharacterMain
                 WriteLine("\nYou enter the room and make yourself at home, finally comfrotable for once." +
                     "\nTomorrow will be a new day.");
                 WriteLine("\nNext thing you know you're in bed and closing your eyes.");
+                playerSheet.Gold -= 30;
 
             }
 
-            if (drinkCount <= 5 && drinkCount >= 3)
+            if (drinkCount <= 12 && drinkCount >= 3)
             {
                 WriteLine("You're Feeling pretty good.");
                 WriteLine("\nYou've decided your ready to turn in for the day, you ask the bartender about" +
@@ -232,16 +235,17 @@ namespace CreateCharacterMain
                 
 
             }
-            if(drinkCount > 5 && drinkCount <=10)
+            if(drinkCount > 12)
             {
                 Random rnd = new Random();
 
                 int drunkRandom = 8 * ( rnd.Next(4, 8));
+                playerSheet.Gold -= drunkRandom;
+
                 WriteLine("You're a mess, you need help getting up stairs.");
                 WriteLine("You pull out some gold out your pockets and you don't care" +
                     " about how much your paying.");
-                playerSheet.Gold -= drunkRandom;
-                WriteLine("\nYou hear the bartender count out " + drunkRandom + "gold.");
+                WriteLine("\nYou hear the bartender count out " + drunkRandom + " gold.");
                 WriteLine("\nA couple of regulars from the bar grab you and that's the last thing you remember.");
                 WriteLine("\nGood night for now.");
                 ReadKey(false);
@@ -275,7 +279,7 @@ namespace CreateCharacterMain
                 case "2":
                     WriteLine("You purchased some Honey Mead, that costs you " + bPrices[2] + " gold.");
                     playerSheet.Gold -= bPrices[2];
-                    drinkCount = 2;
+                    drinkCount += 2;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     
                     break;
@@ -283,21 +287,21 @@ namespace CreateCharacterMain
                 case "3":
                     WriteLine("You purchased Elder Berry Wine, that costs you " + bPrices[2] + " gold.");
                     playerSheet.Gold -= bPrices[2];
-                    drinkCount = 3;
+                    drinkCount += 3;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
                 case "4":
                     WriteLine("You purchased Red Wine, that costs you " + bPrices[3] + " gold.");
                     playerSheet.Gold -= bPrices[3];
-                    drinkCount = 4;
+                    drinkCount += 4;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 
                 case "5":
                     WriteLine("You purchased some skunnky smelling OLD Town IPA, that costs you " + bPrices[4] + " gold.");
                     playerSheet.Gold -= bPrices[4];
-                    drinkCount = 2;
+                    drinkCount += 2;
                     WriteLine("\nYour remaining gold balance is: " + playerSheet.Gold);
                     break;
 

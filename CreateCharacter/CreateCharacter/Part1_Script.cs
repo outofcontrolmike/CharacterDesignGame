@@ -37,7 +37,7 @@ namespace CreateCharacterMain
         public static void ContinueToGame()
         {
             Clear();
-            WriteLine("Are you happy with your decisions?  If not type n now if you want to restart the set up\n");
+            WriteLine("Are you happy with your decisions?  If not type n now if you want to restart the set up");
             string choice = ReadLine();
 
             if (choice.ToUpper() == "N")
@@ -48,7 +48,6 @@ namespace CreateCharacterMain
                 GetRace();
                 GetClass();
                 GetStats();
-
                 Clear();
             }
 
@@ -56,7 +55,7 @@ namespace CreateCharacterMain
             {
 
 
-                ReadKey(false);
+               
                 Clear();
             }
         }// end ContinueToGame
@@ -86,7 +85,7 @@ namespace CreateCharacterMain
             else
             {
                 Clear();
-                WriteLine("\nWelcome to " + gameName.ToUpper());
+                WriteLine("Welcome to " + gameName.ToUpper());
                 ReadKey(false);
                 Clear();
             }
@@ -161,6 +160,7 @@ namespace CreateCharacterMain
             int counter = 1;
             while (counter == 1)
             {
+                Clear();
                 WriteLine("Choose a direction:".ToUpper());
 
                 WriteLine("\nWhich direction would you like to go?  Press 's' for swamp or 'w' for west:");
@@ -765,7 +765,7 @@ namespace CreateCharacterMain
                 Clear();
                 WriteLine("JOBE: 'It's a good thing that you're a Human. \nThe village we are going to is mainly popoulated " +
                     "by Humans.");
-                WriteLine("'You won't have any problems getting along with anybody in town. I'd suggest that you" +
+                WriteLine("'\nYou won't have any problems getting along with anybody in town. I'd suggest that you" +
                     " go to the Tavern to learn about what your next step should be.'");
                 WriteLine("\nYou question Jobe: 'So you're saying you're not coming to the village?'");
                 WriteLine("\nJobe: 'That is a correct assumption, I don't really like a lot of people.  I'm not welcome" +
