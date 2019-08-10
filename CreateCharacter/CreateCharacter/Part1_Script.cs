@@ -243,6 +243,7 @@ namespace CreateCharacterMain
                     Clear();
                     int damage = 10;
                     int updatedHealth = playerSheet.TempHealth - damage;
+                    playerSheet.TempHealth -= damage;
 
                     WriteLine("You take a few steps into the swamp. It is very hard to move through and it's suprisingly warm." +
                         "\nAs you walk closer to the bubbles you realize your about knee deep in the swamp.\n" +

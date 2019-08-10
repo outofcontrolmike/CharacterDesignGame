@@ -167,14 +167,14 @@ namespace CreateCharacterMain
                     if (choice.ToUpper() == "D")
                     {
                         counter++;
-                        WriteLine("\nYou decided to go downstairs");
-                        //Call Down
+                        
+                        Down();
                     }
                     if (choice.ToUpper() == "U")
                     {
                         Up();
                         counter++;
-                        //Call UP
+                       
                     }
                 }
 
@@ -187,6 +187,17 @@ namespace CreateCharacterMain
             }// end while
 
         }//end UpOrDown
+
+        public static void Down()
+        {
+            Clear();
+            WriteLine("\nYou decided to run downstairs.");
+            WriteLine("You slam open your door, run down the hall to the stairway and pounce down the stairs.");
+            WriteLine("\nOn the main floor you see the remaining group of guests fighting off a group of bandits.");
+            WriteLine("\nYou hear something behind you, and you realize it's a bandit coming down the" +
+                " stairs, looking for a fight.");
+            ReadKey(false);
+        }
 
         public static void Up()
         {
@@ -210,6 +221,7 @@ namespace CreateCharacterMain
 
             if (playerSheet.Dexterity >= compDext)
             {
+                WriteLine("You're in your first battle!");
                 int count = 1;
                 while (count == 1)
                 {

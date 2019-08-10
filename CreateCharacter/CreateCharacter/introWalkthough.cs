@@ -51,6 +51,7 @@ namespace CreateCharacterMain
                 {
                     WriteLine("Enter a name for your charcter please.\n");
                     charName = ReadLine();
+                    Clear();
                 }
 
             }// end while
@@ -109,7 +110,7 @@ namespace CreateCharacterMain
 
                     pRace = "Human\n";
                     WriteLine("How old do you want to be as a Human?\n" +
-                        "You're allowed to be between 15-70.\n");
+                        "\nYou're allowed to be between 15-70.\n");
 
                     while (ageCounter == 1)
                     {
@@ -118,6 +119,8 @@ namespace CreateCharacterMain
                         {
                             WriteLine("Enter an age between 15-70: \n");
                             ageHolder = Convert.ToInt32(ReadLine());
+                            Clear();
+                        
 
                             WriteLine("\n");
 
@@ -142,13 +145,16 @@ namespace CreateCharacterMain
 
 
                             }// end if's
+                            
                         }
+                        
                         catch (System.FormatException)
                         {
                             WriteLine("Be sure to actually use numbers!\n");
-
+                            ReadKey(false);
 
                         }// End Try Catch for age
+                        Clear();
                     }//end While   
                 }//end IF
 
@@ -257,10 +263,11 @@ namespace CreateCharacterMain
 
                         try
                         {
+                            
                             WriteLine("Enter an age between 22-90: \n");
                             ageHolder = Convert.ToInt32(ReadLine());
-                            WriteLine("\n");
-
+                            Clear();
+                           
                             if (ageHolder < 22)
                             {
                                 WriteLine("You're too young for this adventure\n");
@@ -281,13 +288,16 @@ namespace CreateCharacterMain
                                 age = ageHolder;
 
                             }
+                            
 
 
 
                         }
                         catch (System.FormatException)
                         {
+                            
                             WriteLine("Be sure to actually use numbers.\n");
+                            Clear();
 
 
                         }// End Try Catch for age
@@ -448,12 +458,13 @@ namespace CreateCharacterMain
                 wStArmor.GoldValue = 100;
 
                 // settings variables
+                // 80 points
 
                 int strength = 18;
                 int dexterity = 14;
                 int intelligence = 10;
-                int wisdom = 12;
-                int charisma = 15;
+                int wisdom = 9;
+                int charisma = 14;
                 int constitution = 15;
                 
 
@@ -475,7 +486,7 @@ namespace CreateCharacterMain
                 playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
                 playerSheet.TempMana = playerSheet.MagicPoints;
-                playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
+                playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(5.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
                 playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
 
@@ -501,18 +512,18 @@ namespace CreateCharacterMain
 
 
                 int strength = 10;
-                int dexterity = 13;
+                int dexterity = 12;
                 int intelligence = 18;
-                int constitution = 11;
+                int constitution = 10;
                 int wisdom = 18;
-                int charisma = 13;
+                int charisma = 12;
 
 
                 playerSheet.CharClass = pClass;
                 playerSheet.Age = age;
                 playerSheet.Level = 1;
                 playerSheet.Experience = 0;
-                playerSheet.NextLevel = 1000;
+                playerSheet.NextLevel = 1200;
                 playerSheet.Strength = strength;
                 playerSheet.Dexterity = dexterity;
                 playerSheet.Intelligence = intelligence;
@@ -522,13 +533,13 @@ namespace CreateCharacterMain
                 playerSheet.EquipedWeapon = wStWeapon.Wname;
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
-                playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.Health = Convert.ToInt32(Math.Ceiling(6.2 * constitution));
                 playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
                 playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
-                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
+                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(2.5 * intelligence));
 
                 playerSheet.ToString();
                 GetEquipment();
@@ -551,9 +562,10 @@ namespace CreateCharacterMain
                 wStArmor.ArmorDesc = "A mysterious cloak, looks like it was stolen.";
                 wStArmor.GoldValue = 300;
 
+
                 int strength = 13;
                 int dexterity = 18;
-                int intelligence = 15;
+                int intelligence = 14;
                 int constitution = 12;
                 int wisdom = 10;
                 int charisma = 13;
@@ -599,12 +611,12 @@ namespace CreateCharacterMain
                 wStArmor.ArmorDesc = "Armor made to withstand the strongest blows.";
                 wStArmor.GoldValue = 300;
 
-                int strength = 13;
-                int dexterity = 11;
+                int strength = 12;
+                int dexterity = 10;
                 int intelligence = 12;
                 int constitution = 18;
-                int wisdom = 17;
-                int charisma = 17;
+                int wisdom = 14;
+                int charisma = 14;
 
                 playerSheet.CharClass = pClass;
                 playerSheet.Age = age;
@@ -620,7 +632,7 @@ namespace CreateCharacterMain
                 playerSheet.EquipedWeapon = wStWeapon.Wname;
                 playerSheet.EquipedArmor = wStArmor.ArmorName;
                 playerSheet.Gold = charisma * 100;
-                playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+                playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.9 * constitution));
                 playerSheet.TempHealth = playerSheet.Health;
                 playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
                 playerSheet.TempMana = playerSheet.MagicPoints;
