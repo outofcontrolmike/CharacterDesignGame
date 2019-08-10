@@ -113,6 +113,7 @@ namespace CreateCharacterMain
             ReadKey(false);
 
             WriteLine("\nAttack Power: " + attackPower);
+            WriteLine("Magic Attack: " + magicPower);
             WriteLine("Defense: " + defense);
       
             WriteLine("Strength: " + strength);

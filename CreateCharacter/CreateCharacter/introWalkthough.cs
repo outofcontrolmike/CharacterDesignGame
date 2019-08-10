@@ -590,7 +590,7 @@ namespace CreateCharacterMain
                 playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
-                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
+                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(2.5 * intelligence));
 
                 playerSheet.ToString();
                 GetEquipment();
@@ -638,7 +638,7 @@ namespace CreateCharacterMain
                 playerSheet.TempMana = playerSheet.MagicPoints;
                 playerSheet.AttackPower = Convert.ToInt32(Math.Ceiling(4.2 * strength) + wStWeapon.AttackPower);
                 playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
-                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
+                playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(4.5 * intelligence));
 
 
                 playerSheet.ToString();
@@ -659,7 +659,7 @@ namespace CreateCharacterMain
             mageSpell.Name = "Fire Ball";
             mageSpell.MagicCost = 20;
             mageSpell.MDesc = "A scrorching ball of fire that can incenerate enenmies.";
-            mageSpell.magicDamage = 20;
+            mageSpell.MagicDamage = 20;
             mageSpell.MHeal = 0;
             mageSpell.RequiredLevel = 1;
 
@@ -679,7 +679,7 @@ namespace CreateCharacterMain
             cure.MagicCost = 10;
             cure.MDesc = "A basic spell that can heal minor wounds and stop bleeding";
             cure.MHeal = 30;
-            cure.magicDamage = 0;
+            cure.MagicDamage = 0;
             cure.RequiredLevel = 0;
 
             Clear();

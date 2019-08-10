@@ -80,11 +80,11 @@ namespace CreateCharacterMain
             }
         }// end magic description
 
-        public int magicDamage
+        public int MagicDamage
         {
             get
             {
-                return magicDamage;
+                return mDamage;
             }
             set
             {

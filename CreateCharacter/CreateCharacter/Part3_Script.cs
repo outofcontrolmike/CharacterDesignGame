@@ -32,10 +32,9 @@ namespace CreateCharacterMain
         public static void SetEnemy()
         {
 
-
             Bandit.Name = "Jamahl";
-            Bandit.Health = 20;
-            Bandit.TempHealth = 20;
+            Bandit.Health = 50;
+            Bandit.TempHealth = 50;
             Bandit.Mana = 10;
             Bandit.TempMana = 20;
             Bandit.AttackPower = 10;
@@ -221,7 +220,7 @@ namespace CreateCharacterMain
 
             if (playerSheet.Dexterity >= compDext)
             {
-                WriteLine("You're in your first battle!");
+                WriteLine("\nYou're in your first battle!");
                 int count = 1;
                 while (count == 1)
                 {
@@ -245,8 +244,8 @@ namespace CreateCharacterMain
                     if(Bandit.TempHealth <= 0)
                     {
                         count++;
-                        
-                        WriteLine("You deafeated the Bandit!");
+                        Beep();
+                        WriteLine("\nYou deafeated the Bandit!");
                         ReadKey(false);
                         WriteLine("\nYou gained " + Bandit.GainedExp + " Experience");
                         WriteLine("\nYou gained " + Bandit.GainedGold + " Gold");
@@ -254,7 +253,7 @@ namespace CreateCharacterMain
                         playerSheet.Gold += Bandit.GainedGold;
                         ReadKey(false);
 
-                        for (int i = 0; i <= 10; i++)
+                        for (int i = 0; i <= 100; i++)
                         {
                             levelUpTracker.Checklevel();
                         }
@@ -301,15 +300,52 @@ namespace CreateCharacterMain
         public static void PlayerAttack()
         {
             //
-            
-            int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
-            Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
+            if(playerSheet.CharClass == "Mage")
+            {
+                Clear();
+                WriteLine("\nPlayer Remanining Health " + playerSheet.TempHealth + "/" + playerSheet.Health);
+                WriteLine("\nMage Remaining Mana: " + playerSheet.TempMana + "/" + playerSheet.MagicPoints);
+                WriteLine("\nChoose one option from below: ");
+                WriteLine("\nPress 1 for physical attack:" +
+                        "\nPress 2 to use a spell");
+                int choice = Convert.ToInt32(ReadLine());
 
+                if(choice == 1)
+                {
+                    int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
+                    Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
+
+
+                    Clear();
+                    WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
+
+                    if (Bandit.TempHealth > 0)
+                    {
+                        WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
+                    }
+                    ReadKey(false);
+                }// end choice 1
+
+                //magic
+                if(choice == 2)
+                {
+                    
+                    Clear();
+                    playerSheet.TempMana -= mageSpell.MagicCost;
+                    int magicDamage = Bandit.Defense - (playerSheet.MagicPower + mageSpell.MagicDamage);
+                    Bandit.TempHealth -= Math.Abs(magicDamage);
+                    WriteLine("Player casts " + mageSpell.Name + " " + Math.Abs(magicDamage) + " of damage to Bandit.");
+                    WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" + Bandit.Health);
+                    ReadKey(false);
+
+                }
+               
+            }// end if mage
+
+        
             
-            Clear();
-            WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
-            WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" +Bandit.Health );
-            ReadKey(false);
+            
+          
 
             //int damageToPlayer = Bandit.AttackPower - playerSheet.Defense;
         }
@@ -325,7 +361,10 @@ namespace CreateCharacterMain
             WriteLine("\nPlayer Remanining Health " + playerSheet.TempHealth + "/" + playerSheet.Health);
             ReadKey(false);
         }// end BanditAttack
-
+        
+        /// <summary>
+        /// Testing method
+        /// </summary>
         public static void SetPlayer()
         {
             wStWeapon.Wname = "Dirk";
