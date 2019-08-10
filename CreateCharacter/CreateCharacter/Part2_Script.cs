@@ -161,8 +161,11 @@ namespace CreateCharacterMain
                             "\nType '6' for Water (-1, helps you sober up.");
                 WriteLine("\nNumber of drinks = " + drinkCount);
                 WriteLine("\nSomething bad might happen if your drink count is more than 12.");
-                ChooseBeverage();
 
+
+
+                ChooseBeverage();
+                
 
                 if (playerSheet.Gold <= 90)
                 {
@@ -189,7 +192,6 @@ namespace CreateCharacterMain
             HowDrunk();
 
             
-            ReadKey(false);
 
         }//end BeverageString
 
@@ -249,12 +251,14 @@ namespace CreateCharacterMain
                 WriteLine("\nA couple of regulars from the bar grab you and that's the last thing you remember.");
                 WriteLine("\nGood night for now.");
                 ReadKey(false);
-                Clear();
+                SpecialEffects.ChangeTerminalColor();
+                
                 WriteLine("\nYou wake up in the morning with a killer headache. You roll out of bed to go downstairs" +
                     " to get some breakfast and hopefully some coffee.");
+                SpecialEffects.ChangeTerminalBack();
                 
             }
-            ReadKey(false);
+           
         }// end HowDrunk
 
         public static void ChooseBeverage()
@@ -262,10 +266,11 @@ namespace CreateCharacterMain
             
 
             string caseSwitch = ReadLine();
-            Clear();
+          
 
             int[] bPrices = new int[] { 3, 10, 20, 30, 50, 40 };
 
+            WriteLine("__________________________________________________________________\n");
             switch (caseSwitch)
             {
                 case "1":

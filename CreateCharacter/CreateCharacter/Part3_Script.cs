@@ -320,10 +320,13 @@ namespace CreateCharacterMain
         /// </summary>
         public static void Attack()
         {
+            WriteLine("\nPlayer Remanining Health " + playerSheet.TempHealth + "/" + playerSheet.Health);
+            WriteLine("\nPlayer Remaining Mana: " + playerSheet.TempMana + "/" + playerSheet.MagicPoints);
+
             int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
             Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
 
-
+            
             Clear();
             WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
 
@@ -427,8 +430,7 @@ namespace CreateCharacterMain
             }// end if Cleric
 
             else
-            {
-
+            { 
                 Attack();
             }
 

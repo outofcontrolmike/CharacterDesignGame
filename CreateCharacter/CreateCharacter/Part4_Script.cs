@@ -50,7 +50,7 @@ namespace CreateCharacterMain
             ReadKey(false);
             Clear();
             WriteLine("This has been a test application and I really hope to build on to this idea." +
-                "I want to try using a windows form app for this and maybe" +
+                " I want to try using a windows form app for this and maybe" +
                 " even a game engine such as Unity.");
 
 
