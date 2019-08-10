@@ -47,7 +47,7 @@ namespace CreateCharacterMain
         {
             //Start from outside
             
-            WriteLine("After a little bit of a walk you finally reach the foundation of the tavern." +
+            WriteLine("\nAfter a little bit of a walk you finally reach the foundation of the tavern." +
                 "\nThe building seems to be made by the inspiration of a log cabin, it's two stories tall." +
                 "\n\nThere is a logo that displays two hands each holding a mug and they are bumping together to" +
                 "simulate a cheers for good times.\n" +
@@ -137,7 +137,6 @@ namespace CreateCharacterMain
 
                 }
                 WriteLine("-------------------------------------------------------------");
-                WriteLine("Are any of these options interesting to you??");
                 WriteLine("Press Enter to go to choose a selection.".ToUpper());
                 ReadKey(false);
 
@@ -171,8 +170,10 @@ namespace CreateCharacterMain
                 }
 
                 if(playerSheet.Gold >= 100)
-                WriteLine("\nType out quit if you want to exit the menu and quit drinking.\n");
+                WriteLine("\nType quit if you want to exit the menu and quit drinking." +
+                    " Otherwise we assume you want more.\n");
                 string quit = ReadLine();
+                Clear();
 
                 if (quit.ToUpper() == "QUIT")
                 {

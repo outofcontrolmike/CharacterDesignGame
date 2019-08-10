@@ -34,13 +34,13 @@ namespace CreateCharacterMain
 
 
             Bandit.Name = "Jamahl";
-            Bandit.Health = 40;
-            Bandit.TempHealth = 40;
+            Bandit.Health = 20;
+            Bandit.TempHealth = 20;
             Bandit.Mana = 10;
             Bandit.TempMana = 20;
             Bandit.AttackPower = 10;
-            Bandit.Defense = 40;
-            Bandit.GainedExp = 5000;
+            Bandit.Defense = 30;
+            Bandit.GainedExp = 1400;
             Bandit.GainedGold = 100;
 
         }//end setEnemy
@@ -106,7 +106,7 @@ namespace CreateCharacterMain
                 try
                 {
                     Clear();
-                    WriteLine("You currently have " + playerSheet.Gold + " gold.");
+                    WriteLine("You currently have " + playerSheet.Gold + "  gold.");
                     WriteLine("\nEnter the amount of gold that you want to tip.");
                     tip = Convert.ToInt32(ReadLine());
 
@@ -300,7 +300,7 @@ namespace CreateCharacterMain
 
         public static void PlayerAttack()
         {
-            
+            //
             
             int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
             Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
