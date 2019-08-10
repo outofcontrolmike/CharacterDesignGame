@@ -17,36 +17,28 @@ namespace CreateCharacterMain
         public static void Battle()
         {
             //Testing
-            CharacterSheet.playerSheet.Gold = 1000;
-            setEnemy();
+            
+          
+            SetEnemy();
             StoryBeforeBattle();
-
 
         }//end Battle
 
 
 
         /// <summary>
-        /// Programs the functionallity of the battle
-        /// </summary>
-        public static void mapBattle()
-        {
-
-        }//end mapBattle
-
-        /// <summary>
         /// Sets the enemy up
         /// </summary>
-        public static void setEnemy()
+        public static void SetEnemy()
         {
 
 
             Bandit.Name = "Jamahl";
-            Bandit.Health = 20;
-            Bandit.TempHealth = 20;
+            Bandit.Health = 40;
+            Bandit.TempHealth = 40;
             Bandit.Mana = 10;
             Bandit.TempMana = 20;
-            Bandit.AttackPower = 30;
+            Bandit.AttackPower = 10;
             Bandit.Defense = 40;
             Bandit.GainedExp = 1400;
             Bandit.GainedGold = 100;
@@ -61,7 +53,8 @@ namespace CreateCharacterMain
             WriteLine("\nYou take a seat at the bar and a young waitress comes to your attention right away.");
             WriteLine("\n'Hey, you stayed here over night, breakfast is included in your stay." +
                 "\nDoes a country skillet and coffee sound good for you.?'");
-            WriteLine("You sit there with a grin on your face and defintiley agree with" +
+            WriteLine("" +
+                "\nYou sit there with a grin on your face and defintiley agree with" +
                 " the breakfast option.");
             ReadKey(false);
             Clear();
@@ -98,6 +91,7 @@ namespace CreateCharacterMain
 
             UpOrDown();
             ReadKey(false);
+            BanditFight();
 
 
         }//end StoryBeforeBattle
@@ -113,14 +107,14 @@ namespace CreateCharacterMain
                 {
                     Clear();
                     WriteLine("You currently have " + playerSheet.Gold + " gold.");
-                    WriteLine("Enter the amount of gold that you want to tip.");
+                    WriteLine("\nEnter the amount of gold that you want to tip.");
                     tip = Convert.ToInt32(ReadLine());
 
                     if (playerSheet.Gold > tip)
                     {
                         if (tip > 0)
                         {
-                            WriteLine("You decided to leave " + tip + " gold for a tip.");
+                            WriteLine("\nYou decided to leave " + tip + " gold for a tip.");
                             playerSheet.Gold -= tip;
 
 
@@ -129,14 +123,14 @@ namespace CreateCharacterMain
 
                         if (tip == 0)
                         {
-                            WriteLine("You didn't want to leave a tip.");
+                            WriteLine("\nYou didn't want to leave a tip.");
 
                         }
 
                     }// end if
                     if (tip > playerSheet.Gold)
                     {
-                        WriteLine("You don't have enough money to tip. Missed your chance.");
+                        WriteLine("\nYou don't have enough money to tip. Missed your chance.");
 
                     }
                     counter++;
@@ -144,7 +138,7 @@ namespace CreateCharacterMain
 
                 catch (System.FormatException)
                 {
-                    WriteLine("Enter actual numbers!");
+                    WriteLine("\nEnter actual numbers!");
                 }
 
                 ReadKey(false);
@@ -203,61 +197,154 @@ namespace CreateCharacterMain
                 " with fierce eyes.");
             ReadKey(false);
 
-            BanditFight();
             
-        }
+
+        }//End UP
 
         public static void BanditFight()
         {
-            ReadKey();
-            while (playerSheet.TempHealth > 0 && Bandit.TempHealth > 0)
-            {
-                int compDext = 10;
-                
-                if(playerSheet.Dexterity >= compDext)
-                {
-                    PlayerAttack();
-                    BanditAttack();
-                }
 
-                if(playerSheet.Dexterity < compDext)
+
+            int compDext = 10;
+
+
+            if (playerSheet.Dexterity >= compDext)
+            {
+                int count = 1;
+                while (count == 1)
                 {
+                    if (playerSheet.TempHealth > 0)
+                    {
+                        PlayerAttack();
+                    }
+
+                    if (Bandit.TempHealth > 0)
+                    {
+                        BanditAttack();
+                    }
+                    if (playerSheet.TempHealth <= 0)
+                    {
+                        count++;
+                        WriteLine("Gameover...");
+                        ReadKey(false);
+                    }
                     
-                    BanditAttack();
-                    PlayerAttack();
-                }
+
+                    if(Bandit.TempHealth <= 0)
+                    {
+                        count++;
+                        
+                        WriteLine("You deafeated the Bandit!");
+                        ReadKey(false);
+                        levelUpTracker.Checklevel();
+                    }
+                }// end while
             }
-        }
+         
+            //Logic for If computer first strike
+            if (playerSheet.Dexterity < compDext)
+            {
+                int count = 1;
+                while (count == 1)
+                {
+                    if (Bandit.TempHealth > 0)
+                    {
+                        BanditAttack();
+                    }
+
+                    if (playerSheet.TempHealth > 0)
+                    {
+                        PlayerAttack();
+                    }
+
+                  
+                    if (playerSheet.TempHealth <= 0)
+                    {
+                        count++;
+                        WriteLine("Gameover...");
+                        ReadKey(false);
+                    }
+
+
+                    if (Bandit.TempHealth <= 0)
+                    {
+                        count++;
+                        WriteLine("You deafeated the Bandit!");
+                        ReadKey(false);
+                    }
+                }// end while
+            }
+
+        }// end BanditFight
 
         public static void PlayerAttack()
         {
-            int rHealth = Bandit.TempHealth;
-            int health = Bandit.Health;
-
-            int damageDeltToComputer = Bandit.TempHealth - (playerSheet.AttackPower - Bandit.Defense);
-
-            Clear();
-            WriteLine("Player deals " + damageDeltToComputer + " to Bandit.");
-            WriteLine("\nBandit remaining Health " + rHealth + "/" + health);
-            ReadKey(false);
             
+            
+            int damageDeltToComputer = Bandit.Defense - playerSheet.AttackPower;
+            Bandit.TempHealth -= Math.Abs(damageDeltToComputer);
+
+            
+            Clear();
+            WriteLine("Player deals " + Math.Abs(damageDeltToComputer) + " of damage to Bandit.");
+            WriteLine("\nBandit remaining Health " + Bandit.TempHealth + "/" +Bandit.Health );
+            ReadKey(false);
+
             //int damageToPlayer = Bandit.AttackPower - playerSheet.Defense;
         }
         public static void BanditAttack()
         {
-            
-            int rHealth = playerSheet.TempHealth;
-            int health = playerSheet.Health;
-            int BAttackPow = Bandit.AttackPower;
-            int playerDef = playerSheet.Defense;
 
-            int damageDeltToPlayer = rHealth - (BAttackPow - playerDef);
+            int damageDeltToPlayer = playerSheet.Defense - Bandit.AttackPower;
+          
 
             Clear();
-            WriteLine("Bandit Deals " + damageDeltToPlayer + " to Player.");
-            WriteLine("\nBandit remaining Health " + rHealth + "/" + health);
+            playerSheet.TempHealth -= Math.Abs(damageDeltToPlayer);
+            WriteLine("Bandit Deals " + Math.Abs(damageDeltToPlayer) + " to Player.");
+            WriteLine("\nPlayer Remanining Health " + playerSheet.TempHealth + "/" + playerSheet.Health);
             ReadKey(false);
         }// end BanditAttack
+
+        public static void SetPlayer()
+        {
+            wStWeapon.Wname = "Dirk";
+            wStWeapon.AttackPower = 15;
+            wStWeapon.WDescription = "A stealhty light weight knife";
+            wStWeapon.Gvalue = 40;
+
+            wStArmor.ArmorName = "Cloak";
+            wStArmor.ArmorDefense = 8;
+            wStArmor.ArmorDesc = "A mysterious cloak, looks like it was stolen.";
+            wStArmor.GoldValue = 300;
+
+            int strength = 13;
+            int dexterity = 18;
+            int intelligence = 15;
+            int constitution = 12;
+            int wisdom = 10;
+            int charisma = 13;
+
+           
+            playerSheet.Level = 1;
+            playerSheet.Experience = 0;
+            playerSheet.NextLevel = 1000;
+            playerSheet.Strength = strength;
+            playerSheet.Dexterity = dexterity;
+            playerSheet.Intelligence = intelligence;
+            playerSheet.Constitution = constitution;
+            playerSheet.Wisdom = wisdom;
+            playerSheet.Charisma = charisma;
+            playerSheet.EquipedWeapon = wStWeapon.Wname;
+            playerSheet.EquipedArmor = wStArmor.ArmorName;
+            playerSheet.Gold = charisma * 100;
+            playerSheet.Health = Convert.ToInt32(Math.Ceiling(8.2 * constitution));
+            playerSheet.TempHealth = playerSheet.Health;
+            playerSheet.MagicPoints = Convert.ToInt32(Math.Ceiling(3.5 * wisdom));
+            playerSheet.TempMana = playerSheet.MagicPoints;
+            playerSheet.AttackPower = (strength * 4) + wStWeapon.AttackPower;
+            playerSheet.Defense = Convert.ToInt32(Math.Ceiling(2.1 * dexterity) + wStArmor.ArmorDefense);
+            playerSheet.MagicPower = Convert.ToInt32(Math.Ceiling(1.5 * intelligence));
+        }
     }
 
 }

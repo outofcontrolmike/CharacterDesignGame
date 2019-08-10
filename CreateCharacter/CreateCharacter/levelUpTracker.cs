@@ -28,6 +28,7 @@ namespace CreateCharacterMain
                 // level
 
                 Beep();
+
                 int tMaxHealth = IntroWalkthough.playerSheet.Health;
 
                 
@@ -41,19 +42,16 @@ namespace CreateCharacterMain
                 IntroWalkthough.playerSheet.Level += 1;
                 IntroWalkthough.playerSheet.NextLevel *= 2;
 
-                ReadKey();
+                ReadKey(false);
 
                 WriteLine("Your health increased by: " + (IntroWalkthough.playerSheet.Constitution * 1));
                 WriteLine("Your magic points increased by: " + (IntroWalkthough.playerSheet.Wisdom * 1));
                 WriteLine("Your attack power increased by: " + (IntroWalkthough.playerSheet.Strength * 1));
                 WriteLine("Your Defense Increased by: " + (IntroWalkthough.playerSheet.Dexterity * 1));
                 WriteLine("");
-                ReadKey();
+                ReadKey(false);
 
               
-               
-                ReadKey();
-
             }
         }
     }

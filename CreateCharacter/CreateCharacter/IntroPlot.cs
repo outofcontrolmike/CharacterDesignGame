@@ -26,12 +26,6 @@ namespace CreateCharacterMain
             Part1_Script.SecondPart();
             Part2_Script.Tavern();
             Part3_Script.Battle();
-            
-        
-            
-
-
-
         }
 
    
