@@ -406,9 +406,9 @@ namespace CreateCharacterMain
                         WriteLine("You can definitley tell his foot is messed up.  You decide a good way to handle this would be" +
                             " to use the Cure Spell you have.");
                         WriteLine("\nYou start concentrating very hard and focusing your energy on mending the wound.");
-                        WriteLine("Over the past two minutes you were able to speed up the healing of the foot by tenfold." +
+                        WriteLine("\nOver the past two minutes you were able to speed up the healing of the foot by tenfold." +
                             " You watch as relief changes the face of the stranger.");
-                        ReadKey();
+                        ReadKey(false);
                         Clear();
                         WriteLine("STRANGER: 'Thank the heavens that we ran into eachother' I wasn't sure if I'd be" +
                             " able to fight anything I encountered next.");
@@ -417,7 +417,7 @@ namespace CreateCharacterMain
                             " it to the village on foot by the end of the day.");
                         WriteLine("\nYou gladly get on the back of the horse with the stranger and head down into the valley.");
 
-                    }
+                    }//end innerest if
                     else
                     {
                         WriteLine("STRANGER: 'You look absolutley awful, you need to drink some water quick!'");
@@ -425,11 +425,11 @@ namespace CreateCharacterMain
                     }
                    
 
-                }
+                }//end inner If
 
                 ReadKey(false);
                 Befriend();
-            }
+            }//end slow
 
         }// end Listen for
 
